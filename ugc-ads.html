@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>esthétique Wien – UGC Werbeanzeigen</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #faf9f7; color: #2c2c2c; }
+  header { background: #1a1a1a; color: #e8d5b7; text-align: center; padding: 40px 20px; }
+  header h1 { font-size: 2rem; letter-spacing: 4px; text-transform: uppercase; }
+  header p { margin-top: 8px; font-size: 0.9rem; color: #b8a898; letter-spacing: 2px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; padding: 40px 24px; max-width: 1400px; margin: 0 auto; }
+  .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.07); display: flex; flex-direction: column; }
+  .card-header { padding: 16px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #f0ece6; }
+  .avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #c9a96e, #8b6914); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1rem; font-weight: bold; flex-shrink: 0; }
+  .avatar.a2 { background: linear-gradient(135deg, #d4a5c9, #8b4070); }
+  .avatar.a3 { background: linear-gradient(135deg, #a5c4d4, #407a8b); }
+  .avatar.a4 { background: linear-gradient(135deg, #c4d4a5, #5a8b40); }
+  .avatar.a5 { background: linear-gradient(135deg, #d4b8a5, #8b5a40); }
+  .user-info { flex: 1; }
+  .username { font-weight: 700; font-size: 0.85rem; color: #1a1a1a; }
+  .handle { font-size: 0.75rem; color: #888; }
+  .platform { font-size: 0.7rem; font-weight: 600; padding: 3px 8px; border-radius: 20px; }
+  .instagram { background: #fce4ec; color: #c2185b; }
+  .tiktok { background: #e8f5e9; color: #2e7d32; }
+  .facebook { background: #e3f2fd; color: #1565c0; }
+  .youtube { background: #ffebee; color: #c62828; }
+  .card-body { padding: 16px; flex: 1; }
+  .card-type { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: #c9a96e; font-weight: 700; margin-bottom: 8px; }
+  .card-text { font-size: 0.9rem; line-height: 1.65; color: #3a3a3a; }
+  .card-text em { font-style: italic; color: #8b6914; }
+  .stars { color: #c9a96e; font-size: 1rem; margin-top: 10px; }
+  .card-footer { padding: 12px 16px; border-top: 1px solid #f0ece6; display: flex; gap: 16px; }
+  .stat { font-size: 0.75rem; color: #aaa; }
+  .stat span { color: #555; font-weight: 600; }
+  .tag { display: inline-block; background: #f5f0ea; color: #8b6914; font-size: 0.7rem; padding: 3px 8px; border-radius: 20px; margin: 4px 2px 0; }
+  .video-indicator { background: #1a1a1a; color: #e8d5b7; font-size: 0.72rem; padding: 4px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; }
+  .video-indicator::before { content: '▶'; font-size: 0.65rem; }
+  .number { position: absolute; top: 12px; left: 12px; background: #1a1a1a; color: #e8d5b7; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; }
+  .card { position: relative; }
+  h2.section-title { text-align: center; font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; color: #8b6914; margin: 40px 0 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>esthétique Wien</h1>
+  <p>50 UGC-Style Werbeanzeigen · for face, body &amp; soul</p>
+</header>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="number">1</div>
+    <div class="card-header">
+      <div class="avatar">LM</div>
+      <div class="user-info"><div class="username">Laura M.</div><div class="handle">@laurawien</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Testimonial · Nägel</div>
+      <div class="card-text">Ich schwöre, meine Nägel sehen aus wie frisch vom Laufsteg 😭✨ Bin schon seit über einem Jahr bei Maja und ich gehe nirgendwo anders mehr hin. Die <em>Gelnägel bei esthétique</em> halten bei mir immer 4 Wochen – ohne abblättern. Bestellt euch bitte einen Termin, ihr werdet es nicht bereuen!</div>
+      <div class="stars">★★★★★</div>
+      <div><span class="tag">#gelnägel</span><span class="tag">#wien</span><span class="tag">#nailsofinstagram</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>2.847</span></div><div class="stat">💬 <span>134</span></div><div class="stat">🔁 <span>89</span></div></div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="number">2</div>
+    <div class="card-header">
+      <div class="avatar a2">SP</div>
+      <div class="user-info"><div class="username">Sarah P.</div><div class="handle">@sarahbeauty_at</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Hook · Brow Lifting</div>
+      <div class="card-text">POV: Du wachst auf und deine Augenbrauen sitzen perfekt – ohne Stift, ohne Gel, ohne STRESS. 🤩 Das ist mein Leben seit dem <em>Brow Lifting bei esthétique Wien</em>. Maja hat meinen Brauen komplett neues Leben eingehaucht. 6 Wochen halten die Ergebnisse! #GlowUp #BrowLift</div>
+      <div class="video-indicator">15-Sek. Reel · Vorher/Nachher</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>14.2K</span></div><div class="stat">💬 <span>512</span></div><div class="stat">↗ <span>3.1K</span></div></div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="number">3</div>
+    <div class="card-header">
+      <div class="avatar a3">KW</div>
+      <div class="user-info"><div class="username">Katharina W.</div><div class="handle">@kathi.glow</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Story Ad · Gesichtspflege</div>
+      <div class="card-text">Endlich habe ich meine Hautpflegeroutine gefunden 💆‍♀️ Nach der <em>Gesichtsbehandlung bei esthétique</em> im 3. Bezirk sieht meine Haut aus wie nach einem Wellness-Urlaub. Maja erklärt einem alles so verständlich und geht wirklich auf die eigene Haut ein. Bin verliebt!</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>1.203</span></div><div class="stat">💬 <span>67</span></div></div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="number">4</div>
+    <div class="card-header">
+      <div class="avatar a4">MR</div>
+      <div class="user-info"><div class="username">Miriam R.</div><div class="handle">@miriamstyle_wien</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Haul/Review · Pediküre</div>
+      <div class="card-text">Girls, ich rede heute über etwas sehr Wichtiges: meine Füße 😂 Nach der <em>Pediküre bei esthétique Wien</em> bin ich das erste Mal seit Jahren wieder bereit, Sandalen zu tragen. Ich bin nicht übertreibe wenn ich sage: Maja ist ein Künstlerin. Treatwell Termin Link in Bio! 👇</div>
+      <div class="video-indicator">30-Sek. TikTok · Close-up Feet Reveal</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>8.9K</span></div><div class="stat">💬 <span>341</span></div><div class="stat">↗ <span>1.2K</span></div></div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="number">5</div>
+    <div class="card-header">
+      <div class="avatar a5">JB</div>
+      <div class="user-info"><div class="username">Julia B.</div><div class="handle">@juliawellness</div></div>
+      <span class="platform facebook">Facebook</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Empfehlung · Allgemein</div>
+      <div class="card-text">Kann <em>esthétique Wien</em> von Herzen weiterempfehlen! Habe dort Gelnägel, Pediküre und eine Gesichtsbehandlung gemacht – alles top. Sehr sauber, sehr entspannte Atmosphäre und Maja ist einfach super kompetent und herzlich. Wird definitiv mein Stammsalon! ⭐⭐⭐⭐⭐</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">👍 <span>234</span></div><div class="stat">💬 <span>41</span></div><div class="stat">↗ <span>28</span></div></div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="number">6</div>
+    <div class="card-header">
+      <div class="avatar">AL</div>
+      <div class="user-info"><div class="username">Anna L.</div><div class="handle">@anna.loves.beauty</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Reel Script · Transformation</div>
+      <div class="card-text">"Ich hab nie geglaubt, dass Brow Lifting wirklich was verändert… bis ich es selbst ausprobiert habe." 😱 Dieses Vorher-Nachher spricht für sich. <em>esthétique Wien, 3. Bezirk.</em> Maja ist ein Genie mit Augenbrauen. Termin über Treatwell buchen – Link in Bio!</div>
+      <div class="video-indicator">Reel · 8 Sek. Hook + Reveal</div>
+      <div><span class="tag">#browlift</span><span class="tag">#wien3</span><span class="tag">#transformation</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>5.6K</span></div><div class="stat">💬 <span>198</span></div></div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="number">7</div>
+    <div class="card-header">
+      <div class="avatar a2">TS</div>
+      <div class="user-info"><div class="username">Teresa S.</div><div class="handle">@teresa_selfcare</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Storytelling · Ersterfahrung</div>
+      <div class="card-text">Ich war ehrlich gesagt nervös beim ersten Mal 😅 Aber Maja hat mich sofort so willkommen heißen lassen, ich habe mich wie bei einer Freundin gefühlt. <em>esthétique Wien</em> ist nicht einfach ein Studio – es ist ein Ort wo man sich wirklich fallen lassen kann. Soul care pur. 🤍</div>
+      <div class="video-indicator">GRWM-Style · Voiceover + B-Roll</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>11.3K</span></div><div class="stat">💬 <span>423</span></div></div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card">
+    <div class="number">8</div>
+    <div class="card-header">
+      <div class="avatar a3">VN</div>
+      <div class="user-info"><div class="username">Veronika N.</div><div class="handle">@vero.nailsvienna</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Produkt-Close-Up · Nägel</div>
+      <div class="card-text">Diese Nägel? <em>esthétique Wien.</em> Diese Farbe? Handverlesen von Maja persönlich. Diese Haltbarkeit? 4+ Wochen ohne einen Chip. Wer in Wien wohnt und noch kein Termin bei Maja hat, verpasst buchstäblich etwas. 🙌 #nailartvienna #gelnailsaustria</div>
+      <div class="stars">★★★★★</div>
+      <div><span class="tag">#nailart</span><span class="tag">#gelnails</span><span class="tag">#wienbeauty</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>3.4K</span></div><div class="stat">💬 <span>112</span></div></div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card">
+    <div class="number">9</div>
+    <div class="card-header">
+      <div class="avatar a4">BM</div>
+      <div class="user-info"><div class="username">Bianca M.</div><div class="handle">@bianca.mama.style</div></div>
+      <span class="platform facebook">Facebook</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Empfehlung · Mama-Zielgruppe</div>
+      <div class="card-text">Als Mama von zwei Kindern habe ich kaum Zeit für mich. Aber der <em>Termin bei esthétique Wien</em> ist meine Me-Time einmal im Monat und ich lasse ihn mir von niemanden nehmen 😄 Gelnägel in unter 90 Minuten, wunderschön und haltbar. Danke Maja! ❤️</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">👍 <span>187</span></div><div class="stat">💬 <span>33</span></div></div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card">
+    <div class="number">10</div>
+    <div class="card-header">
+      <div class="avatar a5">CK</div>
+      <div class="user-info"><div class="username">Clara K.</div><div class="handle">@clara.beautylog</div></div>
+      <span class="platform youtube">YouTube</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Vlog-Intro · Studio Tour</div>
+      <div class="card-text">"Heute nehme ich euch mit in mein liebstes Kosmetikstudio in Wien! <em>esthétique</em> im 3. Bezirk ist mein absoluter Geheimtipp – sauber, gemütlich und die Inhaberin Maja ist so unglaublich talentiert. Schaut bis zum Ende, ich zeige euch das komplette Ergebnis meiner Nagel- und Gesichtsbehandlung!"</div>
+      <div class="video-indicator">YouTube Vlog · 8 Min. Studio Experience</div>
+    </div>
+    <div class="card-footer"><div class="stat">👁️ <span>12.4K</span></div><div class="stat">👍 <span>891</span></div><div class="stat">💬 <span>203</span></div></div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card">
+    <div class="number">11</div>
+    <div class="card-header">
+      <div class="avatar">FM</div>
+      <div class="user-info"><div class="username">Franziska M.</div><div class="handle">@franziwien_beauty</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Trend-Hook · "Things that just make sense"</div>
+      <div class="card-text">Things that just make sense: ☑️ Gelnägel die 4 Wochen halten ☑️ Gesichtsbehandlung die deine Haut strahlen lässt ☑️ Studio das sich wie Urlaub anfühlt ☑️ <em>esthétique Wien, 3. Bezirk</em> – @esthetique_wien. Treatwell Buchung in Bio 🖤</div>
+      <div class="video-indicator">TikTok Trend-Format · Text-Overlay</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>19.8K</span></div><div class="stat">↗ <span>4.7K</span></div></div>
+  </div>
+
+  <!-- 12 -->
+  <div class="card">
+    <div class="number">12</div>
+    <div class="card-header">
+      <div class="avatar a2">HW</div>
+      <div class="user-info"><div class="username">Hanna W.</div><div class="handle">@hannawellnesslife</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Carousel · Behandlungsüberblick</div>
+      <div class="card-text">5 Gründe warum <em>esthétique Wien</em> mein Lieblingsort in der Stadt ist: 1️⃣ Gelnägel von Weltklasse 2️⃣ Pediküre die wirklich hält 3️⃣ Brow Lifting wie beim Profi 4️⃣ Gesichtsbehandlung nach Hauttyp 5️⃣ Maja – ein Mensch mit echtem Herz. Swipe für Bilder 👉</div>
+      <div><span class="tag">#beautyvienna</span><span class="tag">#kosmetikwien</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>4.1K</span></div><div class="stat">💬 <span>156</span></div></div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card">
+    <div class="number">13</div>
+    <div class="card-header">
+      <div class="avatar a3">EB</div>
+      <div class="user-info"><div class="username">Elena B.</div><div class="handle">@elenas_naildiaries</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Duet/Response · Nail Trend</div>
+      <div class="card-text">Antworte auf: "Wo bekomme ich in Wien die besten Nägel?" – HIER. Bitte. <em>esthétique Wien</em> von Maja Antić. Ich habe schon 6 verschiedene Studios ausprobiert – kein einziges kommt auch nur annähernd ran. Die Qualität, die Sauberkeit, die Liebe zum Detail… perfekt. 💅</div>
+      <div class="video-indicator">TikTok Response · Screen + Voiceover</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>7.2K</span></div><div class="stat">💬 <span>289</span></div></div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card">
+    <div class="number">14</div>
+    <div class="card-header">
+      <div class="avatar a4">NP</div>
+      <div class="user-info"><div class="username">Nina P.</div><div class="handle">@nina_beautyroutine</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Morning Routine Integration</div>
+      <div class="card-text">Meine Morgenroutine seit dem <em>Brow Lifting bei esthétique</em>: aufwachen, Augenbrauen sind perfekt, fertig. 😂 Ernst gemeint – ich spare jeden Morgen 10 Minuten. Maja hat mich komplett konvertiert. Wer noch zweifelt: macht es einfach. Das Ergebnis spricht für sich. 🤍</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>2.9K</span></div><div class="stat">💬 <span>88</span></div></div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card">
+    <div class="number">15</div>
+    <div class="card-header">
+      <div class="avatar a5">RS</div>
+      <div class="user-info"><div class="username">Rebecca S.</div><div class="handle">@rebeccaskincare_at</div></div>
+      <span class="platform youtube">YouTube</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Review · Gesichtsbehandlung</div>
+      <div class="card-text">"Ich habe überall in Wien Gesichtsbehandlungen getestet für meinen Beauty-Kanal – und ich sage euch ganz ehrlich: <em>esthétique Wien</em> ist das Beste, was mir passiert ist. Maja analysiert die Haut individuell, erklärt jeden Schritt und das Ergebnis? Unglaublich glatt und strahlend."</div>
+      <div class="video-indicator">YouTube Review · 12 Min. honest opinion</div>
+    </div>
+    <div class="card-footer"><div class="stat">👁️ <span>8.7K</span></div><div class="stat">👍 <span>634</span></div></div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card">
+    <div class="number">16</div>
+    <div class="card-header">
+      <div class="avatar">LK</div>
+      <div class="user-info"><div class="username">Lena K.</div><div class="handle">@lena_k_lifestyle</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">"Girl dinner" Format · Treat Yourself</div>
+      <div class="card-text">Girl treat yourself: 🍰 Lieblingseis ✅ 🛁 Schaumbad ✅ 💅 Gelnägel bei <em>esthétique Wien</em> ✅ Das ist das Minimum was du dir gönnst verdienst. Treatwell Buchung → Link in Bio. Du weißt es. 💕</div>
+      <div class="video-indicator">TikTok · Aesthetic Montage · 10 Sek.</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>22.1K</span></div><div class="stat">↗ <span>5.8K</span></div></div>
+  </div>
+
+  <!-- 17 -->
+  <div class="card">
+    <div class="number">17</div>
+    <div class="card-header">
+      <div class="avatar a2">AG</div>
+      <div class="user-info"><div class="username">Alina G.</div><div class="handle">@alinaglow.wien</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Before/After Caption · Nails</div>
+      <div class="card-text">Links: meine Nägel vor dem Termin. Rechts: nach 90 Minuten bei <em>esthétique Wien</em>. 😭 Ich kann gar nicht aufhören meine eigenen Hände anzuschauen. Maja hat mir die perfekte Nude-Länge empfohlen und ich bin VERLIEBT. Farbe: "Vanilla Dream" 🤍 #nailsvienna</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>6.8K</span></div><div class="stat">💬 <span>234</span></div></div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card">
+    <div class="number">18</div>
+    <div class="card-header">
+      <div class="avatar a3">TF</div>
+      <div class="user-info"><div class="username">Tamara F.</div><div class="handle">@tamarafit_wien</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Problem/Solution Format</div>
+      <div class="card-text">Problem: meine Augenbrauen sind komplett asymmetrisch 😭 Lösung: <em>Brow Lifting bei esthétique Wien</em> von Maja Antić. Jetzt sehen sie perfekt aus – natürlich, definiert und symmetrisch. Die Behandlung dauert ca. 60 Min. und hält 6 Wochen. Warum hab ich nicht früher angefangen?!</div>
+      <div class="video-indicator">TikTok Split-Screen · Problem vs. Solution</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>15.4K</span></div><div class="stat">💬 <span>567</span></div></div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card">
+    <div class="number">19</div>
+    <div class="card-header">
+      <div class="avatar a4">IS</div>
+      <div class="user-info"><div class="username">Isabelle S.</div><div class="handle">@isabelle.luxe.life</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Luxury Feel · High-End Positionierung</div>
+      <div class="card-text">Nicht jedes Kosmetikstudio fühlt sich wie ein Luxuserlebnis an – <em>esthétique Wien</em> schon. 🤍 Die Atmosphäre, die Sorgfalt, das Ergebnis. Maja behandelt jede Kundin wie eine VIP. Im 3. Bezirk gelegen und über Treatwell buchbar. Das ist dein Zeichen.</div>
+      <div><span class="tag">#luxurybeauty</span><span class="tag">#wienlifestyle</span><span class="tag">#selfcare</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>4.3K</span></div><div class="stat">💬 <span>99</span></div></div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card">
+    <div class="number">20</div>
+    <div class="card-header">
+      <div class="avatar a5">PH</div>
+      <div class="user-info"><div class="username">Petra H.</div><div class="handle">@petrawien50plus</div></div>
+      <span class="platform facebook">Facebook</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Zielgruppe 40+ · Erfahrung</div>
+      <div class="card-text">Als Frau 50+ ist mir Qualität wichtiger als Preis. Ich war schon in vielen Studios – <em>esthétique Wien</em> ist mein absoluter Favorit geworden. Maja nimmt sich Zeit, erklärt alles und das Ergebnis ist immer besser als erwartet. Besonders die Gesichtsbehandlung ist einfach wunderschön. ⭐⭐⭐⭐⭐</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">👍 <span>312</span></div><div class="stat">💬 <span>54</span></div></div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card">
+    <div class="number">21</div>
+    <div class="card-header">
+      <div class="avatar">MH</div>
+      <div class="user-info"><div class="username">Marie H.</div><div class="handle">@mariehohenlohe</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">"That girl" Routine</div>
+      <div class="card-text">That girl morning routine upgrade: ☀️ 6:00 Uhr aufstehen ✅ 🥤 Grüner Smoothie ✅ 🧘 Yoga ✅ 💅 Perfekte Nägel die ich letzten Monat bei <em>esthétique Wien</em> hab machen lassen ✅ Fr. Maja – du machst mich zu einer besseren Person 😂💕</div>
+      <div class="video-indicator">TikTok · GRWM · Trending Sound</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>31.2K</span></div><div class="stat">↗ <span>8.9K</span></div></div>
+  </div>
+
+  <!-- 22 -->
+  <div class="card">
+    <div class="number">22</div>
+    <div class="card-header">
+      <div class="avatar a2">GR</div>
+      <div class="user-info"><div class="username">Giulia R.</div><div class="handle">@giulia.wien.beauty</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Reels Hook · Pediküre Reveal</div>
+      <div class="card-text">Sommer-Sandalen-Check ✅ Nachdem ich endlich meine erste <em>Pediküre bei esthétique Wien</em> hatte, ziehe ich nicht mehr Socken an wenn Besuch kommt 😂 Maja macht das so präzise und entspannend – ich bin fast eingeschlafen. BUCHEN. Link in Bio.</div>
+      <div class="video-indicator">Reel · Sandalen Reveal · Upbeat Music</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>9.1K</span></div><div class="stat">💬 <span>347</span></div></div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card">
+    <div class="number">23</div>
+    <div class="card-header">
+      <div class="avatar a3">OT</div>
+      <div class="user-info"><div class="username">Olivia T.</div><div class="handle">@oliviatravels_at</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Reise/Event Vorbereitung</div>
+      <div class="card-text">Urlaubs-Prep ist nicht komplett ohne <em>esthétique Wien</em>! 🌴 Bevor ich nächste Woche nach Griechenland fliege, war Maja Pflicht. Frische Nägel, Pediküre, Brow Lifting – ich bin bereit für 10 Tage Strand. Wer noch einen Termin braucht: Treatwell Link in Bio 📌</div>
+      <div><span class="tag">#urlaubsready</span><span class="tag">#summernails</span><span class="tag">#wien</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>3.7K</span></div><div class="stat">💬 <span>121</span></div></div>
+  </div>
+
+  <!-- 24 -->
+  <div class="card">
+    <div class="number">24</div>
+    <div class="card-header">
+      <div class="avatar a4">DL</div>
+      <div class="user-info"><div class="username">Diana L.</div><div class="handle">@diana.beautytips</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">"Hot take" Format</div>
+      <div class="card-text">Hot take: Das teuerste Kosmetikstudio in Wien ist nicht unbedingt das beste. <em>esthétique Wien</em> beweist das täglich. Top-Qualität zu fairen Preisen, Inhaberin Maja mit echter Leidenschaft – und trotzdem bekommt man Nägel die aussehen wie 200€ wert. Bin gesagt hab's 🎤👇</div>
+      <div class="video-indicator">TikTok Talking Head · direct to camera</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>18.6K</span></div><div class="stat">💬 <span>892</span></div></div>
+  </div>
+
+  <!-- 25 -->
+  <div class="card">
+    <div class="number">25</div>
+    <div class="card-header">
+      <div class="avatar a5">XM</div>
+      <div class="user-info"><div class="username">Xenia M.</div><div class="handle">@xeniamodern</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Geburtstagsgeschenk · Gift Idea</div>
+      <div class="card-text">Sucht ihr noch das perfekte Geschenk für eure beste Freundin? 🎁 Ein Gutschein für <em>esthétique Wien</em> ist das Beste was man verschenken kann – weil man seiner Freundin damit echte Me-Time schenkt. Ich habe meiner Schwester das zu Weihnachten geschenkt und sie liebt es. 🤍</div>
+      <div><span class="tag">#geschenkidee</span><span class="tag">#beautygutschein</span><span class="tag">#wien</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>2.1K</span></div><div class="stat">💬 <span>76</span></div></div>
+  </div>
+
+  <!-- 26 -->
+  <div class="card">
+    <div class="number">26</div>
+    <div class="card-header">
+      <div class="avatar">ZK</div>
+      <div class="user-info"><div class="username">Zoe K.</div><div class="handle">@zoekessler_style</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Wien Guide · Hidden Gem</div>
+      <div class="card-text">Wien Beauty-Geheimtipp den ich eigentlich nicht teilen will, weil ich nicht will dass alle Termine vergriffen sind 😅 → <em>esthétique Wien</em> im 3. Bezirk. Maja Antić ist mit Abstand die beste Nagelkünstlerin die ich je hatte. Jetzt wisst ihr's. Bucht über Treatwell bevor ich es bereue 😂</div>
+      <div class="video-indicator">TikTok · Whisper/Secret Format</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>24.5K</span></div><div class="stat">↗ <span>7.1K</span></div></div>
+  </div>
+
+  <!-- 27 -->
+  <div class="card">
+    <div class="number">27</div>
+    <div class="card-header">
+      <div class="avatar a2">FW</div>
+      <div class="user-info"><div class="username">Franziska W.</div><div class="handle">@franzwien_daily</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Stimmungspost · Sommer</div>
+      <div class="card-text">Sommergefühle aktiviert 🌸 Frische Gelnägel in Blush-Pink von <em>esthétique Wien</em>, Sonnencreme aufgetragen, Terasse bereit. Das Leben ist schön wenn die Nägel sitzen. Danke Maja für die wöchentliche Dosis Glück 💕 #summernails #wienerleben</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>5.5K</span></div><div class="stat">💬 <span>167</span></div></div>
+  </div>
+
+  <!-- 28 -->
+  <div class="card">
+    <div class="number">28</div>
+    <div class="card-header">
+      <div class="avatar a3">CV</div>
+      <div class="user-info"><div class="username">Claudia V.</div><div class="handle">@claudiavienna_wellness</div></div>
+      <span class="platform facebook">Facebook</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Community Empfehlung</div>
+      <div class="card-text">Für alle Wienerinnen die noch das richtige Kosmetikstudio suchen – schaut euch bitte <em>esthétique Wien</em> im 3. Bezirk an. Inhaberin Maja Antić ist einfach unglaublich gut in ihrem Handwerk. Ich empfehle sie an alle meine Freundinnen weiter. Bisher noch NIE enttäuscht worden. 👏</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">👍 <span>423</span></div><div class="stat">↗ <span>89</span></div></div>
+  </div>
+
+  <!-- 29 -->
+  <div class="card">
+    <div class="number">29</div>
+    <div class="card-header">
+      <div class="avatar a4">ST</div>
+      <div class="user-info"><div class="username">Stella T.</div><div class="handle">@stella.treats.herself</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Satisfying Content · ASMR-Stil</div>
+      <div class="card-text">Das befriedigendste Geräusch der Welt: das Klacken von perfekten Gelnägeln auf einer Tastatur ✨🎧 Meine kommen von <em>esthétique Wien</em>. Maja macht sie so schön rund und gleichmäßig – ich kann nicht aufhören sie anzuschauen. ASMR für Nagelliebhaberinnen. 💅</div>
+      <div class="video-indicator">TikTok ASMR · Close-up Nail Tapping</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>42.7K</span></div><div class="stat">↗ <span>11.2K</span></div></div>
+  </div>
+
+  <!-- 30 -->
+  <div class="card">
+    <div class="number">30</div>
+    <div class="card-header">
+      <div class="avatar a5">MW</div>
+      <div class="user-info"><div class="username">Monika W.</div><div class="handle">@monika.wien.life</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Jahreszeit · Herbst-Nägel</div>
+      <div class="card-text">Herbst-Nägel sind die besten Nägel 🍂 Majas Empfehlung dieses Mal: tiefes Bordeaux mit matter Versiegelung. Ich wäre nie auf die Idee gekommen aber sie hatte so Recht. <em>esthétique Wien</em> ist mein persönlicher Nail-Stylist und ich liebe es. Termin? Treatwell 📱</div>
+      <div><span class="tag">#herbstnägel</span><span class="tag">#autumnnails</span><span class="tag">#gelnailswien</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>7.8K</span></div><div class="stat">💬 <span>243</span></div></div>
+  </div>
+
+  <!-- 31 -->
+  <div class="card">
+    <div class="number">31</div>
+    <div class="card-header">
+      <div class="avatar">RJ</div>
+      <div class="user-info"><div class="username">Renata J.</div><div class="handle">@renata_wienjewelry</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Produktkombination · Nails + Rings</div>
+      <div class="card-text">Wenn Nägel und Ringe harmonieren 💍✨ Meine Gelnägel von <em>esthétique Wien</em> passen perfekt zu meinem Schmuck. Maja fragte sogar welche Farben ich oft trage um die perfekte Nuance zu wählen. Das ist Kundenservice auf einem anderen Level. Detailverliebheit pur! 🙌</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>3.9K</span></div><div class="stat">💬 <span>108</span></div></div>
+  </div>
+
+  <!-- 32 -->
+  <div class="card">
+    <div class="number">32</div>
+    <div class="card-header">
+      <div class="avatar a2">YG</div>
+      <div class="user-info"><div class="username">Yana G.</div><div class="handle">@yana.glow.up</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Glow-Up Compilation</div>
+      <div class="card-text">Mein 2024 Glow-Up Checklist: ✅ Haare ✅ Gym ✅ Skin Care ✅ Brow Lifting bei <em>esthétique Wien</em> ← DAS war der game-changer. Alle fragen mich was ich anders mache. Maja Antić, Wien 3. Bezirk. Buchbar über Treatwell. Gern geschehen 😌</div>
+      <div class="video-indicator">TikTok Montage · Glow-Up Trend Sound</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>29.3K</span></div><div class="stat">↗ <span>8.4K</span></div></div>
+  </div>
+
+  <!-- 33 -->
+  <div class="card">
+    <div class="number">33</div>
+    <div class="card-header">
+      <div class="avatar a3">KO</div>
+      <div class="user-info"><div class="username">Kira O.</div><div class="handle">@kira.outfitoftheday</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Outfit-Koordination · Fashion x Nails</div>
+      <div class="card-text">Outfit ist nicht fertig bis die Nägel passen 💅👗 Ich habe heute mein gesamtes Frühjahrsoutfit um die Nagelfarbe gebaut die Maja mir bei <em>esthétique Wien</em> empfohlen hat. Dusty Mauve trifft auf Beige-Mantel – und ich bin fertig. Leben ist zu kurz für hässliche Nägel.</div>
+      <div><span class="tag">#nailsootd</span><span class="tag">#outfitandnails</span><span class="tag">#wienmode</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>11.2K</span></div><div class="stat">💬 <span>389</span></div></div>
+  </div>
+
+  <!-- 34 -->
+  <div class="card">
+    <div class="number">34</div>
+    <div class="card-header">
+      <div class="avatar a4">UB</div>
+      <div class="user-info"><div class="username">Ursula B.</div><div class="handle">@ursula.beauty.diary</div></div>
+      <span class="platform facebook">Facebook</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Stammkundin · Treue Empfehlung</div>
+      <div class="card-text">Ich bin jetzt seit 3 Jahren Stammkundin bei <em>esthétique Wien</em> und werde das noch lange bleiben. Maja ist nicht nur unglaublich talentiert – sie kennt meine Haut und meine Vorlieben inzwischen besser als ich selbst. Das ist der Unterschied zwischen einem Salon und einer Beziehung. 💕</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">👍 <span>567</span></div><div class="stat">💬 <span>93</span></div></div>
+  </div>
+
+  <!-- 35 -->
+  <div class="card">
+    <div class="number">35</div>
+    <div class="card-header">
+      <div class="avatar a5">PF</div>
+      <div class="user-info"><div class="username">Patricia F.</div><div class="handle">@patty.feelgood</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Anstoß für mentale Gesundheit</div>
+      <div class="card-text">Reminder: Self-care ist keine Selbstsucht. 🤍 Einen Termin bei <em>esthétique Wien</em> zu buchen ist keine Extravaganz – es ist Investition in dein Wohlbefinden. Maja schafft in ihrem Studio einen Raum der sich komplett sicher und entspannt anfühlt. Go. Jetzt. Treatwell.</div>
+      <div class="video-indicator">TikTok Motivational · Soft Aesthetic</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>16.8K</span></div><div class="stat">↗ <span>4.2K</span></div></div>
+  </div>
+
+  <!-- 36 -->
+  <div class="card">
+    <div class="number">36</div>
+    <div class="card-header">
+      <div class="avatar">SL</div>
+      <div class="user-info"><div class="username">Sophie L.</div><div class="handle">@sophie.l.wien</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Compare & Contrast · Studio Wechsel</div>
+      <div class="card-text">Habe nach 2 Jahren mein altes Studio gewechselt und bin zu <em>esthétique Wien</em> gegangen – kein Vergleich. Die Qualität, die Atmosphäre, die Beratung. Ich bereue nur dass ich nicht früher gewechselt habe. Für alle die noch zögern: macht den Schritt. 🙏</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>4.6K</span></div><div class="stat">💬 <span>178</span></div></div>
+  </div>
+
+  <!-- 37 -->
+  <div class="card">
+    <div class="number">37</div>
+    <div class="card-header">
+      <div class="avatar a2">HB</div>
+      <div class="user-info"><div class="username">Helena B.</div><div class="handle">@helenab.beautyworld</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Q&A Format · Häufige Fragen</div>
+      <div class="card-text">Beantworte eure Fragen zu <em>esthétique Wien</em>: ❓Wie bucht man? → Treatwell! ❓Wie lange dauert Gelnägel? → ca. 90 Min. ❓Ist Brow Lifting schmerzhaft? → Nein! ❓Lohnt es sich? → 10000% JA. Folgt @esthetique_wien für aktuelle Termine 📌</div>
+      <div class="video-indicator">TikTok Q&A · Text-Overlay Format</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>8.2K</span></div><div class="stat">💬 <span>612</span></div></div>
+  </div>
+
+  <!-- 38 -->
+  <div class="card">
+    <div class="number">38</div>
+    <div class="card-header">
+      <div class="avatar a3">JO</div>
+      <div class="user-info"><div class="username">Johanna O.</div><div class="handle">@johanna.organic.beauty</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Nachhaltigkeit & Qualität</div>
+      <div class="card-text">Als jemand der auf Qualität und Hygiene achtet, war ich beim ersten Besuch von <em>esthétique Wien</em> sofort beeindruckt. Alles picobello sauber, hochwertige Produkte, keine Kompromisse. Maja zeigt damit dass ihr echte Handwerkskunst am Herzen liegt. Das merkt man in jedem Detail. 🌿</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>2.3K</span></div><div class="stat">💬 <span>67</span></div></div>
+  </div>
+
+  <!-- 39 -->
+  <div class="card">
+    <div class="number">39</div>
+    <div class="card-header">
+      <div class="avatar a4">WK</div>
+      <div class="user-info"><div class="username">Wendy K.</div><div class="handle">@wendyk_wienlife</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Viral Trend · "Day in my life"</div>
+      <div class="card-text">Day in my life: 8:00 Kaffee ☕ 10:30 <em>Termin esthétique Wien</em> – Maja macht meine Nägel 💅 12:00 Mittagessen mit Freundin 14:00 Shopping im 3. Bezirk 💕 Das Highlight des Tages war definitiv Maja. Wer hätte das gedacht 😂 #dayinmylife #wien</div>
+      <div class="video-indicator">TikTok Vlog · Day in Life Format</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>13.7K</span></div><div class="stat">↗ <span>3.9K</span></div></div>
+  </div>
+
+  <!-- 40 -->
+  <div class="card">
+    <div class="number">40</div>
+    <div class="card-header">
+      <div class="avatar a5">IM</div>
+      <div class="user-info"><div class="username">Inga M.</div><div class="handle">@inga.moderne.frau</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Work-Life Balance · Berufstätige Frau</div>
+      <div class="card-text">Als Vollzeit-Berufstätige brauche ich Nägel die professionell UND schön aussehen. <em>esthétique Wien</em> liefert genau das. Schlichte Eleganz die im Büro passt und abends trotzdem strahlt. Maja versteht sofort was ich will – spart Zeit beim Erklären, spart Nerven. 💼✨</div>
+      <div><span class="tag">#officenails</span><span class="tag">#worklife</span><span class="tag">#wienberuf</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>5.8K</span></div><div class="stat">💬 <span>201</span></div></div>
+  </div>
+
+  <!-- 41 -->
+  <div class="card">
+    <div class="number">41</div>
+    <div class="card-header">
+      <div class="avatar">AM</div>
+      <div class="user-info"><div class="username">Amelie M.</div><div class="handle">@amelieminimalist</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Minimalism Aesthetic · Clean Girl</div>
+      <div class="card-text">Clean girl aesthetic approved ✅ Bare skin, glass skin, nude nails from <em>esthétique Wien</em>. Das ist die Formel. Kein Overloaded Makeup, kein Glitter – nur das perfekte Fundament. Maja versteht den "less is more" Look wie keine andere. Pure Eleganz. 🤍 #cleangirl #minimalistbeauty</div>
+      <div class="video-indicator">TikTok Aesthetic · Clean Minimal Edit</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>38.4K</span></div><div class="stat">↗ <span>12.1K</span></div></div>
+  </div>
+
+  <!-- 42 -->
+  <div class="card">
+    <div class="number">42</div>
+    <div class="card-header">
+      <div class="avatar a2">BK</div>
+      <div class="user-info"><div class="username">Brigitte K.</div><div class="handle">@brigitte.k.wienerin</div></div>
+      <span class="platform facebook">Facebook</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Geburtstags-Selbstverwöhnung</div>
+      <div class="card-text">Zum Geburtstag habe ich mir selbst das Schönste geschenkt: einen ganzen Tag bei <em>esthétique Wien</em>! Gelnägel + Pediküre + Gesichtsbehandlung. Maja hat mich so verwöhnt wie ich es verdiene. Empfehle das als Geburtstagstradition für alle. ✨🎂 Bucht über Treatwell!</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">👍 <span>289</span></div><div class="stat">💬 <span>47</span></div></div>
+  </div>
+
+  <!-- 43 -->
+  <div class="card">
+    <div class="number">43</div>
+    <div class="card-header">
+      <div class="avatar a3">EV</div>
+      <div class="user-info"><div class="username">Eva V.</div><div class="handle">@eva.v.beauty</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Wien-spezifisch · Lokaler Stolz</div>
+      <div class="card-text">Wien hat so viel zu bieten – und <em>esthétique Wien</em> im 3. Bezirk gehört definitiv dazu 🇦🇹💅 Ich bin so froh, dass wir ein Studio dieser Qualität in unserer Stadt haben. Maja ist eine echte Bereicherung für das Wiener Beauty-Angebot. Unterstützt lokale Businesses! ❤️</div>
+      <div><span class="tag">#wienliebe</span><span class="tag">#lokalunterstützen</span><span class="tag">#kosmetikwien</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>6.7K</span></div><div class="stat">💬 <span>213</span></div></div>
+  </div>
+
+  <!-- 44 -->
+  <div class="card">
+    <div class="number">44</div>
+    <div class="card-header">
+      <div class="avatar a4">TH</div>
+      <div class="user-info"><div class="username">Tanja H.</div><div class="handle">@tanja.h.happylife</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Vertrauens-Aufbau · Ersttermin</div>
+      <div class="card-text">Wenn du noch nie bei <em>esthétique Wien</em> warst, hier ist was du erwarten kannst: 🌸 Herzliche Begrüßung von Maja 🌸 Beratungsgespräch über deine Wünsche 🌸 Entspannte Atmosphäre 🌸 Ergebnis das dich sprachlos macht. Das war mein erstes Mal – und mit Sicherheit nicht das letzte. 💕</div>
+      <div class="video-indicator">TikTok Walkthrough · Studio B-Roll</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>10.9K</span></div><div class="stat">💬 <span>456</span></div></div>
+  </div>
+
+  <!-- 45 -->
+  <div class="card">
+    <div class="number">45</div>
+    <div class="card-header">
+      <div class="avatar a5">ND</div>
+      <div class="user-info"><div class="username">Nicole D.</div><div class="handle">@nicoledreams.beauty</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Hochzeit / Event-Vorbereitung</div>
+      <div class="card-text">Für meinen großen Tag gab es natürlich nur eine Wahl für meine Nägel: <em>esthétique Wien</em>! 👰‍♀️ Maja hat meine Hochzeitsnägel mit so viel Liebe und Präzision gemacht – perfektes Weiß-Rosa, jede Hand ein Kunstwerk. Auf den Fotos sehen sie traumhaft aus. Danke aus tiefstem Herzen! 💍</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>18.3K</span></div><div class="stat">💬 <span>734</span></div></div>
+  </div>
+
+  <!-- 46 -->
+  <div class="card">
+    <div class="number">46</div>
+    <div class="card-header">
+      <div class="avatar">GB</div>
+      <div class="user-info"><div class="username">Greta B.</div><div class="handle">@greta.b.routine</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">"Rot-Flag vs. Grün-Flag" Studio</div>
+      <div class="card-text">Rote Flaggen bei einem Nagelstudio: schlechte Hygiene, schmerzhaftes Arbeiten, Nägel halten nicht. GRÜNE FLAGGEN: <em>esthétique Wien</em>. Alles sauber, alles sanft, alles hält. Maja setzt Maßstäbe. Das ist der Standard den ihr verdient. Bucht sie. Jetzt. Treatwell! 💚</div>
+      <div class="video-indicator">TikTok Red/Green Flag Trend Format</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>21.6K</span></div><div class="stat">↗ <span>6.3K</span></div></div>
+  </div>
+
+  <!-- 47 -->
+  <div class="card">
+    <div class="number">47</div>
+    <div class="card-header">
+      <div class="avatar a2">LB</div>
+      <div class="user-info"><div class="username">Lara B.</div><div class="handle">@lara.b.lifestyle</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Saisonales Angebot · Weihnachten</div>
+      <div class="card-text">Weihnachts-Nägel-Season ist OFFICIALLY OPEN 🎄❄️ Und meine sehen dieses Jahr besonders toll aus – dank <em>esthétique Wien</em>! Deep Red mit zartem Glitzer-Overlay von Maja. Perfekt für alle Weihnachtsfeiern. Plant rechtzeitig euren Termin – die sind schnell weg! 📅</div>
+      <div><span class="tag">#weihnachtsnägel</span><span class="tag">#christmasnails</span><span class="tag">#wienxmas</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>9.4K</span></div><div class="stat">💬 <span>312</span></div></div>
+  </div>
+
+  <!-- 48 -->
+  <div class="card">
+    <div class="number">48</div>
+    <div class="card-header">
+      <div class="avatar a3">OS</div>
+      <div class="user-info"><div class="username">Olga S.</div><div class="handle">@olga.s.schoenheit</div></div>
+      <span class="platform facebook">Facebook</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Körperpflege ganzheitlich</div>
+      <div class="card-text">Was mich an <em>esthétique Wien</em> besonders begeistert: der ganzheitliche Ansatz. <em>For face, body &amp; soul</em> ist nicht nur ein Slogan – es ist wie Maja wirklich arbeitet. Man geht nicht nur mit schönen Nägeln raus, sondern fühlt sich innerlich aufgetankt. Das ist seltene Kunst. ⭐⭐⭐⭐⭐</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="card-footer"><div class="stat">👍 <span>378</span></div><div class="stat">💬 <span>61</span></div></div>
+  </div>
+
+  <!-- 49 -->
+  <div class="card">
+    <div class="number">49</div>
+    <div class="card-header">
+      <div class="avatar a4">CJ</div>
+      <div class="user-info"><div class="username">Caroline J.</div><div class="handle">@caroline.j.wien</div></div>
+      <span class="platform tiktok">TikTok</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Treatwell CTA · Direktbuchen</div>
+      <div class="card-text">PSA an alle Wienerinnen: <em>esthétique Wien</em> von Maja Antić im 3. Bezirk ist über Treatwell buchbar und ich kann es wirklich jedem empfehlen. Ich buche immer online in 2 Minuten und der Termin klappt immer. Kein Stress, kein Warten – einfach genießen. 📱 Link im Bio! 💕</div>
+      <div class="video-indicator">TikTok CTA Clip · Screen Recording Booking</div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>7.1K</span></div><div class="stat">💬 <span>234</span></div></div>
+  </div>
+
+  <!-- 50 -->
+  <div class="card">
+    <div class="number">50</div>
+    <div class="card-header">
+      <div class="avatar a5">MJ</div>
+      <div class="user-info"><div class="username">Maria J.</div><div class="handle">@mariajoy_beauty</div></div>
+      <span class="platform instagram">Instagram</span>
+    </div>
+    <div class="card-body">
+      <div class="card-type">Abschluss-Statement · Brand Love</div>
+      <div class="card-text">Manchmal findet man einen Ort der sich wie gemacht für einen fühlt. <em>esthétique Wien</em> ist genau das für mich. 🤍 Maja Antić hat ein Studio geschaffen das Schönheit, Wärme und Seele vereint. <em>For face, body &amp; soul</em> – und das stimmt von der ersten bis zur letzten Minute. Kommt und überzeugt euch selbst. 💫</div>
+      <div class="stars">★★★★★</div>
+      <div><span class="tag">#esthetiquewien</span><span class="tag">#majantic</span><span class="tag">#wien3</span><span class="tag">#beautylove</span></div>
+    </div>
+    <div class="card-footer"><div class="stat">❤️ <span>13.5K</span></div><div class="stat">💬 <span>521</span></div><div class="stat">↗ <span>2.8K</span></div></div>
+  </div>
+
+</div>
+
+<footer style="text-align:center; padding: 40px 20px; color:#aaa; font-size:0.8rem; border-top:1px solid #f0ece6; margin-top:20px;">
+  esthétique Wien · Maja Antić · 3. Bezirk Wien · Buchung via Treatwell
+</footer>
+
+</body>
+</html>
