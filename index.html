@@ -2,12 +2,65 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://chikamika820-cmyk.github.io/websites/">
+
+<!-- Open Graph / Social Sharing -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_AT">
+<meta property="og:site_name" content="esthétique Wien">
+<meta property="og:title" content="esthétique – for face, body &amp; soul · Wien">
+<meta property="og:description" content="Ihr Kosmetikstudio im 3. Bezirk Wien. Gelnägel, Pediküre, Gesichtspflege, Brow Lifting und mehr. Inhaberin Maja Antić. Jetzt bei Treatwell buchen.">
+<meta property="og:url" content="https://chikamika820-cmyk.github.io/websites/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="esthétique – for face, body &amp; soul · Wien">
+<meta name="twitter:description" content="Kosmetikstudio im 3. Bezirk Wien · Nägel, Gesicht, Brow Lifting · Maja Antić">
+
+<!-- Fonts & Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.treatwell.at">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-<title>esthétique – for face, body & soul · Wien</title>
-<meta name="description" content="esthétique for face, body &amp; soul – Ihr Kosmetikstudio im 3. Bezirk Wien. Gelnägel, Pediküre, Gesichtspflege, Brow Lifting und mehr. Inhaberin Maja Antić. Jetzt bei Treatwell buchen.">
+<title>esthétique – for face, body &amp; soul · Kosmetikstudio Wien 3</title>
+<meta name="description" content="esthétique for face, body &amp; soul – Kosmetikstudio im 3. Bezirk Wien. Gelnägel, Pediküre, Gesichtspflege, Brow Lifting &amp; mehr. Inhaberin Maja Antić. Online buchen bei Treatwell.">
+
+<!-- JSON-LD: LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "esthétique for face, body & soul",
+  "description": "Kosmetikstudio im 3. Bezirk Wien. Gelnägel, Pediküre, Gesichtspflege, Brow Lifting und mehr.",
+  "url": "https://chikamika820-cmyk.github.io/websites/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Keilgasse 4/3",
+    "addressLocality": "Wien",
+    "postalCode": "1030",
+    "addressRegion": "Wien",
+    "addressCountry": "AT"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 48.2013, "longitude": 16.3844 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "20:00" }
+  ],
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "servesCuisine": "Beauty & Wellness",
+  "sameAs": [
+    "https://www.instagram.com/maja.esthetique",
+    "https://www.treatwell.at/ort/esthetique-for-face-body-soul/"
+  ],
+  "hasMap": "https://maps.google.com/?q=Keilgasse+4/3,+1030+Wien",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "475",
+    "bestRating": "5"
+  }
+}
+</script>
 
 
 <style>
@@ -84,7 +137,7 @@ nav.scrolled {
 .n-book {
   font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
   border: 1px solid rgba(122,92,66,.35); color: var(--brown);
-  padding: .55rem 1.5rem; text-decoration: none; transition: all .3s; font-weight: 300;
+  padding: .55rem 1.5rem; text-decoration: none; transition: background .3s, color .3s, border-color .3s; font-weight: 300;
 }
 .n-book:hover { background: var(--brown); color: var(--cream); }
 
@@ -210,14 +263,14 @@ nav.scrolled {
   background: var(--brown); color: var(--cream);
   padding: .9rem 2.5rem; text-decoration: none;
   font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
-  font-weight: 400; transition: all .3s;
+  font-weight: 400; transition: background .3s, color .3s, transform .2s, border-color .3s;
 }
 .btn-solid:hover { background: var(--text); transform: translateY(-1px); }
 .btn-out {
   border: 1px solid rgba(122,92,66,.4); color: var(--brown);
   padding: .9rem 2.5rem; text-decoration: none;
   font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
-  font-weight: 300; transition: all .3s;
+  font-weight: 300; transition: background .3s, color .3s, border-color .3s;
 }
 .btn-out:hover { background: rgba(122,92,66,.07); }
 
@@ -254,6 +307,19 @@ nav.scrolled {
 
 @keyframes riseUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 
+/* ── ACCESSIBILITY: Focus styles ── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--brown);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── PERFORMANCE: GPU hints ── */
+.reveal, .result-img-wrap img, .scard, .rv, .ci, .mini-card, .ig-link {
+  will-change: transform;
+}
+
 /* ── SHARED ── */
 section { padding: 8rem 5rem; position: relative; }
 .stag {
@@ -278,6 +344,38 @@ h2 em { font-style: italic; color: var(--brown); }
 #leistungen { background: var(--bg2); }
 
 /* SERVICE PHOTO SHOWCASE */
+/* ── STICKY MOBILE BOOKING ───────────────────────────── */
+.sticky-book {
+  display: none;
+}
+@media(max-width:900px){
+  .sticky-book {
+    display: flex;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+    background: var(--brown);
+    padding: 1rem 1.5rem calc(1rem + env(safe-area-inset-bottom));
+    justify-content: center; align-items: center;
+    gap: .8rem;
+    box-shadow: 0 -2px 20px rgba(74,54,40,.18);
+    border-top: 1px solid rgba(240,232,218,.12);
+  }
+  .sticky-book a {
+    flex: 1; max-width: 360px;
+    display: flex; align-items: center; justify-content: center; gap: .6rem;
+    background: var(--rose); color: var(--cream);
+    text-decoration: none;
+    padding: .85rem 1.2rem; border-radius: 2px;
+    font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 400;
+    transition: background .3s;
+  }
+  .sticky-book a:hover, .sticky-book a:active { background: var(--brown2); }
+  /* Push footer up so it's not hidden by sticky bar */
+  footer { padding-bottom: calc(2rem + 80px); }
+  @media(max-width:480px){
+    footer { padding-bottom: calc(1.5rem + 80px); }
+  }
+}
+
 /* ── Ergebnisse ─────────────────────────────────────── */
 #ergebnisse { background: var(--bg3); }
 .results-head { text-align: center; margin-bottom: 3rem; }
@@ -781,12 +879,12 @@ footer {
 <!-- NAV -->
 <nav>
   <ul class="n-links">
-    <li><a href="javascript:void(0)" onclick="document.getElementById('leistungen').scrollIntoView({behavior:'smooth'})">Leistungen</a></li>
-    <li><a href="javascript:void(0)" onclick="document.getElementById('bewertungen').scrollIntoView({behavior:'smooth'})">Bewertungen</a></li>
-    <li><a href="javascript:void(0)" onclick="document.getElementById('vcard').scrollIntoView({behavior:'smooth'})">Visitenkarte</a></li>
-    <li><a href="javascript:void(0)" onclick="document.getElementById('ueber').scrollIntoView({behavior:'smooth'})">Über uns</a></li>
-    <li><a href="javascript:void(0)" onclick="document.getElementById('ergebnisse').scrollIntoView({behavior:'smooth'})">Ergebnisse</a></li>
-    <li><a href="javascript:void(0)" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">Kontakt</a></li>
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#bewertungen">Bewertungen</a></li>
+    <li><a href="#vcard">Visitenkarte</a></li>
+    <li><a href="#ueber">Über uns</a></li>
+    <li><a href="#ergebnisse">Ergebnisse</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <a href="https://www.treatwell.at/ort/esthetique-for-face-body-soul/" target="_blank" class="n-book">Jetzt buchen</a>
 </nav>
@@ -1150,6 +1248,14 @@ footer {
     <a href="impressum.html">Impressum</a>
   </div>
 </footer>
+
+<!-- Sticky Mobile Booking Bar -->
+<div class="sticky-book">
+  <a href="https://www.treatwell.at/ort/esthetique-for-face-body-soul/" target="_blank" rel="noopener noreferrer">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Jetzt Termin buchen
+  </a>
+</div>
 
 <script>
 // Fix seal image – show only the monogram (2nd image)
