@@ -27,7 +27,7 @@
   --dimmer:  rgba(74,54,40,0.3);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background: var(--bg);
@@ -90,7 +90,9 @@ nav.scrolled {
 
 /* ── HERO ── */
 #hero {
-  min-height: 100vh; display: flex; flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh; /* iOS: use small viewport height (URL bar visible) */
+  display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   position: relative; overflow: hidden;
   background: var(--bg);
@@ -709,7 +711,8 @@ footer {
   footer  { padding: 2.5rem 1.5rem 2rem; }
 
   /* Hero */
-  #hero { padding-top: 64px; }
+  #hero { padding-top: 64px; min-height: 100svh; }
+  .ghost-mono { display: none; } /* prevent iOS overflow/parallax issues */
   .hero-inner { padding: 1.5rem 1.5rem 3rem; }
   .hero-tagline { max-width: 100%; }
   .hero-btns { flex-direction: column; align-items: center; gap: .9rem; }
@@ -1183,7 +1186,7 @@ document.querySelectorAll('a,button,.flip-card,.scard,.rv,.ci').forEach(el=>{
         var dh  = document.body.scrollHeight - window.innerHeight;
         if (prog)  prog.style.width = (sy / dh * 100) + '%';
         if (navEl) navEl.classList.toggle('scrolled', sy > 60);
-        if (ghost && sy < window.innerHeight * 1.2)
+        if (ghost && window.innerWidth > 900 && sy < window.innerHeight * 1.2)
           ghost.style.transform = 'translateY(' + (sy * 0.25) + 'px)';
         ticking = false;
       });
