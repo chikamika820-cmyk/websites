@@ -344,6 +344,64 @@ h2 em { font-style: italic; color: var(--brown); }
 #leistungen { background: var(--bg2); }
 
 /* SERVICE PHOTO SHOWCASE */
+/* ── MARQUEE STRIP ────────────────────────────────────── */
+.marquee-strip {
+  overflow: hidden;
+  background: var(--brown);
+  padding: 0;
+  position: relative;
+  height: 68px;
+  display: flex; align-items: center;
+  border-top: 1px solid rgba(240,232,218,.08);
+  border-bottom: 1px solid rgba(240,232,218,.08);
+}
+.marquee-strip::before,
+.marquee-strip::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0;
+  width: 80px; z-index: 2; pointer-events: none;
+}
+.marquee-strip::before {
+  left: 0;
+  background: linear-gradient(to right, var(--brown), transparent);
+}
+.marquee-strip::after {
+  right: 0;
+  background: linear-gradient(to left, var(--brown), transparent);
+}
+.marquee-track {
+  display: flex; align-items: center;
+  width: max-content;
+  animation: marqueeScroll 48s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: flex; align-items: center; gap: 0;
+  white-space: nowrap;
+  font-size: .52rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: rgba(240,232,218,.55);
+  font-weight: 300;
+  padding: 0 2.5rem;
+}
+.marquee-dot {
+  display: inline-block;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: rgba(240,232,218,.3);
+  margin: 0 1.8rem;
+  flex-shrink: 0;
+}
+@keyframes marqueeScroll {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+@media(prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
 /* ── STICKY MOBILE BOOKING ───────────────────────────── */
 .sticky-book {
   display: none;
@@ -931,6 +989,16 @@ footer {
     <span class="scroll-lbl">scroll</span>
   </div>
 </section>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">CUCCIO PROFESSIONAL</span><span class="marquee-dot"></span><span class="marquee-item">EXKLUSIVE BEAUTY BEHANDLUNGEN</span><span class="marquee-dot"></span><span class="marquee-item">PREMIUM QUALITÄT</span><span class="marquee-dot"></span><span class="marquee-item">WIEN</span><span class="marquee-dot"></span>
+    <span class="marquee-item">CUCCIO PROFESSIONAL</span><span class="marquee-dot"></span><span class="marquee-item">EXKLUSIVE BEAUTY BEHANDLUNGEN</span><span class="marquee-dot"></span><span class="marquee-item">PREMIUM QUALITÄT</span><span class="marquee-dot"></span><span class="marquee-item">WIEN</span><span class="marquee-dot"></span>
+    <span class="marquee-item">CUCCIO PROFESSIONAL</span><span class="marquee-dot"></span><span class="marquee-item">EXKLUSIVE BEAUTY BEHANDLUNGEN</span><span class="marquee-dot"></span><span class="marquee-item">PREMIUM QUALITÄT</span><span class="marquee-dot"></span><span class="marquee-item">WIEN</span><span class="marquee-dot"></span>
+    <span class="marquee-item">CUCCIO PROFESSIONAL</span><span class="marquee-dot"></span><span class="marquee-item">EXKLUSIVE BEAUTY BEHANDLUNGEN</span><span class="marquee-dot"></span><span class="marquee-item">PREMIUM QUALITÄT</span><span class="marquee-dot"></span><span class="marquee-item">WIEN</span><span class="marquee-dot"></span>
+  </div>
+</div>
 
 <!-- LEISTUNGEN -->
 <section id="leistungen">
