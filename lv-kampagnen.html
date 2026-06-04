@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Louis Vuitton Neverfull – 10 Luxury Ad Campaigns</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;600;700&display=swap');
+
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e8d5b7;
+    --gold-dark: #8b6914;
+    --black: #0a0a0a;
+    --off-white: #f7f4ef;
+    --warm-gray: #2a2420;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    background: radial-gradient(ellipse at 50% 60%, #2a1a08 0%, #0a0a0a 70%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 80px,
+      rgba(201,169,110,0.02) 80px, rgba(201,169,110,0.02) 81px
+    );
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: 2px;
+    color: var(--off-white);
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #887766;
+  }
+  .gold-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 28px auto;
+  }
+  .hero-desc {
+    max-width: 560px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #998877;
+    font-weight: 300;
+  }
+
+  /* ── CAMPAIGNS GRID ── */
+  .section-title {
+    text-align: center;
+    padding: 80px 24px 40px;
+  }
+  .section-title span {
+    font-size: 0.65rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .section-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--off-white);
+  }
+
+  .campaigns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(560px, 1fr));
+    gap: 2px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2px 2px;
+  }
+
+  /* ── CAMPAIGN CARD ── */
+  .campaign {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+  .campaign:hover .campaign-overlay { opacity: 1; }
+  .campaign:hover .campaign-content { transform: translateY(0); }
+  .campaign:hover .campaign-bg { transform: scale(1.04); }
+
+  .campaign-bg {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  /* Each campaign gets its own luxury gradient background */
+  .c1 .campaign-bg { background: radial-gradient(ellipse at 40% 30%, #2a1f0e 0%, #0a0804 60%, #000 100%); }
+  .c2 .campaign-bg { background: radial-gradient(ellipse at 60% 20%, #1a1a2e 0%, #0a0a14 60%, #000 100%); }
+  .c3 .campaign-bg { background: radial-gradient(ellipse at 30% 50%, #1e0f0f 0%, #0d0404 60%, #000 100%); }
+  .c4 .campaign-bg { background: radial-gradient(ellipse at 70% 40%, #0f1e0f 0%, #040d04 60%, #000 100%); }
+  .c5 .campaign-bg { background: radial-gradient(ellipse at 50% 20%, #1e1a0a 0%, #0d0b04 60%, #000 100%); }
+  .c6 .campaign-bg { background: radial-gradient(ellipse at 30% 70%, #1a0a1e 0%, #0a040d 60%, #000 100%); }
+  .c7 .campaign-bg { background: radial-gradient(ellipse at 60% 60%, #1e1208 0%, #0d0804 60%, #000 100%); }
+  .c8 .campaign-bg { background: radial-gradient(ellipse at 40% 20%, #08141e 0%, #040a0d 60%, #000 100%); }
+  .c9 .campaign-bg { background: radial-gradient(ellipse at 50% 50%, #1e0e08 0%, #0d0804 60%, #000 100%); }
+  .c10 .campaign-bg { background: radial-gradient(ellipse at 50% 30%, #1a1408 0%, #0a0c04 60%, #000 100%); }
+
+  /* Decorative light beam */
+  .campaign-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(from 220deg at 80% 10%, rgba(201,169,110,0.15) 0deg, transparent 40deg, transparent 360deg);
+  }
+
+  /* Product image placeholder area */
+  .campaign-product {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    opacity: 0.12;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .campaign-number {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .campaign-platform {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: rgba(201,169,110,0.6);
+    text-transform: uppercase;
+    border: 1px solid rgba(201,169,110,0.2);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* Gradient overlay */
+  .campaign-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 40%, transparent 70%);
+    opacity: 0.85;
+    transition: opacity 0.4s;
+  }
+
+  .campaign-content {
+    position: relative;
+    z-index: 2;
+    padding: 32px 28px;
+    transform: translateY(8px);
+    transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  .campaign-category {
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .campaign-hook {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--off-white);
+    margin-bottom: 14px;
+  }
+  .campaign-hook em { font-style: italic; color: var(--gold-light); }
+
+  .campaign-copy {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: rgba(247,244,239,0.7);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .campaign-cta {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(201,169,110,0.4);
+    padding-bottom: 2px;
+  }
+
+  /* ── DETAIL CARDS ── */
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 1px;
+    background: #111;
+    max-width: 1400px;
+    margin: 60px auto 0;
+    border: 1px solid #1a1a1a;
+  }
+
+  .detail-card {
+    background: #0d0d0d;
+    padding: 40px 36px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .detail-card:hover { background: #111; }
+
+  .detail-num {
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    color: rgba(201,169,110,0.15);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .detail-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--off-white);
+    margin-bottom: 6px;
+  }
+
+  .detail-category {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .detail-row {
+    margin-bottom: 18px;
+  }
+  .detail-label {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #554433;
+    margin-bottom: 5px;
+  }
+  .detail-value {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: #998877;
+    font-weight: 300;
+  }
+  .detail-value strong { color: var(--gold-light); font-weight: 400; }
+
+  .color-swatches {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+  }
+  .swatch span {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.55rem;
+    color: #554433;
+    letter-spacing: 1px;
+  }
+
+  .prompt-box {
+    background: rgba(201,169,110,0.04);
+    border: 1px solid rgba(201,169,110,0.12);
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: #887766;
+    font-family: 'Montserrat', monospace;
+    margin-top: 6px;
+    word-break: break-word;
+  }
+
+  .platforms {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .platform-tag {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(201,169,110,0.2);
+    color: rgba(201,169,110,0.7);
+  }
+
+  /* ── CREDITS NOTICE ── */
+  .credits-notice {
+    max-width: 700px;
+    margin: 80px auto 0;
+    padding: 32px;
+    border: 1px solid rgba(201,169,110,0.2);
+    text-align: center;
+    background: rgba(201,169,110,0.03);
+  }
+  .credits-notice h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+  .credits-notice p {
+    font-size: 0.82rem;
+    color: #776655;
+    line-height: 1.7;
+  }
+  .credits-notice a {
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(201,169,110,0.3);
+    display: inline-block;
+    margin-top: 16px;
+    padding-bottom: 2px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 60px 24px;
+    color: #332211;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-top: 1px solid #111;
+    margin-top: 80px;
+  }
+
+  @media (max-width: 600px) {
+    .campaigns { grid-template-columns: 1fr; }
+    .detail-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <p class="hero-eyebrow">Louis Vuitton · Neverfull MM · Campaign Book</p>
+  <h1>The Bag That<br><em>Defines</em> Everything</h1>
+  <p class="hero-sub">10 Luxury Ad Campaigns · Premium Advertising</p>
+  <div class="gold-line"></div>
+  <p class="hero-desc">Zehn eigenständige Werbekampagnen für die ikonischste Tasche der Welt. Entwickelt für Instagram Ads, Facebook Ads, Print-Plakate und Online-Banner.</p>
+</section>
+
+<!-- ═══════════════════ VISUAL CARDS ═══════════════════ -->
+<div class="section-title">
+  <span>Campaign Visuals</span>
+  <h2>10 Werbemotive</h2>
+</div>
+
+<div class="campaigns">
+
+  <!-- 1 -->
+  <div class="campaign c1">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">01 / 10</div>
+    <div class="campaign-platform">Instagram · 4:5</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Heritage · Prestige</div>
+      <div class="campaign-hook">Born in 1854.<br><em>Still turning heads.</em></div>
+      <div class="campaign-copy">Das Monogramm das die Welt der Mode definierte. Heute. Morgen. Immer.</div>
+      <div class="campaign-cta">Discover the Icon →</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="campaign c2">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">02 / 10</div>
+    <div class="campaign-platform">Billboard · 16:9</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Emotion · Desire</div>
+      <div class="campaign-hook">Some things are<br><em>worth every cent.</em></div>
+      <div class="campaign-copy">Nicht ein Kauf. Eine Entscheidung für das Beste. Für immer.</div>
+      <div class="campaign-cta">Own it Now →</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="campaign c3">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">03 / 10</div>
+    <div class="campaign-platform">Facebook Ad · 1:1</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Status · Power</div>
+      <div class="campaign-hook">Rooms change<br><em>when you enter.</em></div>
+      <div class="campaign-copy">Die Neverfull trägt nicht nur dein Leben – sie trägt deine Geschichte.</div>
+      <div class="campaign-cta">Make Your Statement →</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="campaign c4">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">04 / 10</div>
+    <div class="campaign-platform">Print · A3</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Nature · Craft</div>
+      <div class="campaign-hook">Leather that<br><em>ages like wine.</em></div>
+      <div class="campaign-copy">Vachetta-Leder das mit jedem Tag schöner wird. Handwerk das Generationen überdauert.</div>
+      <div class="campaign-cta">Discover Craftsmanship →</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="campaign c5">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">05 / 10</div>
+    <div class="campaign-platform">Instagram Story</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Gifting · Luxury</div>
+      <div class="campaign-hook">The gift she will<br><em>never forget.</em></div>
+      <div class="campaign-copy">Manche Momente verdienen mehr als Worte. Schenk das Unvergleichliche.</div>
+      <div class="campaign-cta">Give the Icon →</div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="campaign c6">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">06 / 10</div>
+    <div class="campaign-platform">Pinterest · 2:3</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Lifestyle · Travel</div>
+      <div class="campaign-hook">From Paris<br><em>to everywhere.</em></div>
+      <div class="campaign-copy">Die Tasche die mit dir die Welt entdeckt. Leicht genug für alles. Ikonisch genug für überall.</div>
+      <div class="campaign-cta">Pack Your World →</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="campaign c7">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">07 / 10</div>
+    <div class="campaign-platform">Banner · 300×600</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Investment · Value</div>
+      <div class="campaign-hook">Fashion fades.<br><em>This never does.</em></div>
+      <div class="campaign-copy">Die Neverfull ist kein Trend. Sie ist eine Investition in zeitlose Eleganz.</div>
+      <div class="campaign-cta">Invest in Timeless →</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="campaign c8">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">08 / 10</div>
+    <div class="campaign-platform">Instagram · Reel</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Femininity · Grace</div>
+      <div class="campaign-hook">She carries more<br><em>than just a bag.</em></div>
+      <div class="campaign-copy">Ihre Ambitionen. Ihre Träume. Ihren unverwechselbaren Stil. Die Neverfull trägt alles.</div>
+      <div class="campaign-cta">Carry Your Story →</div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="campaign c9">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">09 / 10</div>
+    <div class="campaign-platform">Facebook · 1:1</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Exclusivity · Rarity</div>
+      <div class="campaign-hook">Not everyone<br><em>understands yet.</em></div>
+      <div class="campaign-copy">Diejenigen die es verstehen, brauchen keine Erklärung. Das ist das Privileg des Geschmacks.</div>
+      <div class="campaign-cta">Join the Rareness →</div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="campaign c10">
+    <div class="campaign-bg"></div>
+    <div class="campaign-product">𝕷𝖁</div>
+    <div class="campaign-number">10 / 10</div>
+    <div class="campaign-platform">Print · Poster</div>
+    <div class="campaign-overlay"></div>
+    <div class="campaign-content">
+      <div class="campaign-category">Legacy · Forever</div>
+      <div class="campaign-hook">Your daughter<br><em>will want this too.</em></div>
+      <div class="campaign-copy">Mehr als eine Tasche. Ein Erbstück. Eine Tradition. Ein Versprechen an die Zukunft.</div>
+      <div class="campaign-cta">Start a Legacy →</div>
+    </div>
+  </div>
+
+</div><!-- /campaigns -->
+
+<!-- ═══════════════════ DETAIL BREAKDOWN ═══════════════════ -->
+<div class="section-title" style="padding-top:100px;">
+  <span>Campaign Details</span>
+  <h2>Vollständige Kampagnen-Specs</h2>
+</div>
+
+<div class="detail-grid">
+
+  <!-- KAMPAGNE 1 -->
+  <div class="detail-card">
+    <div class="detail-num">01</div>
+    <div class="detail-title">Born in 1854. Still turning heads.</div>
+    <div class="detail-category">Heritage · Prestige · Storytelling</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„Born in 1854. Still turning heads."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Das Monogramm das die Welt der Mode definierte. Getragen von Königinnen, Künstlerinnen und Frauen die wissen wer sie sind. Die Louis Vuitton Neverfull – seit 170 Jahren das Maß aller Dinge.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Frauen 30–55 · Einkommensstarke Haushalte · Fashion-affin · Qualitätsbewusst · Erstinvestition in Luxus</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Zeitlinie als visuelles Element – 1854 bis heute. Sepia-Töne links, volle Farbsättigung rechts. Die Tasche mittig schwebend, angestrahlt wie ein Museumsstück.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Tief-Sepia · Warm Ivory · Cognac-Gold · Schwarz</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#3d2b1a;"><span>Sepia</span></div>
+        <div class="swatch" style="background:#f5ede0;"><span>Ivory</span></div>
+        <div class="swatch" style="background:#c9a96e;"><span>Gold</span></div>
+        <div class="swatch" style="background:#0a0a0a;"><span>Black</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Instagram 4:5</span>
+        <span class="platform-tag">Facebook 1:1</span>
+        <span class="platform-tag">Print A3</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Luxury product photography, Louis Vuitton Neverfull MM tote bag, iconic brown monogram canvas, vachetta leather handles, placed on aged oak wood surface, dramatic split-lighting — left side sepia vintage warmth, right side crisp modern studio white, vintage newspaper clippings from 1854 Paris subtly visible in background, golden dust particles floating in beam of light, ultra-sharp detail on LV monogram, 8K editorial fashion photography, Helmut Newton style composition, deep shadows, museum lighting</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 2 -->
+  <div class="detail-card">
+    <div class="detail-num">02</div>
+    <div class="detail-title">Some things are worth every cent.</div>
+    <div class="detail-category">Emotion · Desire · Value Justification</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„Some things are worth every cent."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Du arbeitest hart. Du lebst intensiv. Du verdienst das Beste. Die Neverfull ist nicht nur eine Tasche – sie ist das Symbol dafür, dass du weißt was du wert bist.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Berufstätige Frauen 28–45 · Karriereorientiert · Self-reward Mentalität · Urban · Premium-Lifestyle</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Nahaufnahme der Hände einer Frau die die Neverfull hält – Büro-Background unscharf. Morgensonnen-Licht von rechts. Text in minimalistischer Großschrift über dem Bild.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Morgengold · Warmes Weiß · Charcoal · Monogramm-Braun</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#e8c87a;"><span>Morning</span></div>
+        <div class="swatch" style="background:#faf6f0;"><span>Warm White</span></div>
+        <div class="swatch" style="background:#2d2d2d;"><span>Charcoal</span></div>
+        <div class="swatch" style="background:#5c3d1e;"><span>Canvas</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Instagram Story</span>
+        <span class="platform-tag">Facebook Feed</span>
+        <span class="platform-tag">Billboard 16:9</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Close-up of elegant female hands with manicured nails holding a Louis Vuitton Neverfull MM tote bag, monogram canvas detail visible, shot from below looking up, warm golden morning sunlight streaming from window right side, blurred luxury office penthouse in background, bokeh city skyline, the bag glows with internal golden warmth, fashion editorial photography, Vogue-style, 4K, tack-sharp on bag texture, shallow depth of field on background, mood: powerful, aspirational, deserving</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 3 -->
+  <div class="detail-card">
+    <div class="detail-num">03</div>
+    <div class="detail-title">Rooms change when you enter.</div>
+    <div class="detail-category">Status · Power · Presence</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„Rooms change when you enter."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Präsenz ist keine Frage der Lautstärke. Es ist eine Frage des Stils. Die Louis Vuitton Neverfull spricht – bevor du auch nur ein Wort sagst.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Erfolgreiche Frauen 35–60 · C-Level · Gesellschaftliche Events · Status-bewusst · International</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Weitwinkel-Perspektive: Frau betritt einen Grand-Hotel-Lobby. Alle Köpfe drehen sich um. Die Neverfull am Arm – einziges Schärfeelement im Bild. Rest im Bewegungsunschärfe-Bokeh.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Champagne · Elfenbein · Tief-Mahagoni · Onyx</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#f0d99a;"><span>Champagne</span></div>
+        <div class="swatch" style="background:#f5ede0;"><span>Ivory</span></div>
+        <div class="swatch" style="background:#4a1c10;"><span>Mahogany</span></div>
+        <div class="swatch" style="background:#0a0a0a;"><span>Onyx</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Facebook Ad 1:1</span>
+        <span class="platform-tag">Instagram 4:5</span>
+        <span class="platform-tag">Print Poster</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Wide angle shot of an opulent Parisian grand hotel lobby, marble floors, crystal chandeliers, a silhouetted elegant woman in black evening dress entering the room, Louis Vuitton Neverfull MM bag on her arm — the bag is the only in-focus element with razor-sharp detail on the LV monogram, everyone in the background blurred with motion, golden chandelier light raining down, dramatic cinematic composition, fashion editorial style, moody prestige atmosphere, shot with 24mm lens</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 4 -->
+  <div class="detail-card">
+    <div class="detail-num">04</div>
+    <div class="detail-title">Leather that ages like wine.</div>
+    <div class="detail-category">Craftsmanship · Nature · Materiality</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„Leather that ages like wine."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Das Vachetta-Leder der Neverfull beginnt hell und elfenbeinfarben. Mit jedem Jahr, jeder Reise, jeder Umarmung – entwickelt es seinen unverwechselbaren Honig-Patina-Charakter. Deine Geschichte, eingraviert in jedes Stück Leder.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Qualitätsbewusste Käufer 30–55 · Handwerk-Enthusiasten · Nachhaltigkeits-orientiert · Anti-Fast-Fashion</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Makro-Close-up der Ledergriffe: links frisch und cremeweiß, rechts patiniert und honigfarben. Dazwischen ein Zeitstrahl. Background: Weinreben oder dunkles Holz.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Cremeweiß · Honig-Amber · Kastanie · Bordeaux</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#f5f0e8;"><span>Cream</span></div>
+        <div class="swatch" style="background:#d4924a;"><span>Honey</span></div>
+        <div class="swatch" style="background:#6b3520;"><span>Chestnut</span></div>
+        <div class="swatch" style="background:#4a1020;"><span>Bordeaux</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Print A3</span>
+        <span class="platform-tag">Instagram Carousel</span>
+        <span class="platform-tag">Pinterest 2:3</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Extreme macro photography, split composition: left half shows fresh vachetta leather handles of Louis Vuitton bag — pale cream, smooth, new; right half shows aged patina honey-brown leather, rich warm tones, character marks, life story visible. Background: dark aged oak wine barrel staves, soft candlelight from below, golden bokeh lights. The contrast tells a story of time and beauty. 8K hyper-detailed, studio macro lens, luxury material photography</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 5 -->
+  <div class="detail-card">
+    <div class="detail-num">05</div>
+    <div class="detail-title">The gift she will never forget.</div>
+    <div class="detail-category">Gifting · Luxury · Emotion</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„The gift she will never forget."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Blumen verwelken. Parfüm leert sich. Manche Geschenke aber – die bleiben für immer. Die Louis Vuitton Neverfull ist nicht nur ein Geschenk. Es ist ein Versprechen.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Männer 30–55 · Hochwertige Geschenke · Jahrestage, Geburtstage, Weihnachten · Partner beschenken</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Die Tasche in einer mattschwarzen LV-Box, geöffnet, mit zartem Seidenpapier. Darüber fällt ein einziger Rosen-Petal. Schwarzer Hintergrund, goldenes Licht nur auf der Tasche. Dramatische Stille.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Tiefschwarz · Elfenbein · Warmes Gold · Altrosa</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#0a0a0a;"><span>Black</span></div>
+        <div class="swatch" style="background:#f7f3ec;"><span>Ivory</span></div>
+        <div class="swatch" style="background:#c9a96e;"><span>Gold</span></div>
+        <div class="swatch" style="background:#d4a0a0;"><span>Rose</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Instagram Story 9:16</span>
+        <span class="platform-tag">Facebook Ad</span>
+        <span class="platform-tag">Google Display</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Luxury gift photography, Louis Vuitton Neverfull MM bag nestled in open matte black gift box with LV logo embossed lid, ivory silk tissue paper gently draped, single red rose petal falling in slow motion midair, pure black background, single dramatic spotlight illuminating only the bag with warm gold rim light, extreme contrast, jewel-toned shadows, emotional gifting mood, shot on medium format Hasselblad, razor-sharp product detail, cinematic depth</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 6 -->
+  <div class="detail-card">
+    <div class="detail-num">06</div>
+    <div class="detail-title">From Paris to everywhere.</div>
+    <div class="detail-category">Travel · Lifestyle · Wanderlust</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„From Paris to everywhere."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Vom ersten Morgenespresso an der Seine bis zum Sonnenuntergang in Santorini. Die Neverfull begleitet dich überall – mit der Leichtigkeit von Paris und der Seele der Welt.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Reisende Frauen 25–45 · Luxury Travel · Digital Nomads · Travel-Influencer · Fernweh-Zielgruppe</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Die Tasche auf einem Marmor-Café-Tisch in Paris – Eiffelturm unscharf im Hintergrund. Blauer Himmel, Espresso, Baguette. Die Tasche als Reisebegleiterin, natürlich und vertraut.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Pariser Blau · Warm Sand · Monogramm-Braun · Sonnengold</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#6b8eb0;"><span>Paris Blue</span></div>
+        <div class="swatch" style="background:#e8d5a0;"><span>Sand</span></div>
+        <div class="swatch" style="background:#5c3d1e;"><span>Canvas</span></div>
+        <div class="swatch" style="background:#f0c040;"><span>Sun Gold</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Pinterest 2:3</span>
+        <span class="platform-tag">Instagram 4:5</span>
+        <span class="platform-tag">Travel Magazine</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Louis Vuitton Neverfull MM tote bag placed casually on a round white marble café table in Paris, half-drunk espresso cup beside it, croissant crumbs on plate, blurred Eiffel Tower visible through café window in warm morning haze, dappled sunlight through plane trees creating golden patches, natural lifestyle photography, authentic travel editorial, Parisian morning atmosphere, soft film grain, warm golden hour color grade, candid luxury lifestyle mood</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 7 -->
+  <div class="detail-card">
+    <div class="detail-num">07</div>
+    <div class="detail-title">Fashion fades. This never does.</div>
+    <div class="detail-category">Investment · Timelessness · Anti-Trend</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„Fashion fades. This never does."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Trends kommen und gehen wie Jahreszeiten. Das Monogramm von Louis Vuitton überdauert sie alle. Die Neverfull ist keine Investition in Mode – sie ist eine Investition in Zeitlosigkeit.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Frauen 30–50 · Anti-Fast-Fashion · Investmentmindset · Langfristig denkend · Minimalismus-Luxus</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Gebrochene Spiegel zeigen verblasste Trend-Looks der letzten Dekaden. In der Mitte: die Neverfull, makellos und zeitlos. Slogan: "Fashion fades. This never does."</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Verblasst-Grau · Monogramm-Warm · Poliertes Gold · Reinweiß</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#9a9490;"><span>Faded</span></div>
+        <div class="swatch" style="background:#8b6914;"><span>Warm LV</span></div>
+        <div class="swatch" style="background:#d4af5a;"><span>Gold</span></div>
+        <div class="swatch" style="background:#f8f8f8;"><span>White</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Banner 300×600</span>
+        <span class="platform-tag">Instagram 1:1</span>
+        <span class="platform-tag">Fashion Mag Print</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Artistic concept photo: multiple broken vintage mirrors showing faded, desaturated fashion trends from different decades — 80s shoulder pads, 90s minimalism, 2000s maximalism, all grey and forgotten. Center: Louis Vuitton Neverfull MM bag perfectly lit, vibrant, timeless, in full warm color, dramatic spotlight. Conceptual editorial photography, high contrast, metaphor of enduring luxury vs fleeting trends, studio setting, Art Director composition</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 8 -->
+  <div class="detail-card">
+    <div class="detail-num">08</div>
+    <div class="detail-title">She carries more than just a bag.</div>
+    <div class="detail-category">Femininity · Empowerment · Story</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„She carries more than just a bag."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Ihre Ambitionen. Ihre Träume. Die Meetings die sie gewonnen hat, die Abende die unvergesslich waren, die Reisen die sie verändert haben. Die Neverfull trägt alles – weil sie alles trägt.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Starke Frauen 28–48 · Empowerment-orientiert · Multi-tasking Life · Beruf + Passion + Stil vereint</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Doppelbelichtung: Frauensilhouette mit der Stadt, Büchern, Reisestempeln – all das projiziert auf ihr Bild. Die Neverfull als einziges scharfes Element. Empowerment-Energie.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Midnacht-Blau · Gold-Shimmer · Zartes Rosa · Reinweiß</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#1a2040;"><span>Midnight</span></div>
+        <div class="swatch" style="background:#c9a96e;"><span>Gold</span></div>
+        <div class="swatch" style="background:#e8c4c4;"><span>Blush</span></div>
+        <div class="swatch" style="background:#f8f8f8;"><span>White</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Instagram Reel Cover</span>
+        <span class="platform-tag">Facebook Ad</span>
+        <span class="platform-tag">YouTube Thumbnail</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Double exposure artistic photography: elegant woman's silhouette merged with cityscape, airplane contrails, open books, world map, passport stamps — all ethereal and luminous. The Louis Vuitton Neverfull MM bag floats at her side, the only hyper-sharp crisp element in the image, warm gold light emanating from it. Empowerment and femininity, midnight blue and gold color palette, dreamlike digital art aesthetic, luxury advertising campaign quality</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 9 -->
+  <div class="detail-card">
+    <div class="detail-num">09</div>
+    <div class="detail-title">Not everyone understands yet.</div>
+    <div class="detail-category">Exclusivity · Insider · Desire</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„Not everyone understands yet."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Ein Blick. Ein Lächeln unter Kennern. Die Neverfull braucht keine Erklärung – für diejenigen die es verstehen. Das ist das stille Privileg des Geschmacks.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Connaisseure 30–55 · Insider-Mentalität · Stiller Luxus · Quiet Luxury Trend · Antiprotzig</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Zwei Frauen beim gesellschaftlichen Event. Eine hält die Neverfull. Ihr Blickkontakt mit der anderen – ein stilles Einverständnis. Umgebung im sanften Unschärfe-Nebel.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Perle · Graphit · Gedimmtes Gold · Champagner</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#e8e4de;"><span>Pearl</span></div>
+        <div class="swatch" style="background:#3a3a3a;"><span>Graphite</span></div>
+        <div class="swatch" style="background:#b8963e;"><span>Dimmed Gold</span></div>
+        <div class="swatch" style="background:#f5e8c8;"><span>Champagne</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Facebook 1:1</span>
+        <span class="platform-tag">Instagram Feed</span>
+        <span class="platform-tag">Luxury Magazine</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Social event scene, two elegantly dressed women at an exclusive gala, one holding Louis Vuitton Neverfull MM on her arm — their eyes meet in silent knowing recognition, the bag is the unspoken bond, background guests blurred in champagne-colored bokeh, soft chandelier light, quiet luxury aesthetic, editorial fashion photography, understated elegance, film photography feel, no logos prominent except barely visible LV monogram, mood: subtle, insider, privileged</div>
+    </div>
+  </div>
+
+  <!-- KAMPAGNE 10 -->
+  <div class="detail-card">
+    <div class="detail-num">10</div>
+    <div class="detail-title">Your daughter will want this too.</div>
+    <div class="detail-category">Legacy · Generations · Forever</div>
+
+    <div class="detail-row">
+      <div class="detail-label">Hook</div>
+      <div class="detail-value"><strong>„Your daughter will want this too."</strong></div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Werbetext</div>
+      <div class="detail-value">Echte Qualität übersteht Generationen. Die Neverfull die du heute kaufst, wird morgen das Erbstück sein das deine Tochter mit Stolz trägt. Das ist kein Kauf – das ist ein Erbe.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Zielgruppe</div>
+      <div class="detail-value">Frauen 35–60 · Familienorientiert · Generationen-Denken · Emotional-Investment · Nachhaltiger Luxus</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Design-Idee</div>
+      <div class="detail-value">Zwei Hände: eine ältere, gepflegte Hand überreicht die Neverfull an eine jüngere Hand. Weiches Naturlicht. Die Patina der Tasche erzählt ihre Geschichte. Generationen verbinden sich.</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Farbwelt</div>
+      <div class="detail-value">Warmes Licht · Honey Patina · Zartes Creme · Tiefes Braun</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#f0d070;"><span>Warm Light</span></div>
+        <div class="swatch" style="background:#c07830;"><span>Honey</span></div>
+        <div class="swatch" style="background:#f5f0e8;"><span>Cream</span></div>
+        <div class="swatch" style="background:#3d1e0a;"><span>Deep Brown</span></div>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:32px;">
+      <div class="detail-label">Plattformen</div>
+      <div class="platforms">
+        <span class="platform-tag">Print Poster A2</span>
+        <span class="platform-tag">Facebook Emotional Ad</span>
+        <span class="platform-tag">Instagram 4:5</span>
+      </div>
+    </div>
+    <div class="detail-row" style="margin-top:18px;">
+      <div class="detail-label">Higgsfield Image Prompt</div>
+      <div class="prompt-box">Tender generational moment: two pairs of hands — one mature with elegant rings, one young and smooth — both touching a Louis Vuitton Neverfull MM bag with beautiful honey-patina vachetta leather showing years of use and love. Soft natural window light from left, warm golden tones, shallow depth of field, bokeh garden background, emotional heirloom photography, timeless family legacy mood, analog film photography aesthetic, warm grain, intimate and precious, no harsh shadows</div>
+    </div>
+  </div>
+
+</div><!-- /detail-grid -->
+
+<!-- Credits Notice -->
+<div class="credits-notice" style="margin: 80px auto; padding:40px; max-width:700px; border:1px solid rgba(201,169,110,0.15); text-align:center; background:rgba(201,169,110,0.02);">
+  <p style="font-size:0.6rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:14px;">Higgsfield AI Generation</p>
+  <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--off-white); margin-bottom:12px;">10 Bilder · 20 Credits benötigt</h3>
+  <p style="font-size:0.82rem; color:#776655; line-height:1.8;">Jedes der 10 obigen Higgsfield-Prompts ist bereit zur Bildgenerierung.<br>Kosten: 2 Credits pro Bild = 20 Credits gesamt.<br>Aktuelles Guthaben: 0 Credits nach erster Generierung.</p>
+</div>
+
+<footer>
+  Louis Vuitton Neverfull MM · 10 Luxury Ad Campaigns · Premium Advertising Design
+</footer>
+
+</body>
+</html>
