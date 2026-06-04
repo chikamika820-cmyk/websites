@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>esthétique Wien – UGC Anzeigen Tabelle</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f3f0;
+    color: #1a1a1a;
+    font-size: 14px;
+  }
+
+  header {
+    background: #1a1a1a;
+    color: #e8d5b7;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  header h1 { font-size: 1.5rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; }
+  header p { font-size: 0.8rem; color: #998877; letter-spacing: 1px; margin-top: 4px; }
+
+  .controls {
+    background: #fff;
+    padding: 16px 40px;
+    border-bottom: 1px solid #e8e3dc;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .controls label { font-size: 0.75rem; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .filter-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #555;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover, .filter-btn.active { background: #1a1a1a; color: #e8d5b7; border-color: #1a1a1a; }
+  .filter-btn.instagram.active { background: #c2185b; border-color: #c2185b; color: #fff; }
+  .filter-btn.tiktok.active { background: #2e7d32; border-color: #2e7d32; color: #fff; }
+  .filter-btn.facebook.active { background: #1565c0; border-color: #1565c0; color: #fff; }
+  .filter-btn.youtube.active { background: #c62828; border-color: #c62828; color: #fff; }
+  .search-box {
+    margin-left: auto;
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1.5px solid #ddd;
+    font-size: 0.85rem;
+    width: 220px;
+    outline: none;
+  }
+  .search-box:focus { border-color: #c9a96e; }
+  .count-badge {
+    font-size: 0.75rem;
+    color: #888;
+    margin-left: 8px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    padding: 24px 40px 60px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+  }
+
+  thead tr {
+    background: #1a1a1a;
+    color: #e8d5b7;
+  }
+  thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  thead th:first-child { width: 44px; text-align: center; }
+  th.col-hook { width: 22%; }
+  th.col-skript { width: 38%; }
+  th.col-cta { width: 20%; }
+  th.col-plattform { width: 100px; text-align: center; }
+  th.col-format { width: 14%; }
+
+  tbody tr {
+    border-bottom: 1px solid #f0ece6;
+    transition: background 0.1s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #faf8f5; }
+  tbody tr.hidden { display: none; }
+
+  td {
+    padding: 14px 16px;
+    vertical-align: top;
+    line-height: 1.55;
+    color: #2c2c2c;
+  }
+  td:first-child {
+    text-align: center;
+    font-weight: 700;
+    color: #c9a96e;
+    font-size: 0.8rem;
+    padding-top: 16px;
+  }
+
+  .hook-text {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #1a1a1a;
+  }
+  .format-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    color: #c9a96e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+
+  .skript-text {
+    font-size: 0.85rem;
+    color: #444;
+  }
+
+  .cta-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  .cta-sub {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 3px;
+  }
+
+  .platform-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .instagram { background: #fce4ec; color: #c2185b; }
+  .tiktok    { background: #e8f5e9; color: #2e7d32; }
+  .facebook  { background: #e3f2fd; color: #1565c0; }
+  .youtube   { background: #ffebee; color: #c62828; }
+
+  .no-results {
+    text-align: center;
+    padding: 60px;
+    color: #aaa;
+    font-size: 0.95rem;
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    header, .controls, .table-wrap { padding-left: 16px; padding-right: 16px; }
+    th.col-format, td:nth-child(6) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>esthétique Wien</h1>
+    <p>50 UGC-Anzeigen · Hook · Skript · CTA · Plattform</p>
+  </div>
+  <div style="font-size:0.75rem; color:#665544; text-align:right;">
+    for face, body &amp; soul<br>
+    <span style="color:#c9a96e;">Maja Antić · Wien 3.</span>
+  </div>
+</header>
+
+<div class="controls">
+  <label>Filter:</label>
+  <button class="filter-btn active" data-filter="all" onclick="filterTable(this,'all')">Alle (50)</button>
+  <button class="filter-btn instagram" data-filter="Instagram" onclick="filterTable(this,'Instagram')">📷 Instagram</button>
+  <button class="filter-btn tiktok" data-filter="TikTok" onclick="filterTable(this,'TikTok')">♪ TikTok</button>
+  <button class="filter-btn facebook" data-filter="Facebook" onclick="filterTable(this,'Facebook')">👍 Facebook</button>
+  <button class="filter-btn youtube" data-filter="YouTube" onclick="filterTable(this,'YouTube')">▶ YouTube</button>
+  <input class="search-box" type="text" placeholder="Suche in Hooks, Skripts …" oninput="searchTable(this.value)">
+  <span class="count-badge" id="rowCount">50 Anzeigen</span>
+</div>
+
+<div class="table-wrap">
+<table id="mainTable">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th class="col-hook">Hook</th>
+      <th class="col-skript">Skript</th>
+      <th class="col-cta">Call-to-Action</th>
+      <th class="col-plattform">Plattform</th>
+      <th class="col-format">Format</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr data-platform="Instagram">
+      <td>1</td>
+      <td>
+        <div class="hook-text">Ich schwöre, meine Nägel sehen aus wie frisch vom Laufsteg 😭✨</div>
+        <div class="format-tag">Testimonial · Nägel</div>
+      </td>
+      <td class="skript-text">Bin schon seit über einem Jahr bei Maja und ich gehe nirgendwo anders mehr hin. Die Gelnägel bei esthétique halten bei mir immer 4 Wochen – ohne abblättern.</td>
+      <td><div class="cta-text">Bestellt euch bitte einen Termin, ihr werdet es nicht bereuen!</div><div class="cta-sub">Treatwell · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Foto</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>2</td>
+      <td>
+        <div class="hook-text">POV: Du wachst auf und deine Augenbrauen sitzen perfekt – ohne Stift, ohne Gel, ohne STRESS. 🤩</div>
+        <div class="format-tag">Hook · Brow Lifting</div>
+      </td>
+      <td class="skript-text">Das ist mein Leben seit dem Brow Lifting bei esthétique Wien. Maja hat meinen Brauen komplett neues Leben eingehaucht. 6 Wochen halten die Ergebnisse!</td>
+      <td><div class="cta-text">#GlowUp #BrowLift – Termin jetzt buchen!</div><div class="cta-sub">Treatwell · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">15-Sek. Reel · Vorher/Nachher</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>3</td>
+      <td>
+        <div class="hook-text">Endlich habe ich meine Hautpflegeroutine gefunden 💆‍♀️</div>
+        <div class="format-tag">Story Ad · Gesichtspflege</div>
+      </td>
+      <td class="skript-text">Nach der Gesichtsbehandlung bei esthétique im 3. Bezirk sieht meine Haut aus wie nach einem Wellness-Urlaub. Maja erklärt einem alles so verständlich und geht wirklich auf die eigene Haut ein.</td>
+      <td><div class="cta-text">Bin verliebt – einfach ausprobieren!</div><div class="cta-sub">Treatwell buchen</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Story · Foto + Text</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>4</td>
+      <td>
+        <div class="hook-text">Girls, ich rede heute über etwas sehr Wichtiges: meine Füße 😂</div>
+        <div class="format-tag">Haul/Review · Pediküre</div>
+      </td>
+      <td class="skript-text">Nach der Pediküre bei esthétique Wien bin ich das erste Mal seit Jahren wieder bereit, Sandalen zu tragen. Ich übertreibe nicht wenn ich sage: Maja ist eine Künstlerin.</td>
+      <td><div class="cta-text">Treatwell Termin – Link in Bio! 👇</div><div class="cta-sub">Jetzt buchen</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">30-Sek. · Close-up Feet Reveal</div></td>
+    </tr>
+
+    <tr data-platform="Facebook">
+      <td>5</td>
+      <td>
+        <div class="hook-text">Kann esthétique Wien von Herzen weiterempfehlen! ⭐⭐⭐⭐⭐</div>
+        <div class="format-tag">Empfehlung · Allgemein</div>
+      </td>
+      <td class="skript-text">Habe dort Gelnägel, Pediküre und eine Gesichtsbehandlung gemacht – alles top. Sehr sauber, sehr entspannte Atmosphäre und Maja ist einfach super kompetent und herzlich.</td>
+      <td><div class="cta-text">Wird definitiv mein Stammsalon!</div><div class="cta-sub">Treatwell · Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge facebook">Facebook</span></td>
+      <td><div class="format-tag">Facebook Post · Review</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>6</td>
+      <td>
+        <div class="hook-text">"Ich hab nie geglaubt, dass Brow Lifting wirklich was verändert… bis ich es selbst ausprobiert habe." 😱</div>
+        <div class="format-tag">Reel Script · Transformation</div>
+      </td>
+      <td class="skript-text">Dieses Vorher-Nachher spricht für sich. esthétique Wien, 3. Bezirk. Maja ist ein Genie mit Augenbrauen.</td>
+      <td><div class="cta-text">Termin über Treatwell buchen – Link in Bio!</div><div class="cta-sub">Treatwell · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Reel · 8 Sek. Hook + Reveal</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>7</td>
+      <td>
+        <div class="hook-text">Ich war ehrlich gesagt nervös beim ersten Mal 😅</div>
+        <div class="format-tag">Storytelling · Ersterfahrung</div>
+      </td>
+      <td class="skript-text">Aber Maja hat mich sofort so willkommen heißen lassen, ich habe mich wie bei einer Freundin gefühlt. esthétique Wien ist nicht einfach ein Studio – es ist ein Ort wo man sich wirklich fallen lassen kann.</td>
+      <td><div class="cta-text">Soul care pur. 🤍 Jetzt buchen!</div><div class="cta-sub">Treatwell · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">GRWM-Style · Voiceover + B-Roll</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>8</td>
+      <td>
+        <div class="hook-text">Diese Nägel? esthétique Wien. Diese Haltbarkeit? 4+ Wochen ohne einen Chip. 🙌</div>
+        <div class="format-tag">Produkt-Close-Up · Nägel</div>
+      </td>
+      <td class="skript-text">Diese Farbe? Handverlesen von Maja persönlich. Wer in Wien wohnt und noch keinen Termin bei Maja hat, verpasst buchstäblich etwas.</td>
+      <td><div class="cta-text">Jetzt einen Termin buchen!</div><div class="cta-sub">#nailartvienna · Treatwell</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Nail Close-Up</div></td>
+    </tr>
+
+    <tr data-platform="Facebook">
+      <td>9</td>
+      <td>
+        <div class="hook-text">Als Mama von zwei Kindern habe ich kaum Zeit für mich.</div>
+        <div class="format-tag">Empfehlung · Mama-Zielgruppe</div>
+      </td>
+      <td class="skript-text">Aber der Termin bei esthétique Wien ist meine Me-Time einmal im Monat und ich lasse ihn mir von niemandem nehmen. Gelnägel in unter 90 Minuten, wunderschön und haltbar.</td>
+      <td><div class="cta-text">Danke Maja! ❤️ Termin buchen!</div><div class="cta-sub">Treatwell · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge facebook">Facebook</span></td>
+      <td><div class="format-tag">Facebook Post · Testimonial</div></td>
+    </tr>
+
+    <tr data-platform="YouTube">
+      <td>10</td>
+      <td>
+        <div class="hook-text">"Heute nehme ich euch mit in mein liebstes Kosmetikstudio in Wien!"</div>
+        <div class="format-tag">Vlog-Intro · Studio Tour</div>
+      </td>
+      <td class="skript-text">esthétique im 3. Bezirk ist mein absoluter Geheimtipp – sauber, gemütlich und die Inhaberin Maja ist so unglaublich talentiert.</td>
+      <td><div class="cta-text">Schaut bis zum Ende – komplettes Ergebnis!</div><div class="cta-sub">Link in der Beschreibung · Treatwell</div></td>
+      <td style="text-align:center"><span class="platform-badge youtube">YouTube</span></td>
+      <td><div class="format-tag">YouTube Vlog · 8 Min.</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>11</td>
+      <td>
+        <div class="hook-text">Things that just make sense: ☑️ Gelnägel die 4 Wochen halten ☑️ Haut die strahlt ☑️ Studio das sich wie Urlaub anfühlt</div>
+        <div class="format-tag">Trend-Hook · "Things that just make sense"</div>
+      </td>
+      <td class="skript-text">esthétique Wien, 3. Bezirk – @esthetique_wien. Alle drei Punkte in einem Studio? Das gibt es wirklich.</td>
+      <td><div class="cta-text">Treatwell Buchung in Bio 🖤</div><div class="cta-sub">@esthetique_wien</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Trend · Text-Overlay</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>12</td>
+      <td>
+        <div class="hook-text">5 Gründe warum esthétique Wien mein Lieblingsort in der Stadt ist 💕</div>
+        <div class="format-tag">Carousel · Behandlungsüberblick</div>
+      </td>
+      <td class="skript-text">1️⃣ Gelnägel von Weltklasse 2️⃣ Pediküre die wirklich hält 3️⃣ Brow Lifting wie beim Profi 4️⃣ Gesichtsbehandlung nach Hauttyp 5️⃣ Maja – ein Mensch mit echtem Herz.</td>
+      <td><div class="cta-text">Swipe für Bilder 👉 Termin buchen!</div><div class="cta-sub">Treatwell · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Carousel · 5 Slides</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>13</td>
+      <td>
+        <div class="hook-text">Antworte auf: "Wo bekomme ich in Wien die besten Nägel?" – HIER. Bitte. 💅</div>
+        <div class="format-tag">Duet/Response · Nail Trend</div>
+      </td>
+      <td class="skript-text">esthétique Wien von Maja Antić. Ich habe schon 6 verschiedene Studios ausprobiert – kein einziges kommt auch nur annähernd ran. Die Qualität, die Sauberkeit, die Liebe zum Detail… perfekt.</td>
+      <td><div class="cta-text">Jetzt bei Treatwell buchen!</div><div class="cta-sub">Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Response · Voiceover</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>14</td>
+      <td>
+        <div class="hook-text">Meine Morgenroutine seit dem Brow Lifting bei esthétique: aufwachen, Augenbrauen sind perfekt, fertig. 😂</div>
+        <div class="format-tag">Morning Routine Integration</div>
+      </td>
+      <td class="skript-text">Ernst gemeint – ich spare jeden Morgen 10 Minuten. Maja hat mich komplett konvertiert. Wer noch zweifelt: macht es einfach. Das Ergebnis spricht für sich. 🤍</td>
+      <td><div class="cta-text">Jetzt Termin buchen – Treatwell!</div><div class="cta-sub">esthétique Wien · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Testimonial</div></td>
+    </tr>
+
+    <tr data-platform="YouTube">
+      <td>15</td>
+      <td>
+        <div class="hook-text">"Ich habe überall in Wien Gesichtsbehandlungen getestet – und ich sage euch ganz ehrlich…"</div>
+        <div class="format-tag">Review · Gesichtsbehandlung</div>
+      </td>
+      <td class="skript-text">esthétique Wien ist das Beste, was mir passiert ist. Maja analysiert die Haut individuell, erklärt jeden Schritt und das Ergebnis? Unglaublich glatt und strahlend.</td>
+      <td><div class="cta-text">Link zu Treatwell in der Beschreibung!</div><div class="cta-sub">Jetzt buchen · esthétique Wien</div></td>
+      <td style="text-align:center"><span class="platform-badge youtube">YouTube</span></td>
+      <td><div class="format-tag">YouTube Review · 12 Min.</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>16</td>
+      <td>
+        <div class="hook-text">Girl treat yourself: 🍰 Eis ✅ 🛁 Schaumbad ✅ 💅 Gelnägel bei esthétique Wien ✅</div>
+        <div class="format-tag">"Girl dinner" Format · Treat Yourself</div>
+      </td>
+      <td class="skript-text">Das ist das Minimum was du dir gönnst verdienst. esthétique Wien, 3. Bezirk – Maja Antić. Treatwell Buchung → Link in Bio.</td>
+      <td><div class="cta-text">Du weißt es. 💕 Jetzt buchen!</div><div class="cta-sub">Link in Bio · Treatwell</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok · Aesthetic Montage · 10 Sek.</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>17</td>
+      <td>
+        <div class="hook-text">Links: meine Nägel vor dem Termin. Rechts: nach 90 Minuten bei esthétique Wien. 😭</div>
+        <div class="format-tag">Before/After Caption · Nails</div>
+      </td>
+      <td class="skript-text">Ich kann gar nicht aufhören meine eigenen Hände anzuschauen. Maja hat mir die perfekte Nude-Länge empfohlen und ich bin VERLIEBT. Farbe: "Vanilla Dream" 🤍</td>
+      <td><div class="cta-text">Termin buchen – Treatwell!</div><div class="cta-sub">#nailsvienna · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Reel · Vorher/Nachher Reveal</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>18</td>
+      <td>
+        <div class="hook-text">Problem: meine Augenbrauen sind komplett asymmetrisch 😭 Lösung: →</div>
+        <div class="format-tag">Problem/Solution Format</div>
+      </td>
+      <td class="skript-text">Brow Lifting bei esthétique Wien von Maja Antić. Jetzt sehen sie perfekt aus – natürlich, definiert und symmetrisch. Die Behandlung dauert ca. 60 Min. und hält 6 Wochen.</td>
+      <td><div class="cta-text">Warum hab ich nicht früher angefangen?! Jetzt buchen!</div><div class="cta-sub">Treatwell · Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Split-Screen · Problem vs. Lösung</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>19</td>
+      <td>
+        <div class="hook-text">Nicht jedes Kosmetikstudio fühlt sich wie ein Luxuserlebnis an – esthétique Wien schon. 🤍</div>
+        <div class="format-tag">Luxury Feel · High-End Positionierung</div>
+      </td>
+      <td class="skript-text">Die Atmosphäre, die Sorgfalt, das Ergebnis. Maja behandelt jede Kundin wie eine VIP. Im 3. Bezirk gelegen und über Treatwell buchbar.</td>
+      <td><div class="cta-text">Das ist dein Zeichen. Jetzt buchen!</div><div class="cta-sub">Treatwell · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Aesthetic</div></td>
+    </tr>
+
+    <tr data-platform="Facebook">
+      <td>20</td>
+      <td>
+        <div class="hook-text">Als Frau 50+ ist mir Qualität wichtiger als Preis. ⭐⭐⭐⭐⭐</div>
+        <div class="format-tag">Zielgruppe 40+ · Erfahrung</div>
+      </td>
+      <td class="skript-text">Ich war schon in vielen Studios – esthétique Wien ist mein absoluter Favorit geworden. Maja nimmt sich Zeit, erklärt alles und das Ergebnis ist immer besser als erwartet. Besonders die Gesichtsbehandlung ist einfach wunderschön.</td>
+      <td><div class="cta-text">Termin buchen – Treatwell!</div><div class="cta-sub">esthétique Wien · 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge facebook">Facebook</span></td>
+      <td><div class="format-tag">Facebook Post · Review</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>21</td>
+      <td>
+        <div class="hook-text">That girl morning routine upgrade: ☀️ Aufstehen ✅ 🥤 Smoothie ✅ 🧘 Yoga ✅ 💅 Perfekte Nägel von esthétique Wien ✅</div>
+        <div class="format-tag">"That girl" Routine</div>
+      </td>
+      <td class="skript-text">Fr. Maja – du machst mich zu einer besseren Person 😂💕 Jeden Monat ein Termin bei esthétique Wien, jeden Monat glücklicher.</td>
+      <td><div class="cta-text">Jetzt buchen! Link in Bio 💕</div><div class="cta-sub">Treatwell · @esthetique_wien</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok GRWM · Trending Sound</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>22</td>
+      <td>
+        <div class="hook-text">Sommer-Sandalen-Check ✅ Bereit für die Sommersaison dank esthétique Wien 😂</div>
+        <div class="format-tag">Reels Hook · Pediküre Reveal</div>
+      </td>
+      <td class="skript-text">Nachdem ich endlich meine erste Pediküre bei esthétique Wien hatte, ziehe ich nicht mehr Socken an wenn Besuch kommt. Maja macht das so präzise und entspannend – ich bin fast eingeschlafen.</td>
+      <td><div class="cta-text">BUCHEN. Link in Bio.</div><div class="cta-sub">Treatwell · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Reel · Sandalen Reveal · Upbeat Music</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>23</td>
+      <td>
+        <div class="hook-text">Urlaubs-Prep ist nicht komplett ohne esthétique Wien! 🌴</div>
+        <div class="format-tag">Reise/Event Vorbereitung</div>
+      </td>
+      <td class="skript-text">Bevor ich nächste Woche nach Griechenland fliege, war Maja Pflicht. Frische Nägel, Pediküre, Brow Lifting – ich bin bereit für 10 Tage Strand.</td>
+      <td><div class="cta-text">Treatwell Link in Bio 📌 Termin sichern!</div><div class="cta-sub">#urlaubsready · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Reise-Vibes</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>24</td>
+      <td>
+        <div class="hook-text">Hot take: Das teuerste Kosmetikstudio in Wien ist nicht unbedingt das beste. 🎤</div>
+        <div class="format-tag">"Hot take" Format</div>
+      </td>
+      <td class="skript-text">esthétique Wien beweist das täglich. Top-Qualität zu fairen Preisen, Inhaberin Maja mit echter Leidenschaft – und trotzdem bekommt man Nägel die aussehen wie 200€ wert.</td>
+      <td><div class="cta-text">Gesagt hab's 🎤 – Termin buchen! 👇</div><div class="cta-sub">Treatwell · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Talking Head · direct to cam</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>25</td>
+      <td>
+        <div class="hook-text">Sucht ihr noch das perfekte Geschenk für eure beste Freundin? 🎁</div>
+        <div class="format-tag">Geburtstagsgeschenk · Gift Idea</div>
+      </td>
+      <td class="skript-text">Ein Gutschein für esthétique Wien ist das Beste was man verschenken kann – weil man seiner Freundin damit echte Me-Time schenkt. Ich habe meiner Schwester das zu Weihnachten geschenkt und sie liebt es. 🤍</td>
+      <td><div class="cta-text">Gutschein über Treatwell bestellen!</div><div class="cta-sub">#geschenkidee · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Gift Guide</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>26</td>
+      <td>
+        <div class="hook-text">Wien Beauty-Geheimtipp den ich eigentlich nicht teilen will 😅 →</div>
+        <div class="format-tag">Wien Guide · Hidden Gem</div>
+      </td>
+      <td class="skript-text">esthétique Wien im 3. Bezirk. Maja Antić ist mit Abstand die beste Nagelkünstlerin die ich je hatte. Jetzt wisst ihr's.</td>
+      <td><div class="cta-text">Bucht über Treatwell bevor ich es bereue 😂</div><div class="cta-sub">Link in Bio · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok · Whisper/Secret Format</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>27</td>
+      <td>
+        <div class="hook-text">Sommergefühle aktiviert 🌸 Frische Gelnägel in Blush-Pink, Sonnencreme, Terrasse.</div>
+        <div class="format-tag">Stimmungspost · Sommer</div>
+      </td>
+      <td class="skript-text">Das Leben ist schön wenn die Nägel sitzen. Gelnägel von esthétique Wien – Danke Maja für die monatliche Dosis Glück 💕</td>
+      <td><div class="cta-text">Termin buchen – Link in Bio! 💅</div><div class="cta-sub">#summernails · Treatwell</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Summer Aesthetic</div></td>
+    </tr>
+
+    <tr data-platform="Facebook">
+      <td>28</td>
+      <td>
+        <div class="hook-text">Für alle Wienerinnen die noch das richtige Kosmetikstudio suchen 👇</div>
+        <div class="format-tag">Community Empfehlung</div>
+      </td>
+      <td class="skript-text">Schaut euch bitte esthétique Wien im 3. Bezirk an. Inhaberin Maja Antić ist einfach unglaublich gut in ihrem Handwerk. Ich empfehle sie an alle meine Freundinnen weiter. Bisher noch NIE enttäuscht worden. 👏</td>
+      <td><div class="cta-text">Jetzt über Treatwell buchen!</div><div class="cta-sub">esthétique Wien · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge facebook">Facebook</span></td>
+      <td><div class="format-tag">Facebook Post · Community</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>29</td>
+      <td>
+        <div class="hook-text">Das befriedigendste Geräusch der Welt: das Klacken von perfekten Gelnägeln auf einer Tastatur ✨🎧</div>
+        <div class="format-tag">Satisfying Content · ASMR-Stil</div>
+      </td>
+      <td class="skript-text">Meine kommen von esthétique Wien. Maja macht sie so schön rund und gleichmäßig – ich kann nicht aufhören sie anzuschauen. ASMR für Nagelliebhaberinnen. 💅</td>
+      <td><div class="cta-text">esthétique Wien buchen – Treatwell!</div><div class="cta-sub">Link in Bio · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok ASMR · Close-up Nail Tapping</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>30</td>
+      <td>
+        <div class="hook-text">Herbst-Nägel sind die besten Nägel 🍂 Majas Empfehlung: tiefes Bordeaux mit matter Versiegelung.</div>
+        <div class="format-tag">Jahreszeit · Herbst-Nägel</div>
+      </td>
+      <td class="skript-text">Ich wäre nie auf die Idee gekommen aber sie hatte so Recht. esthétique Wien ist mein persönlicher Nail-Stylist und ich liebe es.</td>
+      <td><div class="cta-text">Termin? Treatwell 📱 Jetzt buchen!</div><div class="cta-sub">#herbstnägel · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Seasonal</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>31</td>
+      <td>
+        <div class="hook-text">Wenn Nägel und Ringe harmonieren 💍✨ Das ist Kundenservice auf einem anderen Level.</div>
+        <div class="format-tag">Produktkombination · Nails + Rings</div>
+      </td>
+      <td class="skript-text">Meine Gelnägel von esthétique Wien passen perfekt zu meinem Schmuck. Maja fragte sogar welche Farben ich oft trage um die perfekte Nuance zu wählen. Detailverliebheit pur! 🙌</td>
+      <td><div class="cta-text">Termin bei Maja – Treatwell!</div><div class="cta-sub">Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Detail-Shot</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>32</td>
+      <td>
+        <div class="hook-text">Mein Glow-Up Checklist 2024: ✅ Haare ✅ Gym ✅ Skin Care ✅ Brow Lifting bei esthétique Wien ← DAS war der game-changer.</div>
+        <div class="format-tag">Glow-Up Compilation</div>
+      </td>
+      <td class="skript-text">Alle fragen mich was ich anders mache. Maja Antić, Wien 3. Bezirk. Buchbar über Treatwell. Gern geschehen 😌</td>
+      <td><div class="cta-text">Jetzt buchen – Gern geschehen 😌</div><div class="cta-sub">Treatwell · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Montage · Glow-Up Trend</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>33</td>
+      <td>
+        <div class="hook-text">Outfit ist nicht fertig bis die Nägel passen 💅👗</div>
+        <div class="format-tag">Outfit-Koordination · Fashion x Nails</div>
+      </td>
+      <td class="skript-text">Ich habe heute mein gesamtes Frühjahrsoutfit um die Nagelfarbe gebaut die Maja mir bei esthétique Wien empfohlen hat. Dusty Mauve trifft auf Beige-Mantel – und ich bin fertig. Leben ist zu kurz für hässliche Nägel.</td>
+      <td><div class="cta-text">Maja buchen – Treatwell!</div><div class="cta-sub">#nailsootd · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Reel · Outfit + Nail Combo</div></td>
+    </tr>
+
+    <tr data-platform="Facebook">
+      <td>34</td>
+      <td>
+        <div class="hook-text">Ich bin jetzt seit 3 Jahren Stammkundin bei esthétique Wien. 💕</div>
+        <div class="format-tag">Stammkundin · Treue Empfehlung</div>
+      </td>
+      <td class="skript-text">Maja ist nicht nur unglaublich talentiert – sie kennt meine Haut und meine Vorlieben inzwischen besser als ich selbst. Das ist der Unterschied zwischen einem Salon und einer Beziehung.</td>
+      <td><div class="cta-text">Euren ersten Termin buchen – Treatwell!</div><div class="cta-sub">Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge facebook">Facebook</span></td>
+      <td><div class="format-tag">Facebook Post · Loyalty</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>35</td>
+      <td>
+        <div class="hook-text">Reminder: Self-care ist keine Selbstsucht. 🤍</div>
+        <div class="format-tag">Anstoß für mentale Gesundheit</div>
+      </td>
+      <td class="skript-text">Einen Termin bei esthétique Wien zu buchen ist keine Extravaganz – es ist Investition in dein Wohlbefinden. Maja schafft in ihrem Studio einen Raum der sich komplett sicher und entspannt anfühlt.</td>
+      <td><div class="cta-text">Go. Jetzt. Treatwell.</div><div class="cta-sub">Link in Bio · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Motivational · Soft Aesthetic</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>36</td>
+      <td>
+        <div class="hook-text">Habe nach 2 Jahren mein altes Studio gewechselt – kein Vergleich. 🙏</div>
+        <div class="format-tag">Compare &amp; Contrast · Studio Wechsel</div>
+      </td>
+      <td class="skript-text">Bin zu esthétique Wien gegangen. Die Qualität, die Atmosphäre, die Beratung. Ich bereue nur dass ich nicht früher gewechselt habe. Für alle die noch zögern: macht den Schritt.</td>
+      <td><div class="cta-text">Erster Termin – Treatwell buchen!</div><div class="cta-sub">Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Studio Switch</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>37</td>
+      <td>
+        <div class="hook-text">Beantworte eure Fragen zu esthétique Wien: ❓Wie bucht man? ❓Wie lange dauert's? ❓Ist es schmerzhaft?</div>
+        <div class="format-tag">Q&amp;A Format · Häufige Fragen</div>
+      </td>
+      <td class="skript-text">Wie bucht man? → Treatwell! Wie lange dauert Gelnägel? → ca. 90 Min. Ist Brow Lifting schmerzhaft? → Nein! Lohnt es sich? → 10000% JA.</td>
+      <td><div class="cta-text">Folgt @esthetique_wien für aktuelle Termine 📌</div><div class="cta-sub">Treatwell · Link in Bio</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Q&amp;A · Text-Overlay</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>38</td>
+      <td>
+        <div class="hook-text">Als jemand der auf Qualität und Hygiene achtet, war ich beim ersten Besuch sofort beeindruckt. 🌿</div>
+        <div class="format-tag">Nachhaltigkeit &amp; Qualität</div>
+      </td>
+      <td class="skript-text">Alles picobello sauber, hochwertige Produkte, keine Kompromisse. esthétique Wien. Maja zeigt damit dass ihr echte Handwerkskunst am Herzen liegt. Das merkt man in jedem Detail.</td>
+      <td><div class="cta-text">Termin buchen – Treatwell!</div><div class="cta-sub">Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Quality Focus</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>39</td>
+      <td>
+        <div class="hook-text">Day in my life: 10:30 Termin bei esthétique Wien – das Highlight des Tages 💅</div>
+        <div class="format-tag">Viral Trend · "Day in my life"</div>
+      </td>
+      <td class="skript-text">8:00 Kaffee ☕ 10:30 esthétique Wien – Maja macht meine Nägel 💅 12:00 Mittagessen 14:00 Shopping. Das Highlight? Definitiv Maja. Wer hätte das gedacht 😂</td>
+      <td><div class="cta-text">Treatwell buchen – Link in Bio!</div><div class="cta-sub">#dayinmylife · #wien</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Vlog · Day in Life</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>40</td>
+      <td>
+        <div class="hook-text">Als Vollzeit-Berufstätige brauche ich Nägel die professionell UND schön aussehen. 💼✨</div>
+        <div class="format-tag">Work-Life Balance · Berufstätige Frau</div>
+      </td>
+      <td class="skript-text">esthétique Wien liefert genau das. Schlichte Eleganz die im Büro passt und abends trotzdem strahlt. Maja versteht sofort was ich will – spart Zeit beim Erklären, spart Nerven.</td>
+      <td><div class="cta-text">Termin buchen – Treatwell!</div><div class="cta-sub">#officenails · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Professional</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>41</td>
+      <td>
+        <div class="hook-text">Clean girl aesthetic approved ✅ Bare skin, glass skin, nude nails from esthétique Wien. Das ist die Formel.</div>
+        <div class="format-tag">Minimalism Aesthetic · Clean Girl</div>
+      </td>
+      <td class="skript-text">Kein Overloaded Makeup, kein Glitter – nur das perfekte Fundament. Maja versteht den "less is more" Look wie keine andere. Pure Eleganz. 🤍</td>
+      <td><div class="cta-text">Termin buchen – Link in Bio!</div><div class="cta-sub">#cleangirl · Treatwell</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Aesthetic · Clean Minimal Edit</div></td>
+    </tr>
+
+    <tr data-platform="Facebook">
+      <td>42</td>
+      <td>
+        <div class="hook-text">Zum Geburtstag habe ich mir selbst das Schönste geschenkt: einen ganzen Tag bei esthétique Wien! 🎂✨</div>
+        <div class="format-tag">Geburtstags-Selbstverwöhnung</div>
+      </td>
+      <td class="skript-text">Gelnägel + Pediküre + Gesichtsbehandlung. Maja hat mich so verwöhnt wie ich es verdiene. Empfehle das als Geburtstagstradition für alle.</td>
+      <td><div class="cta-text">Bucht über Treatwell! ✨</div><div class="cta-sub">Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge facebook">Facebook</span></td>
+      <td><div class="format-tag">Facebook Post · Birthday</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>43</td>
+      <td>
+        <div class="hook-text">Wien hat so viel zu bieten – und esthétique Wien im 3. Bezirk gehört definitiv dazu 🇦🇹💅</div>
+        <div class="format-tag">Wien-spezifisch · Lokaler Stolz</div>
+      </td>
+      <td class="skript-text">Ich bin so froh, dass wir ein Studio dieser Qualität in unserer Stadt haben. Maja ist eine echte Bereicherung für das Wiener Beauty-Angebot.</td>
+      <td><div class="cta-text">Unterstützt lokale Businesses! ❤️ Termin buchen!</div><div class="cta-sub">Treatwell · #wienliebe</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Local Pride</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>44</td>
+      <td>
+        <div class="hook-text">Wenn du noch nie bei esthétique Wien warst, hier ist was du erwarten kannst: 🌸</div>
+        <div class="format-tag">Vertrauens-Aufbau · Ersttermin</div>
+      </td>
+      <td class="skript-text">🌸 Herzliche Begrüßung von Maja 🌸 Beratungsgespräch über deine Wünsche 🌸 Entspannte Atmosphäre 🌸 Ergebnis das dich sprachlos macht. Das war mein erstes Mal – und mit Sicherheit nicht das letzte.</td>
+      <td><div class="cta-text">Ersten Termin buchen – Treatwell! 💕</div><div class="cta-sub">Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Walkthrough · Studio B-Roll</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>45</td>
+      <td>
+        <div class="hook-text">Für meinen großen Tag gab es natürlich nur eine Wahl: esthétique Wien! 👰‍♀️💍</div>
+        <div class="format-tag">Hochzeit / Event-Vorbereitung</div>
+      </td>
+      <td class="skript-text">Maja hat meine Hochzeitsnägel mit so viel Liebe und Präzision gemacht – perfektes Weiß-Rosa, jede Hand ein Kunstwerk. Auf den Fotos sehen sie traumhaft aus.</td>
+      <td><div class="cta-text">Danke aus tiefstem Herzen! Jetzt buchen!</div><div class="cta-sub">Treatwell · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Wedding</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>46</td>
+      <td>
+        <div class="hook-text">Rote Flaggen beim Nagelstudio: schlechte Hygiene, Schmerzen, Nägel halten nicht. GRÜNE FLAGGEN: esthétique Wien. 💚</div>
+        <div class="format-tag">"Rot-Flag vs. Grün-Flag" Studio</div>
+      </td>
+      <td class="skript-text">Alles sauber, alles sanft, alles hält. Maja setzt Maßstäbe. Das ist der Standard den ihr verdient.</td>
+      <td><div class="cta-text">Bucht sie. Jetzt. Treatwell! 💚</div><div class="cta-sub">Link in Bio · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok Red/Green Flag Trend</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>47</td>
+      <td>
+        <div class="hook-text">Weihnachts-Nägel-Season ist OFFICIALLY OPEN 🎄❄️</div>
+        <div class="format-tag">Saisonales Angebot · Weihnachten</div>
+      </td>
+      <td class="skript-text">Und meine sehen dieses Jahr besonders toll aus – dank esthétique Wien! Deep Red mit zartem Glitzer-Overlay von Maja. Perfekt für alle Weihnachtsfeiern.</td>
+      <td><div class="cta-text">Plant rechtzeitig euren Termin – schnell weg! 📅</div><div class="cta-sub">Treatwell · #weihnachtsnägel</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Seasonal Christmas</div></td>
+    </tr>
+
+    <tr data-platform="Facebook">
+      <td>48</td>
+      <td>
+        <div class="hook-text">Was mich an esthétique Wien besonders begeistert: der ganzheitliche Ansatz. ⭐⭐⭐⭐⭐</div>
+        <div class="format-tag">Körperpflege ganzheitlich</div>
+      </td>
+      <td class="skript-text">"For face, body &amp; soul" ist nicht nur ein Slogan – es ist wie Maja wirklich arbeitet. Man geht nicht nur mit schönen Nägeln raus, sondern fühlt sich innerlich aufgetankt. Das ist seltene Kunst.</td>
+      <td><div class="cta-text">Termin buchen – Treatwell!</div><div class="cta-sub">Wien 3. Bezirk</div></td>
+      <td style="text-align:center"><span class="platform-badge facebook">Facebook</span></td>
+      <td><div class="format-tag">Facebook Post · Holistic</div></td>
+    </tr>
+
+    <tr data-platform="TikTok">
+      <td>49</td>
+      <td>
+        <div class="hook-text">PSA an alle Wienerinnen: esthétique Wien ist über Treatwell buchbar – und ich kann es wirklich jedem empfehlen. 📱</div>
+        <div class="format-tag">Treatwell CTA · Direktbuchen</div>
+      </td>
+      <td class="skript-text">Ich buche immer online in 2 Minuten und der Termin klappt immer. Kein Stress, kein Warten – einfach genießen.</td>
+      <td><div class="cta-text">Link im Bio! Jetzt buchen 💕</div><div class="cta-sub">Treatwell · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge tiktok">TikTok</span></td>
+      <td><div class="format-tag">TikTok CTA · Screen Recording Booking</div></td>
+    </tr>
+
+    <tr data-platform="Instagram">
+      <td>50</td>
+      <td>
+        <div class="hook-text">Manchmal findet man einen Ort der sich wie gemacht für einen fühlt. esthétique Wien ist genau das. 🤍</div>
+        <div class="format-tag">Abschluss-Statement · Brand Love</div>
+      </td>
+      <td class="skript-text">Maja Antić hat ein Studio geschaffen das Schönheit, Wärme und Seele vereint. "For face, body &amp; soul" – und das stimmt von der ersten bis zur letzten Minute.</td>
+      <td><div class="cta-text">Kommt und überzeugt euch selbst. 💫</div><div class="cta-sub">Treatwell · #esthetiquewien · Wien 3.</div></td>
+      <td style="text-align:center"><span class="platform-badge instagram">Instagram</span></td>
+      <td><div class="format-tag">Feed Post · Brand Love</div></td>
+    </tr>
+
+  </tbody>
+</table>
+<div class="no-results" id="noResults">Keine Anzeigen gefunden. Bitte Filter oder Suche anpassen.</div>
+</div>
+
+<footer style="text-align:center; padding:30px 20px; color:#bbb; font-size:0.78rem; border-top:1px solid #e8e3dc;">
+  esthétique Wien · Maja Antić · 3. Bezirk Wien · Buchung via <strong style="color:#c9a96e;">Treatwell</strong>
+</footer>
+
+<script>
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  function filterTable(btn, platform) {
+    currentFilter = platform;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  }
+
+  function searchTable(query) {
+    currentSearch = query.toLowerCase();
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const rows = document.querySelectorAll('#mainTable tbody tr');
+    let visible = 0;
+    rows.forEach(row => {
+      const platform = row.dataset.platform;
+      const text = row.textContent.toLowerCase();
+      const matchPlatform = currentFilter === 'all' || platform === currentFilter;
+      const matchSearch = currentSearch === '' || text.includes(currentSearch);
+      if (matchPlatform && matchSearch) {
+        row.classList.remove('hidden');
+        visible++;
+      } else {
+        row.classList.add('hidden');
+      }
+    });
+    document.getElementById('rowCount').textContent = visible + ' Anzeigen';
+    document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+  }
+</script>
+</body>
+</html>
