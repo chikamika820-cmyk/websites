@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <title>esthétique – for face, body & soul · Wien</title>
 <meta name="description" content="esthétique for face, body &amp; soul – Ihr Kosmetikstudio im 3. Bezirk Wien. Gelnägel, Pediküre, Gesichtspflege, Brow Lifting und mehr. Inhaberin Maja Antić. Jetzt bei Treatwell buchen.">
 
@@ -71,8 +71,8 @@ nav.scrolled {
   box-shadow: 0 2px 28px rgba(74,54,40, 0.09);
 }
 .n-logo {
-  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-  font-size: 1.1rem; font-weight: 300; letter-spacing: .2em;
+  font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
+  font-size: 1.1rem; font-weight: 300; letter-spacing: .15em;
   color: var(--brown); font-style: italic;
 }
 .n-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -109,7 +109,7 @@ nav.scrolled {
 /* giant ghost monogram behind */
 .ghost-mono {
   position: absolute;
-  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
   font-size: clamp(18rem, 45vw, 55rem);
   font-style: italic; font-weight: 300;
   color: rgba(122,92,66,.04);
@@ -145,7 +145,7 @@ nav.scrolled {
 
 /* ── LETTER-BY-LETTER text version (shown briefly then fades to image) ── */
 .letter-hero {
-  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
   font-size: clamp(3.5rem, 9vw, 8rem);
   font-weight: 300; font-style: italic;
   line-height: 1; letter-spacing: -.01em;
@@ -265,7 +265,7 @@ section { padding: 8rem 5rem; position: relative; }
 }
 .stag.is-visible::after { max-width: 28px; opacity: 1; }
 h2 {
-  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
   font-size: clamp(2rem, 3.8vw, 3.2rem); font-weight: 300;
   color: var(--text); line-height: 1.1; margin-bottom: 2rem;
 }
@@ -445,7 +445,7 @@ h2 em { font-style: italic; color: var(--brown); }
 }
 .fc-monogram svg { width: 100%; }
 .fc-bottom { position: relative; z-index: 1; }
-.fc-name { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1rem; color: var(--text); margin-bottom: .15rem; }
+.fc-name { font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif; font-size: 1.1rem; color: var(--text); margin-bottom: .15rem; }
 .fc-role { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(--rose); }
 
 /* CARD BACK */
@@ -561,7 +561,7 @@ h2 em { font-style: italic; color: var(--brown); }
   padding: 2.5rem; position: relative; overflow: hidden;
 }
 .qmark { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 8rem; line-height: 1; color: rgba(122,92,66,.07); position: absolute; top: -1rem; left: 1rem; }
-.qtxt { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-style: italic; font-size: 1.2rem; color: var(--text); line-height: 1.65; position: relative; z-index: 1; }
+.qtxt { font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif; font-style: italic; font-size: 1.2rem; color: var(--text); line-height: 1.65; position: relative; z-index: 1; }
 .qcite { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--rose); margin-top: 1rem; }
 
 /* seal centered */
@@ -642,12 +642,23 @@ footer {
   max-width: 100%; /* footer goes full width */
 }
 .f-logo {
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+}
+.f-logo-main {
   font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
   font-style: italic; font-weight: 300;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   color: rgba(240,232,218,.92);
-  letter-spacing: .08em;
+  letter-spacing: .06em;
   line-height: 1;
+}
+.f-logo-tag {
+  font-size: clamp(.42rem, .85vw, .54rem);
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: rgba(240,232,218,.42);
+  line-height: 1;
+  text-indent: .34em; /* compensate for last letter-spacing */
 }
 .f-copy { font-size: .58rem; color: rgba(240,232,218,.55); letter-spacing: .05em; text-align: center; }
 .f-links { display: flex; gap: 1.6rem; align-items: center; }
@@ -975,7 +986,7 @@ footer {
       <div style="font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:#9A7358;margin-top:.2rem;">for face, body &amp; soul</div>
     </div>
     <div>
-      <div style="font-family:'Palatino Linotype',Palatino,Georgia,serif;font-size:1rem;color:#4A3628;">Maja Antic</div>
+      <div style="font-family:'Cormorant Garamond','Palatino Linotype',Palatino,Georgia,serif;font-size:1.1rem;color:#4A3628;">Maja Antic</div>
       <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:#C9A5A0;margin-top:.15rem;">Inhaberin &amp; Kosmetikerin</div>
     </div>
   </div>
@@ -1125,7 +1136,10 @@ footer {
 </section>
 
 <footer>
-  <div class="f-logo">esthétique&thinsp;·&thinsp;Wien</div>
+  <div class="f-logo">
+  <div class="f-logo-main">esthétique</div>
+  <div class="f-logo-tag">for face, body &amp; soul</div>
+</div>
   <span class="f-copy">© 2025 esthétique for face, body &amp; soul · Maja Antić · Keilgasse 4/3, 1030 Wien</span>
   <div class="f-links">
     <a href="datenschutz.html">Datenschutzerklärung</a>
