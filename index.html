@@ -350,24 +350,24 @@ h2 em { font-style: italic; color: var(--brown); }
   background: var(--brown);
   padding: 0;
   position: relative;
-  height: 68px;
+  height: clamp(64px, 10vw, 96px);
   display: flex; align-items: center;
-  border-top: 1px solid rgba(240,232,218,.08);
-  border-bottom: 1px solid rgba(240,232,218,.08);
+  border-top: 1px solid rgba(240,232,218,.12);
+  border-bottom: 1px solid rgba(240,232,218,.12);
 }
 .marquee-strip::before,
 .marquee-strip::after {
   content: '';
   position: absolute; top: 0; bottom: 0;
-  width: 80px; z-index: 2; pointer-events: none;
+  width: clamp(40px, 8vw, 100px); z-index: 2; pointer-events: none;
 }
 .marquee-strip::before {
   left: 0;
-  background: linear-gradient(to right, var(--brown), transparent);
+  background: linear-gradient(to right, var(--brown) 30%, transparent);
 }
 .marquee-strip::after {
   right: 0;
-  background: linear-gradient(to left, var(--brown), transparent);
+  background: linear-gradient(to left, var(--brown) 30%, transparent);
 }
 .marquee-track {
   display: flex; align-items: center;
@@ -379,19 +379,21 @@ h2 em { font-style: italic; color: var(--brown); }
 .marquee-item {
   display: flex; align-items: center; gap: 0;
   white-space: nowrap;
-  font-size: .52rem;
-  letter-spacing: .32em;
+  font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(240,232,218,.55);
-  font-weight: 300;
-  padding: 0 2.5rem;
+  color: #F8F3ED;
+  font-weight: 400;
+  font-style: italic;
+  padding: 0 clamp(1.5rem, 3vw, 3.5rem);
 }
 .marquee-dot {
   display: inline-block;
-  width: 3px; height: 3px;
+  width: clamp(3px, .4vw, 5px); height: clamp(3px, .4vw, 5px);
   border-radius: 50%;
-  background: rgba(240,232,218,.3);
-  margin: 0 1.8rem;
+  background: rgba(248,243,237,.45);
+  margin: 0 clamp(1.2rem, 2vw, 2.4rem);
   flex-shrink: 0;
 }
 @keyframes marqueeScroll {
