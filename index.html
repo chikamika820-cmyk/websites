@@ -124,20 +124,69 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
+      /* Layered photorealistic sunset sky */
       background:
-        linear-gradient(to bottom, rgba(12,12,12,.25) 0%, rgba(12,12,12,.1) 40%, rgba(12,12,12,.75) 85%, var(--black) 100%),
-        radial-gradient(ellipse at 60% 30%, #3d2a12 0%, #1a120a 40%, #0c0c0c 100%);
+        linear-gradient(to bottom,
+          rgba(12,12,12,.55) 0%,
+          rgba(12,12,12,.1) 30%,
+          rgba(12,12,12,.0) 50%,
+          rgba(12,12,12,.6) 75%,
+          rgba(12,12,12,1) 100%
+        ),
+        linear-gradient(to bottom,
+          #0d0a1a 0%,
+          #1a0f2e 8%,
+          #2d1042 14%,
+          #5c1f4a 22%,
+          #8b2252 30%,
+          #c0392b 40%,
+          #e8561a 50%,
+          #f5962a 58%,
+          #f5c842 66%,
+          #e8d4a0 72%,
+          #c8a96e 78%,
+          #8b5e3c 86%,
+          #3d2010 93%,
+          #0c0c0c 100%
+        );
     }
     .hero-bg::before {
       content: '';
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 120% 50% at 70% 20%, rgba(200,120,30,.22) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 20% 60%, rgba(100,40,10,.15) 0%, transparent 50%);
+        radial-gradient(ellipse 80% 35% at 65% 52%, rgba(245,150,42,.35) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 25% at 30% 58%, rgba(200,57,43,.25) 0%, transparent 50%),
+        radial-gradient(ellipse 30% 20% at 80% 45%, rgba(245,200,66,.2) 0%, transparent 40%);
     }
+    /* Stars layer */
+    .hero-bg::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 40%;
+      background-image:
+        radial-gradient(1px 1px at 10% 8%, rgba(255,255,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 4%, rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 35% 12%, rgba(255,255,255,.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 48% 6%, rgba(255,255,255,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 58% 3%, rgba(255,255,255,.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 70% 9%, rgba(255,255,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 82% 5%, rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 91% 11%, rgba(255,255,255,.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 18%, rgba(255,255,255,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 44% 15%, rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 20%, rgba(255,255,255,.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 55% 7%, rgba(255,240,200,.9) 0%, transparent 100%);
+    }
+    /* SVG Vienna skyline sits at bottom of hero */
     .hero-skyline {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 35%;
-      background: linear-gradient(to top, rgba(12,12,12,1) 20%, transparent 100%);
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 45%; pointer-events: none;
+    }
+    .hero-skyline svg { width: 100%; height: 100%; display: block; }
+    /* Warm glow on horizon for depth */
+    .hero-glow {
+      position: absolute; bottom: 30%; left: 0; right: 0; height: 120px;
+      background: radial-gradient(ellipse 70% 100% at 50% 100%, rgba(245,150,42,.18) 0%, transparent 70%);
+      pointer-events: none;
     }
     .hero-content {
       position: relative; z-index: 2;
@@ -202,18 +251,23 @@
     .about-visual { position: relative; }
     .about-img {
       width: 100%; aspect-ratio: 4/5; border-radius: 3px;
-      background: linear-gradient(135deg, #1e140a 0%, #2a1c10 40%, #1a1008 100%);
       overflow: hidden; position: relative;
+      background: linear-gradient(160deg, #0d0805 0%, #1a1008 30%, #2a1810 55%, #1a0e06 80%, #0c0c0c 100%);
+    }
+    /* Golden hour light wash */
+    .about-img::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse 90% 60% at 70% 10%, rgba(245,150,42,.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(200,80,30,.12) 0%, transparent 55%),
+        linear-gradient(to bottom, rgba(245,150,42,.08) 0%, transparent 50%);
     }
     .about-img::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 40% 30%, rgba(200,120,30,.18) 0%, transparent 60%);
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to bottom, transparent 50%, rgba(12,12,12,.4) 100%);
     }
-    .img-placeholder-text {
-      position: absolute; inset: 0; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 1rem;
-      color: rgba(200,169,110,.4); font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-style: italic;
+    .about-img-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
     }
     .about-badge {
       position: absolute; bottom: -1.5rem; right: -1.5rem;
@@ -263,13 +317,43 @@
     .g-item:nth-child(7) { grid-column: 5/9; grid-row: 3/4; }
     .g-item:nth-child(8) { grid-column: 9/13; grid-row: 3/4; }
 
-    .gi-c1 { background: linear-gradient(135deg, #2a1c10, #1a1008, #3d2a12); }
-    .gi-c2 { background: linear-gradient(135deg, #1a1810, #252010, #2a2210); }
-    .gi-c3 { background: linear-gradient(135deg, #10181a, #081418, #122025); }
-    .gi-c4 { background: linear-gradient(135deg, #1e1210, #2a1510, #1a0e08); }
-    .gi-c5 { background: linear-gradient(135deg, #181818, #222222, #1a1a1a); }
+    /* Gallery items — rich CSS art backgrounds */
+    .gi-c1 {
+      background:
+        linear-gradient(to bottom, rgba(12,12,12,.1) 0%, rgba(12,12,12,.55) 100%),
+        linear-gradient(160deg, #0d0508 0%, #1a0808 20%, #3d1208 45%, #6b2208 62%, #c04010 75%, #e87020 85%, #f5a030 95%, #1a0808 100%);
+    }
+    .gi-c2 {
+      background:
+        linear-gradient(to bottom, rgba(12,12,12,.05) 0%, rgba(12,12,12,.6) 100%),
+        linear-gradient(135deg, #080810 0%, #10101a 25%, #0a1020 50%, #142030 65%, #1a3040 80%, #0a1015 100%);
+    }
+    .gi-c3 {
+      background:
+        linear-gradient(to bottom, rgba(12,12,12,.05) 0%, rgba(12,12,12,.5) 100%),
+        linear-gradient(145deg, #08100a 0%, #0a1810 25%, #0e2218 45%, #163028 65%, #1e4030 80%, #0c1810 100%);
+    }
+    .gi-c4 {
+      background:
+        linear-gradient(to bottom, rgba(12,12,12,.1) 0%, rgba(12,12,12,.6) 100%),
+        linear-gradient(150deg, #08050d 0%, #120818 25%, #200a28 45%, #38103a 60%, #5a1048 75%, #8a1840 88%, #0d0510 100%);
+    }
+    .gi-c5 {
+      background:
+        linear-gradient(to bottom, rgba(12,12,12,.05) 0%, rgba(12,12,12,.6) 100%),
+        linear-gradient(135deg, #0a0808 0%, #1a1008 30%, #2a1c10 55%, #3a2818 70%, #2a1c10 85%, #0c0808 100%);
+    }
 
-    .g-dummy { width: 100%; height: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display',serif; font-style: italic; font-size: .9rem; color: rgba(200,169,110,.3); }
+    /* Gallery label overlay */
+    .g-label {
+      position: absolute; bottom: 1rem; left: 1rem; z-index: 2;
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: .88rem; color: rgba(242,235,224,.7);
+      text-shadow: 0 1px 8px rgba(0,0,0,.8);
+      pointer-events: none;
+    }
+    /* Gallery inner SVG art */
+    .g-art { position: absolute; inset: 0; width: 100%; height: 100%; }
 
     /* ════════════════════════════════════════
        MENU
@@ -286,8 +370,24 @@
     .tab-btn:hover:not(.active) { color: var(--cream); }
 
     .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .menu-item { background: var(--dark); padding: 1.8rem; display: flex; flex-direction: column; gap: .6rem; transition: background .25s; }
+    .menu-item { background: var(--dark); padding: 1.8rem; display: flex; flex-direction: column; gap: .6rem; transition: background .25s; position: relative; overflow: hidden; }
     .menu-item:hover { background: var(--mid); }
+    /* Colour swatch strip at top of each card */
+    .menu-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .menu-item:nth-child(1)::before { background: linear-gradient(to right, #c8d840, #f0e060); }
+    .menu-item:nth-child(2)::before { background: linear-gradient(to right, #e86020, #f5a030); }
+    .menu-item:nth-child(3)::before { background: linear-gradient(to right, #c02828, #e83040); }
+    .menu-item:nth-child(4)::before { background: linear-gradient(to right, #e84060, #c03060); }
+    .menu-item:nth-child(5)::before { background: linear-gradient(to right, #1a1a1a, #3a2a1a); }
+    .menu-item:nth-child(6)::before { background: linear-gradient(to right, #40c060, #80e0a0); }
+
+    /* Drink colour circle */
+    .drink-swatch {
+      width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; font-weight: 600; letter-spacing: .05em;
+      text-transform: uppercase; box-shadow: 0 4px 16px rgba(0,0,0,.4);
+    }
     .menu-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
     .menu-item-name  { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--cream); line-height: 1.3; }
     .menu-item-price { font-size: .9rem; color: var(--gold); font-weight: 500; white-space: nowrap; flex-shrink: 0; }
@@ -627,7 +727,214 @@
 <!-- HERO -->
 <section id="hero" aria-label="Hero-Bereich">
   <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-skyline" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-skyline" aria-hidden="true">
+    <!-- Vienna Skyline SVG — Stephansdom spire + rooftops -->
+    <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0c0c0c" stop-opacity="0"/>
+          <stop offset="60%" stop-color="#0c0c0c" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#0c0c0c" stop-opacity="1"/>
+        </linearGradient>
+        <linearGradient id="buildingGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a1208"/>
+          <stop offset="100%" stop-color="#0c0c0c"/>
+        </linearGradient>
+        <linearGradient id="spireGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a1a08"/>
+          <stop offset="100%" stop-color="#0c0c0c"/>
+        </linearGradient>
+      </defs>
+      <!-- Far background buildings (lightest) -->
+      <g fill="#111008" opacity="0.6">
+        <rect x="0" y="160" width="60" height="100"/>
+        <rect x="55" y="145" width="40" height="115"/>
+        <rect x="90" y="155" width="50" height="105"/>
+        <rect x="135" y="140" width="35" height="120"/>
+        <rect x="165" y="150" width="55" height="110"/>
+        <rect x="215" y="135" width="45" height="125"/>
+        <rect x="1200" y="155" width="55" height="105"/>
+        <rect x="1250" y="140" width="45" height="120"/>
+        <rect x="1290" y="148" width="60" height="112"/>
+        <rect x="1345" y="138" width="50" height="122"/>
+        <rect x="1390" y="152" width="50" height="108"/>
+      </g>
+      <!-- Mid buildings -->
+      <g fill="url(#buildingGrad)">
+        <!-- Left cluster -->
+        <rect x="0" y="170" width="70" height="90"/>
+        <polygon points="35,130 10,170 60,170"/>
+        <rect x="65" y="155" width="55" height="105"/>
+        <polygon points="92,118 68,155 116,155"/>
+        <rect x="115" y="165" width="45" height="95"/>
+        <rect x="155" y="148" width="35" height="112"/>
+        <polygon points="172,115 155,148 189,148"/>
+        <rect x="185" y="162" width="50" height="98"/>
+        <!-- windows left -->
+        <rect x="20" y="175" width="6" height="8" fill="rgba(245,196,100,.15)"/>
+        <rect x="32" y="175" width="6" height="8" fill="rgba(245,196,100,.12)"/>
+        <rect x="20" y="190" width="6" height="8" fill="rgba(245,196,100,.08)"/>
+        <rect x="32" y="190" width="6" height="8" fill="rgba(245,196,100,.18)"/>
+        <rect x="75" y="162" width="7" height="9" fill="rgba(245,196,100,.15)"/>
+        <rect x="88" y="162" width="7" height="9" fill="rgba(245,196,100,.1)"/>
+        <rect x="75" y="177" width="7" height="9" fill="rgba(245,196,100,.2)"/>
+        <rect x="88" y="177" width="7" height="9" fill="rgba(245,196,100,.08)"/>
+
+        <!-- Right cluster -->
+        <rect x="1100" y="158" width="65" height="102"/>
+        <polygon points="1132,122 1100,158 1165,158"/>
+        <rect x="1160" y="168" width="50" height="92"/>
+        <rect x="1205" y="150" width="60" height="110"/>
+        <polygon points="1235,112 1205,150 1265,150"/>
+        <rect x="1260" y="162" width="55" height="98"/>
+        <rect x="1310" y="155" width="45" height="105"/>
+        <polygon points="1332,120 1310,155 1355,155"/>
+        <rect x="1350" y="165" width="90" height="95"/>
+        <!-- windows right -->
+        <rect x="1115" y="165" width="7" height="9" fill="rgba(245,196,100,.15)"/>
+        <rect x="1128" y="165" width="7" height="9" fill="rgba(245,196,100,.1)"/>
+        <rect x="1115" y="180" width="7" height="9" fill="rgba(245,196,100,.2)"/>
+        <rect x="1128" y="180" width="7" height="9" fill="rgba(245,196,100,.08)"/>
+        <rect x="1215" y="158" width="7" height="9" fill="rgba(245,196,100,.18)"/>
+        <rect x="1228" y="158" width="7" height="9" fill="rgba(245,196,100,.12)"/>
+        <rect x="1215" y="173" width="7" height="9" fill="rgba(245,196,100,.1)"/>
+      </g>
+
+      <!-- CENTER: Stephansdom-style cathedral with tall spire -->
+      <g fill="url(#spireGrad)">
+        <!-- Cathedral body -->
+        <rect x="630" y="155" width="180" height="105"/>
+        <!-- Nave roof -->
+        <polygon points="630,155 720,130 810,155"/>
+        <!-- Side towers -->
+        <rect x="620" y="165" width="30" height="95"/>
+        <polygon points="620,165 635,148 650,165"/>
+        <rect x="790" y="165" width="30" height="95"/>
+        <polygon points="790,165 805,148 820,165"/>
+        <!-- Main tower base -->
+        <rect x="695" y="128" width="50" height="132"/>
+        <!-- Tower taper -->
+        <rect x="700" y="108" width="40" height="25"/>
+        <rect x="705" y="90" width="30" height="22"/>
+        <rect x="710" y="72" width="20" height="22"/>
+        <!-- Spire -->
+        <polygon points="720,8 710,72 730,72"/>
+        <rect x="718" y="4" width="4" height="10"/>
+        <!-- Cross -->
+        <rect x="717" y="2" width="6" height="2"/>
+        <rect x="719" y="0" width="2" height="8"/>
+        <!-- Cathedral windows (glowing) -->
+        <rect x="700" y="160" width="12" height="20" rx="6" fill="rgba(245,196,100,.25)"/>
+        <rect x="718" y="160" width="12" height="20" rx="6" fill="rgba(245,196,100,.18)"/>
+        <rect x="736" y="160" width="12" height="20" rx="6" fill="rgba(245,196,100,.22)"/>
+        <!-- Rose window -->
+        <circle cx="720" cy="148" r="10" fill="none" stroke="rgba(245,196,100,.2)" stroke-width="2"/>
+        <circle cx="720" cy="148" r="5" fill="rgba(245,196,100,.15)"/>
+        <!-- Tower windows -->
+        <rect x="712" y="115" width="8" height="12" rx="4" fill="rgba(245,196,100,.3)"/>
+        <rect x="712" y="133" width="8" height="12" rx="4" fill="rgba(245,196,100,.2)"/>
+      </g>
+
+      <!-- Flanking baroque buildings -->
+      <g fill="#0e0c07">
+        <!-- Left of cathedral -->
+        <rect x="450" y="158" width="80" height="102"/>
+        <polygon points="450,158 490,135 530,158"/>
+        <rect x="525" y="162" width="65" height="98"/>
+        <polygon points="525,162 557,140 590,162"/>
+        <rect x="585" y="168" width="50" height="92"/>
+        <!-- windows -->
+        <rect x="460" y="165" width="8" height="10" fill="rgba(245,196,100,.15)"/>
+        <rect x="474" y="165" width="8" height="10" fill="rgba(245,196,100,.2)"/>
+        <rect x="488" y="165" width="8" height="10" fill="rgba(245,196,100,.1)"/>
+        <rect x="460" y="182" width="8" height="10" fill="rgba(245,196,100,.12)"/>
+        <rect x="474" y="182" width="8" height="10" fill="rgba(245,196,100,.18)"/>
+        <rect x="535" y="170" width="8" height="10" fill="rgba(245,196,100,.15)"/>
+        <rect x="549" y="170" width="8" height="10" fill="rgba(245,196,100,.1)"/>
+        <rect x="563" y="170" width="8" height="10" fill="rgba(245,196,100,.2)"/>
+
+        <!-- Right of cathedral -->
+        <rect x="850" y="162" width="55" height="98"/>
+        <polygon points="850,162 877,140 905,162"/>
+        <rect x="900" y="155" width="75" height="105"/>
+        <polygon points="900,155 937,132 975,155"/>
+        <rect x="970" y="160" width="80" height="100"/>
+        <polygon points="970,160 1010,138 1050,160"/>
+        <!-- windows -->
+        <rect x="858" y="170" width="8" height="10" fill="rgba(245,196,100,.18)"/>
+        <rect x="872" y="170" width="8" height="10" fill="rgba(245,196,100,.1)"/>
+        <rect x="910" y="162" width="8" height="10" fill="rgba(245,196,100,.15)"/>
+        <rect x="924" y="162" width="8" height="10" fill="rgba(245,196,100,.2)"/>
+        <rect x="938" y="162" width="8" height="10" fill="rgba(245,196,100,.12)"/>
+        <rect x="910" y="178" width="8" height="10" fill="rgba(245,196,100,.08)"/>
+        <rect x="980" y="168" width="8" height="10" fill="rgba(245,196,100,.15)"/>
+        <rect x="994" y="168" width="8" height="10" fill="rgba(245,196,100,.2)"/>
+        <rect x="1008" y="168" width="8" height="10" fill="rgba(245,196,100,.1)"/>
+      </g>
+
+      <!-- Foreground rooftop edge (our bar level) -->
+      <g fill="#0c0c0c">
+        <!-- Rooftop terrace railing left -->
+        <rect x="0" y="220" width="300" height="40"/>
+        <rect x="280" y="215" width="160" height="45"/>
+        <!-- Railing posts -->
+        <rect x="20" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="40" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="60" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="80" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="100" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="120" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="140" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="160" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="180" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="200" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="220" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="240" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="260" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <!-- Railing posts right -->
+        <rect x="1180" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1200" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1220" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1240" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1260" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1280" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1300" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1320" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1340" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1360" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1380" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1400" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <rect x="1420" y="210" width="3" height="18" fill="#1a1a1a"/>
+        <!-- Right block -->
+        <rect x="1160" y="218" width="280" height="42"/>
+      </g>
+
+      <!-- String lights across hero -->
+      <g stroke="rgba(245,196,100,.5)" stroke-width="0.8" fill="none">
+        <path d="M200,185 Q360,195 520,185 Q680,175 840,185 Q1000,195 1160,185 Q1260,180 1360,188" stroke-dasharray="none"/>
+      </g>
+      <!-- Light bulbs on string -->
+      <g fill="rgba(245,196,100,.7)">
+        <circle cx="240" cy="186" r="2.5"/>
+        <circle cx="320" cy="192" r="2.5"/>
+        <circle cx="400" cy="187" r="2.5"/>
+        <circle cx="480" cy="184" r="2.5"/>
+        <circle cx="560" cy="188" r="2.5"/>
+        <circle cx="640" cy="183" r="2.5"/>
+        <circle cx="720" cy="187" r="2.5"/>
+        <circle cx="800" cy="183" r="2.5"/>
+        <circle cx="880" cy="188" r="2.5"/>
+        <circle cx="960" cy="184" r="2.5"/>
+        <circle cx="1040" cy="188" r="2.5"/>
+        <circle cx="1120" cy="184" r="2.5"/>
+        <circle cx="1200" cy="187" r="2.5"/>
+        <circle cx="1280" cy="183" r="2.5"/>
+      </g>
+      <!-- Gradient overlay for fade to black -->
+      <rect x="0" y="0" width="1440" height="260" fill="url(#skyFill)"/>
+    </svg>
+  </div>
   <div class="hero-content">
     <div class="container">
       <div class="hero-tag reveal">
@@ -673,11 +980,188 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-visual reveal">
-        <div class="about-img gi-c1">
-          <div class="img-placeholder-text" aria-hidden="true">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span>The Hoxton Vienna · Rooftop</span>
-          </div>
+        <div class="about-img">
+          <!-- Rooftop terrace scene in SVG -->
+          <svg class="about-img-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="skyAbout" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0d0a1a"/>
+                <stop offset="25%" stop-color="#2d1042"/>
+                <stop offset="50%" stop-color="#c0392b"/>
+                <stop offset="70%" stop-color="#e8561a"/>
+                <stop offset="85%" stop-color="#f5962a"/>
+                <stop offset="100%" stop-color="#f5c842"/>
+              </linearGradient>
+              <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a1208"/>
+                <stop offset="100%" stop-color="#0c0808"/>
+              </linearGradient>
+              <linearGradient id="tableGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#2a1e0e"/>
+                <stop offset="100%" stop-color="#1a1208"/>
+              </linearGradient>
+              <radialGradient id="candleGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(245,196,100,.6)"/>
+                <stop offset="100%" stop-color="rgba(245,196,100,0)"/>
+              </radialGradient>
+              <radialGradient id="lampGlow" cx="50%" cy="20%" r="80%">
+                <stop offset="0%" stop-color="rgba(245,196,100,.3)"/>
+                <stop offset="100%" stop-color="rgba(245,196,100,0)"/>
+              </radialGradient>
+            </defs>
+
+            <!-- Sky background -->
+            <rect width="400" height="500" fill="url(#skyAbout)"/>
+
+            <!-- Distant Vienna rooftops silhouette -->
+            <g fill="#0d0a06" opacity="0.9">
+              <rect x="0" y="240" width="50" height="260"/>
+              <polygon points="0,240 25,215 50,240"/>
+              <rect x="45" y="255" width="40" height="245"/>
+              <rect x="80" y="245" width="35" height="255"/>
+              <polygon points="80,245 97,228 115,245"/>
+              <rect x="110" y="260" width="55" height="240"/>
+              <rect x="160" y="250" width="30" height="250"/>
+              <polygon points="160,250 175,232 190,250"/>
+              <rect x="185" y="258" width="215" height="242"/>
+              <!-- Spire far right -->
+              <rect x="330" y="200" width="15" height="300"/>
+              <polygon points="337,160 328,200 347,200"/>
+            </g>
+
+            <!-- Building windows (glowing warm) -->
+            <g fill="rgba(245,196,100,.2)">
+              <rect x="10" y="248" width="6" height="8"/>
+              <rect x="22" y="248" width="6" height="8"/>
+              <rect x="10" y="262" width="6" height="8"/>
+              <rect x="88" y="252" width="6" height="8"/>
+              <rect x="100" y="252" width="6" height="8"/>
+              <rect x="120" y="268" width="6" height="8"/>
+              <rect x="133" y="268" width="6" height="8"/>
+              <rect x="147" y="268" width="6" height="8"/>
+            </g>
+
+            <!-- Rooftop terrace floor -->
+            <rect x="0" y="370" width="400" height="130" fill="url(#floorGrad)"/>
+            <!-- Floor texture lines -->
+            <g stroke="#1e160a" stroke-width="1" opacity="0.4">
+              <line x1="0" y1="390" x2="400" y2="390"/>
+              <line x1="0" y1="410" x2="400" y2="410"/>
+              <line x1="0" y1="430" x2="400" y2="430"/>
+              <line x1="0" y1="450" x2="400" y2="450"/>
+              <line x1="60" y1="370" x2="0" y2="500"/>
+              <line x1="120" y1="370" x2="60" y2="500"/>
+              <line x1="180" y1="370" x2="120" y2="500"/>
+              <line x1="240" y1="370" x2="180" y2="500"/>
+              <line x1="300" y1="370" x2="240" y2="500"/>
+              <line x1="360" y1="370" x2="300" y2="500"/>
+              <line x1="400" y1="370" x2="360" y2="500"/>
+            </g>
+
+            <!-- Railing -->
+            <rect x="0" y="358" width="400" height="6" fill="#1e160a"/>
+            <g fill="#1a1208">
+              <rect x="15" y="340" width="3" height="24"/>
+              <rect x="35" y="340" width="3" height="24"/>
+              <rect x="55" y="340" width="3" height="24"/>
+              <rect x="75" y="340" width="3" height="24"/>
+              <rect x="95" y="340" width="3" height="24"/>
+              <rect x="115" y="340" width="3" height="24"/>
+              <rect x="135" y="340" width="3" height="24"/>
+              <rect x="155" y="340" width="3" height="24"/>
+              <rect x="175" y="340" width="3" height="24"/>
+              <rect x="195" y="340" width="3" height="24"/>
+              <rect x="215" y="340" width="3" height="24"/>
+              <rect x="235" y="340" width="3" height="24"/>
+              <rect x="255" y="340" width="3" height="24"/>
+              <rect x="275" y="340" width="3" height="24"/>
+              <rect x="295" y="340" width="3" height="24"/>
+              <rect x="315" y="340" width="3" height="24"/>
+              <rect x="335" y="340" width="3" height="24"/>
+              <rect x="355" y="340" width="3" height="24"/>
+              <rect x="375" y="340" width="3" height="24"/>
+            </g>
+            <rect x="0" y="337" width="400" height="5" fill="#1e160a"/>
+
+            <!-- Table 1 (foreground center) -->
+            <ellipse cx="200" cy="430" rx="55" ry="12" fill="#1a1208" opacity="0.8"/>
+            <rect x="155" y="385" width="90" height="45" rx="4" fill="url(#tableGrad)"/>
+            <!-- Table cloth hint -->
+            <ellipse cx="200" cy="387" rx="46" ry="6" fill="#221a0c"/>
+            <!-- Candle glow -->
+            <ellipse cx="200" cy="387" rx="20" ry="20" fill="url(#candleGlow)"/>
+            <!-- Candle -->
+            <rect x="197" y="372" width="6" height="16" rx="1" fill="#2a2010"/>
+            <ellipse cx="200" cy="372" rx="3" ry="3" fill="rgba(245,220,100,.9)"/>
+            <!-- Flame -->
+            <ellipse cx="200" cy="368" rx="2" ry="5" fill="rgba(255,180,50,.8)"/>
+            <ellipse cx="200" cy="367" rx="1" ry="3" fill="rgba(255,240,150,.9)"/>
+
+            <!-- Glasses on table -->
+            <g fill="rgba(245,235,200,.25)" stroke="rgba(245,235,200,.3)" stroke-width="0.5">
+              <!-- Wine glass left -->
+              <path d="M180,382 Q175,388 178,393 L182,393 Q185,388 180,382Z"/>
+              <rect x="179" y="393" width="2" height="6"/>
+              <rect x="176" y="399" width="8" height="1.5" rx="0.5"/>
+              <!-- Cocktail glass right -->
+              <path d="M222,381 L215,392 L229,392Z"/>
+              <rect x="220" y="392" width="2" height="6"/>
+              <rect x="217" y="398" width="8" height="1.5" rx="0.5"/>
+              <!-- Liquid in glasses -->
+              <path d="M178,389 Q175,390 178,393 L182,393 Q185,390 182,389Z" fill="rgba(200,80,30,.5)" stroke="none"/>
+              <path d="M218,387 L215,392 L229,392 L226,387Z" fill="rgba(245,140,42,.45)" stroke="none"/>
+            </g>
+
+            <!-- Table 2 (left, smaller) -->
+            <ellipse cx="80" cy="445" rx="38" ry="9" fill="#1a1208" opacity="0.6"/>
+            <rect x="52" y="410" width="56" height="35" rx="3" fill="url(#tableGrad)" opacity="0.85"/>
+            <ellipse cx="80" cy="411" rx="28" ry="4" fill="#221a0c" opacity="0.8"/>
+            <ellipse cx="80" cy="411" rx="14" ry="14" fill="url(#candleGlow)"/>
+            <rect x="78" y="400" width="4" height="12" rx="1" fill="#2a2010"/>
+            <ellipse cx="80" cy="400" rx="2.5" ry="2.5" fill="rgba(245,220,100,.9)"/>
+            <ellipse cx="80" cy="397" rx="1.5" ry="4" fill="rgba(255,180,50,.8)"/>
+
+            <!-- Table 3 (right) -->
+            <ellipse cx="330" cy="442" rx="38" ry="9" fill="#1a1208" opacity="0.6"/>
+            <rect x="302" y="408" width="56" height="34" rx="3" fill="url(#tableGrad)" opacity="0.85"/>
+            <ellipse cx="330" cy="409" rx="28" ry="4" fill="#221a0c" opacity="0.8"/>
+            <ellipse cx="330" cy="409" rx="14" ry="14" fill="url(#candleGlow)"/>
+            <rect x="328" y="397" width="4" height="13" rx="1" fill="#2a2010"/>
+            <ellipse cx="330" cy="397" rx="2.5" ry="2.5" fill="rgba(245,220,100,.9)"/>
+            <ellipse cx="330" cy="394" rx="1.5" ry="4" fill="rgba(255,180,50,.8)"/>
+
+            <!-- String lights overhead -->
+            <path d="M0,285 Q100,295 200,285 Q300,275 400,285" stroke="rgba(245,196,100,.4)" stroke-width="0.8" fill="none"/>
+            <g fill="rgba(245,196,100,.75)">
+              <circle cx="40" cy="287" r="2"/>
+              <circle cx="90" cy="292" r="2"/>
+              <circle cx="140" cy="288" r="2"/>
+              <circle cx="190" cy="285" r="2"/>
+              <circle cx="240" cy="283" r="2"/>
+              <circle cx="290" cy="279" r="2"/>
+              <circle cx="340" cy="284" r="2"/>
+              <circle cx="385" cy="286" r="2"/>
+            </g>
+            <!-- Glow around bulbs -->
+            <g fill="rgba(245,196,100,.12)">
+              <circle cx="40" cy="287" r="8"/>
+              <circle cx="140" cy="288" r="8"/>
+              <circle cx="240" cy="283" r="8"/>
+              <circle cx="340" cy="284" r="8"/>
+            </g>
+
+            <!-- Horizon glow -->
+            <ellipse cx="200" cy="340" rx="220" ry="50" fill="rgba(245,150,42,.1)"/>
+
+            <!-- Dark vignette overlay -->
+            <rect x="0" y="0" width="400" height="500" fill="url(#aboutVignette)" opacity="0.3"/>
+            <defs>
+              <radialGradient id="aboutVignette" cx="50%" cy="50%" r="70%">
+                <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+                <stop offset="100%" stop-color="rgba(0,0,0,0.6)"/>
+              </radialGradient>
+            </defs>
+          </svg>
         </div>
         <div class="about-badge" aria-label="7. Etage"><span class="floor">Etage</span><span class="number serif">7</span></div>
       </div>
@@ -710,38 +1194,494 @@
       <h2 id="atm-heading" class="h2 serif reveal" data-delay="1">Erlebe den Abend</h2>
     </div>
     <div class="gallery-masonry reveal" role="list" aria-label="Bildergalerie">
+
+      <!-- 1: Sunset Terrace — large hero -->
       <div class="g-item gi-c1" role="listitem" tabindex="0" aria-label="Sunset Terrace">
-        <div class="g-dummy">Sunset Terrace</div>
+        <svg class="g-art" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="sun1" cx="68%" cy="42%" r="18%"><stop offset="0%" stop-color="rgba(255,220,80,.9)"/><stop offset="40%" stop-color="rgba(245,140,42,.4)"/><stop offset="100%" stop-color="rgba(245,140,42,0)"/></radialGradient>
+          </defs>
+          <!-- sky -->
+          <rect width="500" height="400" fill="#0d0508"/>
+          <rect width="500" height="260" fill="none"/>
+          <defs><linearGradient id="sk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d0a1a"/><stop offset="30%" stop-color="#3d1208"/><stop offset="60%" stop-color="#c04010"/><stop offset="80%" stop-color="#e87020"/><stop offset="100%" stop-color="#f5a030"/></linearGradient></defs>
+          <rect width="500" height="260" fill="url(#sk1)"/>
+          <!-- sun -->
+          <circle cx="340" cy="168" r="42" fill="url(#sun1)"/>
+          <circle cx="340" cy="168" r="22" fill="rgba(255,230,100,.6)"/>
+          <circle cx="340" cy="168" r="10" fill="rgba(255,245,200,.85)"/>
+          <!-- horizon haze -->
+          <ellipse cx="250" cy="260" rx="260" ry="40" fill="rgba(245,140,42,.18)"/>
+          <!-- silhouette rooftops -->
+          <g fill="#0a0505">
+            <rect x="0" y="200" width="80" height="200"/><polygon points="0,200 40,175 80,200"/>
+            <rect x="75" y="215" width="60" height="185"/><polygon points="75,215 105,195 135,215"/>
+            <rect x="130" y="205" width="50" height="195"/>
+            <rect x="175" y="218" width="70" height="182"/>
+            <rect x="380" y="195" width="60" height="205"/><polygon points="380,195 410,170 440,195"/>
+            <rect x="435" y="210" width="65" height="190"/>
+          </g>
+          <!-- floor -->
+          <rect x="0" y="300" width="500" height="100" fill="#120a04"/>
+          <!-- table + candle -->
+          <ellipse cx="250" cy="360" rx="60" ry="10" fill="#1a1008"/>
+          <rect x="200" y="325" width="100" height="40" rx="4" fill="#1e1208"/>
+          <ellipse cx="250" cy="326" rx="50" ry="6" fill="#241608"/>
+          <rect x="247" y="310" width="6" height="18" rx="1" fill="#2a1e0a"/>
+          <ellipse cx="250" cy="310" rx="3" ry="3" fill="rgba(255,220,100,.9)"/>
+          <ellipse cx="250" cy="306" rx="2" ry="6" fill="rgba(255,180,60,.8)"/>
+          <ellipse cx="250" cy="326" rx="25" ry="25" fill="rgba(245,180,60,.1)"/>
+          <!-- glasses -->
+          <path d="M228,323 Q223,330 226,336 L232,336 Q235,330 228,323Z" fill="rgba(245,235,200,.3)" stroke="rgba(245,235,200,.4)" stroke-width="0.5"/>
+          <rect x="229" y="336" width="2" height="7" fill="rgba(245,235,200,.25)"/>
+          <path d="M272,322 L265,334 L279,334Z" fill="rgba(245,235,200,.3)" stroke="rgba(245,235,200,.4)" stroke-width="0.5"/>
+          <rect x="271" y="334" width="2" height="7" fill="rgba(245,235,200,.25)"/>
+          <!-- string lights -->
+          <path d="M0,270 Q125,280 250,270 Q375,260 500,270" stroke="rgba(245,196,100,.5)" stroke-width="1" fill="none"/>
+          <g fill="rgba(245,196,100,.8)"><circle cx="50" cy="272" r="2.5"/><circle cx="125" cy="278" r="2.5"/><circle cx="200" cy="272" r="2.5"/><circle cx="275" cy="268" r="2.5"/><circle cx="350" cy="264" r="2.5"/><circle cx="425" cy="268" r="2.5"/></g>
+          <!-- vignette -->
+          <defs><radialGradient id="vig1" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.5)"/></radialGradient></defs>
+          <rect width="500" height="400" fill="url(#vig1)"/>
+        </svg>
+        <span class="g-label">Sunset Terrace</span>
         <div class="g-overlay" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
+
+      <!-- 2: Bar Setup — moody blue-dark -->
       <div class="g-item gi-c2" role="listitem" tabindex="0" aria-label="Bar Setup">
-        <div class="g-dummy">Bar Setup</div>
+        <svg class="g-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="barBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06080f"/><stop offset="60%" stop-color="#0a1020"/><stop offset="100%" stop-color="#080810"/></linearGradient></defs>
+          <rect width="300" height="200" fill="url(#barBg)"/>
+          <!-- bar counter -->
+          <rect x="0" y="125" width="300" height="75" fill="#0d0d14"/>
+          <rect x="0" y="122" width="300" height="6" fill="#181828"/>
+          <!-- bar shelf glow -->
+          <rect x="20" y="30" width="260" height="4" fill="#1a1828" rx="1"/>
+          <rect x="20" y="70" width="260" height="4" fill="#1a1828" rx="1"/>
+          <ellipse cx="150" cy="30" rx="140" ry="15" fill="rgba(100,80,200,.08)"/>
+          <!-- bottles row 1 -->
+          <g fill="none" stroke-width="1">
+            <rect x="28" y="8" width="12" height="26" rx="2" fill="#0a1420" stroke="rgba(100,180,255,.2)"/>
+            <rect x="29" y="5" width="10" height="5" rx="1" fill="#0a1420" stroke="rgba(100,180,255,.15)"/>
+            <rect x="30" y="9" width="8" height="14" rx="1" fill="rgba(30,60,120,.4)"/>
+
+            <rect x="46" y="10" width="12" height="24" rx="2" fill="#140a08" stroke="rgba(200,80,40,.2)"/>
+            <rect x="47" y="7" width="10" height="5" rx="1" fill="#140a08" stroke="rgba(200,80,40,.15)"/>
+            <rect x="48" y="11" width="8" height="12" rx="1" fill="rgba(160,40,20,.45)"/>
+
+            <rect x="64" y="6" width="11" height="28" rx="2" fill="#0a1208" stroke="rgba(60,160,80,.2)"/>
+            <rect x="65" y="3" width="9" height="5" rx="1" fill="#0a1208" stroke="rgba(60,160,80,.15)"/>
+            <rect x="65.5" y="7" width="7" height="16" rx="1" fill="rgba(20,100,40,.4)"/>
+
+            <rect x="81" y="9" width="12" height="25" rx="2" fill="#18100a" stroke="rgba(200,160,40,.2)"/>
+            <rect x="82" y="6" width="10" height="5" rx="1" fill="#18100a"/>
+            <rect x="83" y="10" width="8" height="13" rx="1" fill="rgba(160,110,20,.45)"/>
+
+            <rect x="99" y="7" width="11" height="27" rx="2" fill="#120818" stroke="rgba(180,60,180,.2)"/>
+            <rect x="100" y="4" width="9" height="5" rx="1" fill="#120818"/>
+            <rect x="100.5" y="8" width="7" height="15" rx="1" fill="rgba(120,30,140,.4)"/>
+
+            <rect x="116" y="10" width="12" height="24" rx="2" fill="#0a0c14" stroke="rgba(80,120,200,.2)"/>
+            <rect x="117" y="7" width="10" height="5" rx="1" fill="#0a0c14"/>
+            <rect x="118" y="11" width="8" height="12" rx="1" fill="rgba(40,70,160,.4)"/>
+
+            <rect x="134" y="8" width="11" height="26" rx="2" fill="#180808" stroke="rgba(220,60,40,.2)"/>
+            <rect x="135" y="5" width="9" height="5" rx="1" fill="#180808"/>
+            <rect x="135.5" y="9" width="7" height="14" rx="1" fill="rgba(180,30,20,.45)"/>
+
+            <rect x="151" y="9" width="12" height="25" rx="2" fill="#0c1408" stroke="rgba(100,200,80,.2)"/>
+            <rect x="152" y="6" width="10" height="5" rx="1" fill="#0c1408"/>
+            <rect x="153" y="10" width="8" height="13" rx="1" fill="rgba(50,140,30,.4)"/>
+
+            <rect x="169" y="7" width="11" height="27" rx="2" fill="#14100a" stroke="rgba(220,180,60,.2)"/>
+            <rect x="170" y="4" width="9" height="5" rx="1" fill="#14100a"/>
+            <rect x="170.5" y="8" width="7" height="15" rx="1" fill="rgba(180,130,20,.45)"/>
+
+            <rect x="186" y="10" width="12" height="24" rx="2" fill="#08100a" stroke="rgba(60,180,100,.2)"/>
+            <rect x="187" y="7" width="10" height="5" rx="1" fill="#08100a"/>
+            <rect x="188" y="11" width="8" height="12" rx="1" fill="rgba(20,120,60,.4)"/>
+
+            <rect x="204" y="8" width="11" height="26" rx="2" fill="#100a18" stroke="rgba(160,80,220,.2)"/>
+            <rect x="205" y="5" width="9" height="5" rx="1" fill="#100a18"/>
+            <rect x="205.5" y="9" width="7" height="14" rx="1" fill="rgba(100,40,180,.4)"/>
+
+            <rect x="221" y="9" width="12" height="25" rx="2" fill="#180c08" stroke="rgba(240,120,40,.2)"/>
+            <rect x="222" y="6" width="10" height="5" rx="1" fill="#180c08"/>
+            <rect x="223" y="10" width="8" height="13" rx="1" fill="rgba(200,70,20,.45)"/>
+
+            <rect x="239" y="7" width="11" height="27" rx="2" fill="#0a0e18" stroke="rgba(60,100,220,.2)"/>
+            <rect x="240" y="4" width="9" height="5" rx="1" fill="#0a0e18"/>
+            <rect x="240.5" y="8" width="7" height="15" rx="1" fill="rgba(30,60,190,.4)"/>
+
+            <rect x="256" y="9" width="12" height="25" rx="2" fill="#141008" stroke="rgba(200,160,60,.2)"/>
+            <rect x="257" y="6" width="10" height="5" rx="1" fill="#141008"/>
+            <rect x="258" y="10" width="8" height="13" rx="1" fill="rgba(160,110,20,.45)"/>
+          </g>
+          <!-- shelf backlight glow -->
+          <rect x="20" y="31" width="260" height="40" fill="rgba(80,80,200,.04)"/>
+          <!-- cocktail glass on counter -->
+          <path d="M128,122 L118,138 L138,138Z" fill="rgba(245,235,200,.18)" stroke="rgba(245,235,200,.25)" stroke-width="0.8"/>
+          <rect x="132" y="138" width="2" height="9" fill="rgba(245,235,200,.2)"/>
+          <rect x="128" y="147" width="10" height="2" fill="rgba(245,235,200,.2)"/>
+          <path d="M120,131 L118,138 L138,138 L136,131Z" fill="rgba(200,80,30,.35)" stroke="none"/>
+          <!-- shaker -->
+          <rect x="155" y="108" width="18" height="30" rx="4" fill="#181828" stroke="rgba(200,200,220,.15)" stroke-width="1"/>
+          <rect x="157" y="105" width="14" height="8" rx="2" fill="#201e30"/>
+          <!-- ice cubes glow -->
+          <rect x="168" y="125" width="5" height="5" rx="1" fill="rgba(180,220,255,.25)" transform="rotate(15,170,127)"/>
+          <rect x="160" y="128" width="5" height="5" rx="1" fill="rgba(180,220,255,.2)" transform="rotate(-8,162,130)"/>
+          <!-- counter items -->
+          <circle cx="88" cy="133" r="8" fill="#0e0e18" stroke="rgba(200,180,100,.2)" stroke-width="1"/>
+          <circle cx="88" cy="133" r="4" fill="rgba(200,140,40,.3)"/>
+          <!-- vignette -->
+          <defs><radialGradient id="vig2" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.55)"/></radialGradient></defs>
+          <rect width="300" height="200" fill="url(#vig2)"/>
+        </svg>
+        <span class="g-label">Bar Setup</span>
         <div class="g-overlay" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
+
+      <!-- 3: Cocktail Hour — emerald/amber -->
       <div class="g-item gi-c3" role="listitem" tabindex="0" aria-label="Cocktail Hour">
-        <div class="g-dummy">Cocktail Hour</div>
+        <svg class="g-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ctBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#050e08"/><stop offset="50%" stop-color="#081812"/><stop offset="100%" stop-color="#0a1008"/></linearGradient>
+            <radialGradient id="ctGlow" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="rgba(80,200,120,.12)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></radialGradient>
+            <radialGradient id="drinkGlow" cx="50%" cy="60%" r="50%"><stop offset="0%" stop-color="rgba(180,240,180,.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></radialGradient>
+          </defs>
+          <rect width="300" height="200" fill="url(#ctBg)"/>
+          <rect width="300" height="200" fill="url(#ctGlow)"/>
+          <!-- marble table surface -->
+          <rect x="0" y="130" width="300" height="70" fill="#080e0a"/>
+          <rect x="0" y="127" width="300" height="5" fill="#0e1810"/>
+          <!-- large martini glass center -->
+          <g transform="translate(150,60)">
+            <path d="M0,-30 L-38,38 L38,38Z" fill="rgba(180,240,180,.12)" stroke="rgba(180,240,180,.3)" stroke-width="1"/>
+            <rect x="-2" y="38" width="4" height="30" fill="rgba(180,240,180,.2)"/>
+            <rect x="-14" y="68" width="28" height="3" rx="1" fill="rgba(180,240,180,.25)"/>
+            <!-- drink fill -->
+            <path d="M-22,18 L-38,38 L38,38 L22,18Z" fill="rgba(80,200,120,.35)"/>
+            <!-- ice & garnish -->
+            <rect x="-8" y="20" width="6" height="6" rx="1" fill="rgba(200,240,255,.3)" transform="rotate(20)"/>
+            <rect x="4" y="22" width="5" height="5" rx="1" fill="rgba(200,240,255,.25)" transform="rotate(-15)"/>
+            <!-- lime wheel -->
+            <circle cx="28" cy="36" r="7" fill="rgba(100,200,80,.4)" stroke="rgba(180,240,120,.4)" stroke-width="1"/>
+            <circle cx="28" cy="36" r="3" fill="rgba(140,220,100,.3)"/>
+            <line x1="21" y1="36" x2="35" y2="36" stroke="rgba(180,240,120,.4)" stroke-width="0.5"/>
+            <line x1="28" y1="29" x2="28" y2="43" stroke="rgba(180,240,120,.4)" stroke-width="0.5"/>
+          </g>
+          <rect width="300" height="200" fill="url(#drinkGlow)"/>
+          <!-- smaller glasses left & right -->
+          <g transform="translate(70,90)" opacity="0.7">
+            <path d="M0,-20 L-22,22 L22,22Z" fill="rgba(245,196,100,.1)" stroke="rgba(245,196,100,.3)" stroke-width="0.8"/>
+            <rect x="-1.5" y="22" width="3" height="20" fill="rgba(245,196,100,.18)"/>
+            <rect x="-9" y="42" width="18" height="2.5" rx="1" fill="rgba(245,196,100,.2)"/>
+            <path d="M-12,8 L-22,22 L22,22 L12,8Z" fill="rgba(245,140,40,.3)"/>
+          </g>
+          <g transform="translate(230,85)" opacity="0.7">
+            <path d="M0,-22 L-26,26 L26,26Z" fill="rgba(200,80,80,.08)" stroke="rgba(245,180,180,.25)" stroke-width="0.8"/>
+            <rect x="-1.5" y="26" width="3" height="22" fill="rgba(245,180,180,.15)"/>
+            <rect x="-10" y="48" width="20" height="2.5" rx="1" fill="rgba(245,180,180,.18)"/>
+            <path d="M-14,10 L-26,26 L26,26 L14,10Z" fill="rgba(200,60,80,.3)"/>
+          </g>
+          <!-- mint sprig garnish on main glass -->
+          <path d="M176,55 Q182,45 188,50 Q184,58 176,55Z" fill="rgba(80,200,80,.5)"/>
+          <path d="M182,50 Q190,42 196,48 Q190,56 182,50Z" fill="rgba(100,220,80,.45)"/>
+          <line x1="178" y1="55" x2="196" y2="48" stroke="rgba(80,180,60,.4)" stroke-width="0.8"/>
+          <!-- ambient glow -->
+          <ellipse cx="150" cy="160" rx="80" ry="20" fill="rgba(80,200,120,.06)"/>
+          <defs><radialGradient id="vig3" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.6)"/></radialGradient></defs>
+          <rect width="300" height="200" fill="url(#vig3)"/>
+        </svg>
+        <span class="g-label">Cocktail Hour</span>
         <div class="g-overlay" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
+
+      <!-- 4: Night Vibes — deep purple/blue -->
       <div class="g-item gi-c4" role="listitem" tabindex="0" aria-label="Night Vibes">
-        <div class="g-dummy">Night Vibes</div>
+        <svg class="g-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="nvBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06040e"/><stop offset="50%" stop-color="#100820"/><stop offset="100%" stop-color="#0a0515"/></linearGradient></defs>
+          <rect width="300" height="200" fill="url(#nvBg)"/>
+          <!-- city lights far away -->
+          <g fill="rgba(245,196,100,.3)">
+            <rect x="10" y="120" width="3" height="3"/><rect x="18" y="118" width="2" height="2"/><rect x="28" y="122" width="3" height="3"/>
+            <rect x="38" y="116" width="2" height="2"/><rect x="50" y="120" width="3" height="3"/><rect x="62" y="118" width="2" height="2"/>
+            <rect x="74" y="122" width="3" height="3"/><rect x="88" y="116" width="2" height="2"/><rect x="100" y="120" width="3" height="3"/>
+            <rect x="115" y="118" width="3" height="2"/><rect x="130" y="122" width="2" height="3"/><rect x="148" y="116" width="3" height="2"/>
+            <rect x="162" y="120" width="2" height="3"/><rect x="178" y="118" width="3" height="2"/><rect x="194" y="122" width="2" height="3"/>
+            <rect x="210" y="117" width="3" height="2"/><rect x="226" y="120" width="2" height="3"/><rect x="244" y="116" width="3" height="3"/>
+            <rect x="258" y="120" width="2" height="2"/><rect x="272" y="118" width="3" height="3"/><rect x="286" y="122" width="3" height="2"/>
+          </g>
+          <!-- purple/blue bokeh orbs -->
+          <g opacity="0.5">
+            <circle cx="40" cy="60" r="18" fill="rgba(120,60,200,.15)"/><circle cx="40" cy="60" r="8" fill="rgba(150,80,240,.2)"/>
+            <circle cx="120" cy="40" r="14" fill="rgba(60,80,220,.12)"/><circle cx="120" cy="40" r="6" fill="rgba(80,100,255,.18)"/>
+            <circle cx="200" cy="70" r="22" fill="rgba(180,40,160,.12)"/><circle cx="200" cy="70" r="9" fill="rgba(220,60,200,.18)"/>
+            <circle cx="260" cy="45" r="16" fill="rgba(60,120,220,.1)"/><circle cx="260" cy="45" r="7" fill="rgba(80,150,255,.16)"/>
+            <circle cx="80" cy="100" r="12" fill="rgba(200,100,240,.1)"/><circle cx="80" cy="100" r="5" fill="rgba(220,120,255,.15)"/>
+            <circle cx="160" cy="95" r="20" fill="rgba(100,40,180,.12)"/><circle cx="160" cy="95" r="8" fill="rgba(130,60,220,.18)"/>
+            <circle cx="240" cy="90" r="14" fill="rgba(40,80,200,.1)"/><circle cx="240" cy="90" r="6" fill="rgba(60,100,240,.15)"/>
+          </g>
+          <!-- music waveform -->
+          <g stroke="rgba(180,100,255,.35)" stroke-width="1.5" fill="none" stroke-linecap="round">
+            <path d="M20,155 Q30,140 40,155 Q50,170 60,155 Q70,140 80,155 Q90,170 100,155 Q110,140 120,155 Q130,170 140,155 Q150,140 160,155 Q170,170 180,155 Q190,140 200,155 Q210,170 220,155 Q230,140 240,155 Q250,170 260,155 Q270,140 280,155"/>
+          </g>
+          <!-- crowd silhouettes -->
+          <g fill="#0c0818">
+            <ellipse cx="50" cy="198" rx="18" ry="30"/><ellipse cx="85" cy="200" rx="16" ry="28"/><ellipse cx="120" cy="196" rx="20" ry="32"/><ellipse cx="158" cy="199" rx="17" ry="29"/><ellipse cx="195" cy="197" rx="19" ry="31"/><ellipse cx="232" cy="200" rx="16" ry="28"/><ellipse cx="268" cy="196" rx="20" ry="32"/>
+            <!-- raised arms -->
+            <path d="M44,172 Q35,158 28,150"/><path d="M56,172 Q65,158 72,150"/>
+            <path d="M118,170 Q110,155 104,146"/><path d="M132,170 Q140,155 146,146"/>
+            <path d="M190,171 Q182,156 176,148"/><path d="M204,171 Q212,156 218,148"/>
+          </g>
+          <!-- spotlight beams -->
+          <g opacity="0.08">
+            <polygon points="100,0 80,200 120,200" fill="#a040ff"/>
+            <polygon points="200,0 180,200 220,200" fill="#4060ff"/>
+          </g>
+          <defs><radialGradient id="vig4" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.5)"/></radialGradient></defs>
+          <rect width="300" height="200" fill="url(#vig4)"/>
+        </svg>
+        <span class="g-label">Night Vibes</span>
         <div class="g-overlay" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
+
+      <!-- 5: City View — dusk panorama -->
       <div class="g-item gi-c5" role="listitem" tabindex="0" aria-label="City View">
-        <div class="g-dummy">City View</div>
+        <svg class="g-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="cvBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0812"/><stop offset="35%" stop-color="#1a0c1e"/><stop offset="60%" stop-color="#3a1428"/><stop offset="80%" stop-color="#6a2030"/><stop offset="100%" stop-color="#8a2a18"/></linearGradient></defs>
+          <rect width="300" height="200" fill="url(#cvBg)"/>
+          <!-- moon -->
+          <circle cx="240" cy="35" r="18" fill="rgba(245,230,180,.15)"/>
+          <circle cx="240" cy="35" r="12" fill="rgba(245,230,180,.25)"/>
+          <circle cx="240" cy="35" r="7" fill="rgba(250,240,200,.6)"/>
+          <!-- moon glow -->
+          <circle cx="240" cy="35" r="28" fill="rgba(245,230,180,.05)"/>
+          <!-- city skyline detailed -->
+          <g fill="#0c0810">
+            <rect x="0" y="100" width="30" height="100"/><polygon points="0,100 15,82 30,100"/>
+            <rect x="26" y="112" width="25" height="88"/>
+            <rect x="47" y="105" width="20" height="95"/>
+            <polygon points="47,105 57,88 67,105"/>
+            <rect x="63" y="118" width="22" height="82"/>
+            <rect x="81" y="108" width="28" height="92"/>
+            <polygon points="81,108 95,90 109,108"/>
+            <!-- Stephansdom center -->
+            <rect x="115" y="115" width="60" height="85"/>
+            <polygon points="115,115 145,96 175,115"/>
+            <rect x="138" y="88" width="18" height="115"/>
+            <rect x="141" y="72" width="12" height="20"/>
+            <rect x="143" y="58" width="8" height="18"/>
+            <polygon points="147,20 142,58 152,58"/>
+            <rect x="146" y="16" width="2" height="8"/>
+            <!-- right buildings -->
+            <rect x="172" y="110" width="25" height="90"/>
+            <rect x="193" y="102" width="30" height="98"/>
+            <polygon points="193,102 208,84 223,102"/>
+            <rect x="219" y="115" width="22" height="85"/>
+            <rect x="237" y="108" width="28" height="92"/>
+            <rect x="261" y="118" width="20" height="82"/>
+            <rect x="277" y="105" width="23" height="95"/>
+          </g>
+          <!-- building windows warm -->
+          <g fill="rgba(245,196,100,.22)">
+            <rect x="5" y="108" width="5" height="7"/><rect x="15" y="108" width="5" height="7"/><rect x="5" y="122" width="5" height="7"/><rect x="15" y="122" width="5" height="7"/>
+            <rect x="51" y="112" width="5" height="6"/><rect x="60" y="112" width="5" height="6"/><rect x="51" y="124" width="5" height="6"/>
+            <rect x="85" y="115" width="5" height="7"/><rect x="95" y="115" width="5" height="7"/><rect x="105" y="115" width="5" height="7"/>
+            <rect x="120" y="122" width="6" height="8"/><rect x="132" y="122" width="6" height="8"/><rect x="144" y="122" width="6" height="8"/><rect x="156" y="122" width="6" height="8"/>
+            <rect x="197" y="110" width="5" height="7"/><rect x="207" y="110" width="5" height="7"/><rect x="197" y="124" width="5" height="7"/>
+            <rect x="241" y="115" width="5" height="7"/><rect x="251" y="115" width="5" height="7"/>
+            <rect x="265" y="125" width="4" height="6"/><rect x="273" y="125" width="4" height="6"/>
+          </g>
+          <!-- cathedral window glow -->
+          <rect x="142" y="100" width="10" height="14" rx="5" fill="rgba(245,196,100,.35)"/>
+          <!-- foreground railing -->
+          <rect x="0" y="172" width="300" height="28" fill="#0a0808"/>
+          <rect x="0" y="169" width="300" height="5" fill="#141010"/>
+          <g fill="#141010"><rect x="15" y="157" width="2.5" height="16"/><rect x="33" y="157" width="2.5" height="16"/><rect x="51" y="157" width="2.5" height="16"/><rect x="69" y="157" width="2.5" height="16"/><rect x="87" y="157" width="2.5" height="16"/><rect x="105" y="157" width="2.5" height="16"/><rect x="123" y="157" width="2.5" height="16"/><rect x="141" y="157" width="2.5" height="16"/><rect x="159" y="157" width="2.5" height="16"/><rect x="177" y="157" width="2.5" height="16"/><rect x="195" y="157" width="2.5" height="16"/><rect x="213" y="157" width="2.5" height="16"/><rect x="231" y="157" width="2.5" height="16"/><rect x="249" y="157" width="2.5" height="16"/><rect x="267" y="157" width="2.5" height="16"/><rect x="285" y="157" width="2.5" height="16"/></g>
+          <rect x="0" y="154" width="300" height="5" fill="#141010"/>
+          <!-- horizon glow -->
+          <ellipse cx="150" cy="155" rx="200" ry="30" fill="rgba(180,60,30,.08)"/>
+          <defs><radialGradient id="vig5" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.55)"/></radialGradient></defs>
+          <rect width="300" height="200" fill="url(#vig5)"/>
+        </svg>
+        <span class="g-label">City View</span>
         <div class="g-overlay" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
+
+      <!-- 6: Live DJ -->
       <div class="g-item gi-c2" role="listitem" tabindex="0" aria-label="Live DJ">
-        <div class="g-dummy">Live DJ</div>
+        <svg class="g-art" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="djBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#060408"/><stop offset="100%" stop-color="#0c0814"/></linearGradient></defs>
+          <rect width="400" height="220" fill="url(#djBg)"/>
+          <!-- DJ booth / turntable glow -->
+          <ellipse cx="200" cy="110" rx="160" ry="50" fill="rgba(100,60,200,.08)"/>
+          <!-- turntable left -->
+          <circle cx="120" cy="115" r="48" fill="#0e0c18" stroke="rgba(150,100,255,.2)" stroke-width="1"/>
+          <circle cx="120" cy="115" r="40" fill="#0a0812" stroke="rgba(150,100,255,.15)" stroke-width="0.5"/>
+          <circle cx="120" cy="115" r="28" fill="rgba(60,40,120,.3)" stroke="rgba(150,100,255,.1)" stroke-width="0.5"/>
+          <!-- vinyl grooves -->
+          <g stroke="rgba(150,100,255,.1)" stroke-width="0.5" fill="none">
+            <circle cx="120" cy="115" r="36"/><circle cx="120" cy="115" r="34"/><circle cx="120" cy="115" r="32"/><circle cx="120" cy="115" r="30"/>
+          </g>
+          <circle cx="120" cy="115" r="6" fill="rgba(200,160,255,.4)"/>
+          <circle cx="120" cy="115" r="3" fill="rgba(220,180,255,.6)"/>
+          <!-- turntable needle -->
+          <line x1="148" y1="88" x2="133" y2="108" stroke="rgba(200,180,255,.5)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="148" cy="88" r="4" fill="rgba(200,180,255,.3)"/>
+          <!-- turntable right -->
+          <circle cx="280" cy="115" r="48" fill="#0e0c18" stroke="rgba(100,150,255,.2)" stroke-width="1"/>
+          <circle cx="280" cy="115" r="40" fill="#0a0812" stroke="rgba(100,150,255,.15)" stroke-width="0.5"/>
+          <circle cx="280" cy="115" r="28" fill="rgba(40,60,160,.3)" stroke="rgba(100,150,255,.1)" stroke-width="0.5"/>
+          <g stroke="rgba(100,150,255,.1)" stroke-width="0.5" fill="none">
+            <circle cx="280" cy="115" r="36"/><circle cx="280" cy="115" r="34"/><circle cx="280" cy="115" r="32"/><circle cx="280" cy="115" r="30"/>
+          </g>
+          <circle cx="280" cy="115" r="6" fill="rgba(160,180,255,.4)"/>
+          <circle cx="280" cy="115" r="3" fill="rgba(180,200,255,.6)"/>
+          <line x1="252" y1="88" x2="267" y2="108" stroke="rgba(180,200,255,.5)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="252" cy="88" r="4" fill="rgba(180,200,255,.3)"/>
+          <!-- mixer center -->
+          <rect x="175" y="95" width="50" height="40" rx="3" fill="#0e0c1a" stroke="rgba(180,150,255,.2)" stroke-width="1"/>
+          <g fill="rgba(200,180,255,.4)">
+            <circle cx="188" cy="107" r="4"/><circle cx="200" cy="107" r="4"/><circle cx="212" cy="107" r="4"/>
+            <rect x="185" y="117" width="30" height="3" rx="1"/>
+            <rect x="185" y="123" width="30" height="3" rx="1"/>
+          </g>
+          <!-- EQ bars -->
+          <g fill="rgba(120,80,255,.5)">
+            <rect x="186" y="128" width="4" height="12"/><rect x="192" y="124" width="4" height="16"/><rect x="198" y="120" width="4" height="20"/><rect x="204" y="123" width="4" height="17"/><rect x="210" y="127" width="4" height="13"/>
+          </g>
+          <!-- stage lights beams -->
+          <g opacity="0.07">
+            <polygon points="60,0 20,220 100,220" fill="#8040ff"/>
+            <polygon points="200,0 160,220 240,220" fill="#4060ff"/>
+            <polygon points="340,0 300,220 380,220" fill="#ff4080"/>
+          </g>
+          <!-- audience silhouettes -->
+          <g fill="#080610">
+            <ellipse cx="30" cy="218" rx="14" ry="22"/><ellipse cx="58" cy="220" rx="13" ry="20"/><ellipse cx="86" cy="216" rx="15" ry="24"/><ellipse cx="116" cy="218" rx="13" ry="22"/><ellipse cx="146" cy="220" rx="14" ry="23"/><ellipse cx="176" cy="216" rx="15" ry="24"/><ellipse cx="206" cy="218" rx="13" ry="22"/><ellipse cx="236" cy="220" rx="14" ry="23"/><ellipse cx="266" cy="216" rx="15" ry="24"/><ellipse cx="296" cy="218" rx="13" ry="22"/><ellipse cx="326" cy="220" rx="14" ry="23"/><ellipse cx="356" cy="216" rx="15" ry="24"/><ellipse cx="386" cy="218" rx="14" ry="22"/>
+          </g>
+          <defs><radialGradient id="vig6" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.5)"/></radialGradient></defs>
+          <rect width="400" height="220" fill="url(#vig6)"/>
+        </svg>
+        <span class="g-label">Live DJ</span>
         <div class="g-overlay" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
+
+      <!-- 7: Group Dining -->
       <div class="g-item gi-c1" role="listitem" tabindex="0" aria-label="Group Dining">
-        <div class="g-dummy">Group Dining</div>
+        <svg class="g-art" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="gdBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#080504"/><stop offset="50%" stop-color="#100a04"/><stop offset="100%" stop-color="#180e06"/></linearGradient></defs>
+          <rect width="400" height="220" fill="url(#gdBg)"/>
+          <!-- warm amber glow background -->
+          <ellipse cx="200" cy="140" rx="200" ry="80" fill="rgba(200,120,30,.07)"/>
+          <!-- long dining table -->
+          <rect x="40" y="140" width="320" height="50" rx="4" fill="#120c04"/>
+          <rect x="40" y="137" width="320" height="7" rx="3" fill="#1e1408"/>
+          <!-- tablecloth hint -->
+          <rect x="42" y="138" width="316" height="5" rx="2" fill="#241808"/>
+          <!-- candles along table -->
+          <g>
+            <rect x="95" y="120" width="5" height="20" rx="1" fill="#1e1408"/><ellipse cx="97.5" cy="120" rx="2.5" ry="2.5" fill="rgba(255,220,100,.9)"/><ellipse cx="97.5" cy="117" rx="1.5" ry="4" fill="rgba(255,180,60,.8)"/><ellipse cx="97.5" cy="120" rx="15" ry="15" fill="rgba(245,180,60,.08)"/>
+            <rect x="155" y="118" width="5" height="22" rx="1" fill="#1e1408"/><ellipse cx="157.5" cy="118" rx="2.5" ry="2.5" fill="rgba(255,220,100,.9)"/><ellipse cx="157.5" cy="115" rx="1.5" ry="4" fill="rgba(255,180,60,.8)"/><ellipse cx="157.5" cy="118" rx="15" ry="15" fill="rgba(245,180,60,.08)"/>
+            <rect x="218" y="119" width="5" height="21" rx="1" fill="#1e1408"/><ellipse cx="220.5" cy="119" rx="2.5" ry="2.5" fill="rgba(255,220,100,.9)"/><ellipse cx="220.5" cy="116" rx="1.5" ry="4" fill="rgba(255,180,60,.8)"/><ellipse cx="220.5" cy="119" rx="15" ry="15" fill="rgba(245,180,60,.08)"/>
+            <rect x="282" y="120" width="5" height="20" rx="1" fill="#1e1408"/><ellipse cx="284.5" cy="120" rx="2.5" ry="2.5" fill="rgba(255,220,100,.9)"/><ellipse cx="284.5" cy="117" rx="1.5" ry="4" fill="rgba(255,180,60,.8)"/><ellipse cx="284.5" cy="120" rx="15" ry="15" fill="rgba(245,180,60,.08)"/>
+          </g>
+          <!-- plates & glasses on table -->
+          <g fill="rgba(245,235,200,.12)" stroke="rgba(245,235,200,.2)" stroke-width="0.5">
+            <circle cx="75" cy="148" r="12"/><circle cx="75" cy="148" r="8" fill="rgba(180,140,80,.1)" stroke="none"/>
+            <circle cx="130" cy="148" r="12"/><circle cx="130" cy="148" r="8" fill="rgba(180,140,80,.1)" stroke="none"/>
+            <circle cx="185" cy="148" r="12"/><circle cx="185" cy="148" r="8" fill="rgba(180,140,80,.1)" stroke="none"/>
+            <circle cx="240" cy="148" r="12"/><circle cx="240" cy="148" r="8" fill="rgba(180,140,80,.1)" stroke="none"/>
+            <circle cx="295" cy="148" r="12"/><circle cx="295" cy="148" r="8" fill="rgba(180,140,80,.1)" stroke="none"/>
+            <circle cx="350" cy="148" r="12"/><circle cx="350" cy="148" r="8" fill="rgba(180,140,80,.1)" stroke="none"/>
+          </g>
+          <!-- wine glasses -->
+          <g fill="rgba(245,235,200,.15)" stroke="rgba(245,235,200,.25)" stroke-width="0.6">
+            <path d="M88,135 Q84,142 86,148 L90,148 Q92,142 88,135Z"/><rect x="87.5" y="148" width="1.5" height="8" fill="rgba(245,235,200,.18)"/><rect x="85" y="156" width="6" height="1.5" rx="0.5"/>
+            <path d="M143,134 Q139,141 141,147 L145,147 Q147,141 143,134Z"/><rect x="142.5" y="147" width="1.5" height="8" fill="rgba(245,235,200,.18)"/><rect x="140" y="155" width="6" height="1.5" rx="0.5"/>
+            <path d="M198,135 Q194,142 196,148 L200,148 Q202,142 198,135Z"/><rect x="197.5" y="148" width="1.5" height="8" fill="rgba(245,235,200,.18)"/><rect x="195" y="156" width="6" height="1.5" rx="0.5"/>
+            <path d="M308,135 Q304,142 306,148 L310,148 Q312,142 308,135Z"/><rect x="307.5" y="148" width="1.5" height="8" fill="rgba(245,235,200,.18)"/><rect x="305" y="156" width="6" height="1.5" rx="0.5"/>
+          </g>
+          <!-- seated silhouettes -->
+          <g fill="#0c0806">
+            <!-- people on far side of table -->
+            <ellipse cx="75" cy="122" rx="16" ry="20"/><rect x="63" y="108" width="24" height="20" rx="12"/>
+            <ellipse cx="130" cy="120" rx="15" ry="19"/><rect x="119" y="107" width="22" height="18" rx="11"/>
+            <ellipse cx="185" cy="121" rx="16" ry="20"/><rect x="173" y="108" width="24" height="20" rx="12"/>
+            <ellipse cx="240" cy="120" rx="15" ry="19"/><rect x="229" y="107" width="22" height="18" rx="11"/>
+            <ellipse cx="295" cy="121" rx="16" ry="20"/><rect x="283" y="108" width="24" height="20" rx="12"/>
+            <ellipse cx="350" cy="120" rx="15" ry="19"/><rect x="339" y="107" width="22" height="18" rx="11"/>
+          </g>
+          <!-- string lights overhead -->
+          <path d="M0,80 Q100,90 200,80 Q300,70 400,80" stroke="rgba(245,196,100,.45)" stroke-width="0.8" fill="none"/>
+          <g fill="rgba(245,196,100,.75)"><circle cx="50" cy="82" r="2"/><circle cx="100" cy="88" r="2"/><circle cx="150" cy="83" r="2"/><circle cx="200" cy="80" r="2"/><circle cx="250" cy="77" r="2"/><circle cx="300" cy="73" r="2"/><circle cx="350" cy="78" r="2"/></g>
+          <g fill="rgba(245,196,100,.12)"><circle cx="50" cy="82" r="7"/><circle cx="150" cy="83" r="7"/><circle cx="250" cy="77" r="7"/><circle cx="350" cy="78" r="7"/></g>
+          <defs><radialGradient id="vig7" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.5)"/></radialGradient></defs>
+          <rect width="400" height="220" fill="url(#vig7)"/>
+        </svg>
+        <span class="g-label">Group Dining</span>
         <div class="g-overlay" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
+
+      <!-- 8: Rooftop Details -->
       <div class="g-item gi-c3" role="listitem" tabindex="0" aria-label="Rooftop Details">
-        <div class="g-dummy">Rooftop Details</div>
+        <svg class="g-art" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="rdBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#050e06"/><stop offset="100%" stop-color="#080e08"/></linearGradient></defs>
+          <rect width="300" height="220" fill="url(#rdBg)"/>
+          <!-- plant leaves -->
+          <g fill="rgba(40,120,50,.5)" stroke="rgba(60,160,70,.3)" stroke-width="0.5">
+            <ellipse cx="30" cy="160" rx="22" ry="40" transform="rotate(-20,30,160)"/>
+            <ellipse cx="50" cy="165" rx="18" ry="35" transform="rotate(10,50,165)"/>
+            <ellipse cx="20" cy="155" rx="16" ry="30" transform="rotate(-35,20,155)"/>
+            <ellipse cx="260" cy="155" rx="22" ry="42" transform="rotate(20,260,155)"/>
+            <ellipse cx="278" cy="162" rx="18" ry="34" transform="rotate(-10,278,162)"/>
+            <ellipse cx="248" cy="158" rx="16" ry="30" transform="rotate(35,248,158)"/>
+          </g>
+          <!-- plant pots -->
+          <g fill="#141008" stroke="rgba(200,169,110,.2)" stroke-width="0.8">
+            <rect x="10" y="185" width="52" height="35" rx="3"/>
+            <rect x="242" y="185" width="52" height="35" rx="3"/>
+          </g>
+          <!-- central cocktail close-up -->
+          <g transform="translate(150,110)">
+            <defs>
+              <radialGradient id="drinkHi" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="rgba(245,210,100,.5)"/><stop offset="100%" stop-color="rgba(200,140,40,.2)"/></radialGradient>
+            </defs>
+            <!-- rocks glass -->
+            <rect x="-28" y="-15" width="56" height="60" rx="4" fill="rgba(245,235,200,.08)" stroke="rgba(245,235,200,.3)" stroke-width="1"/>
+            <!-- liquid -->
+            <rect x="-27" y="15" width="54" height="29" rx="3" fill="rgba(200,80,30,.45)"/>
+            <!-- ice -->
+            <rect x="-18" y="0" width="18" height="18" rx="3" fill="rgba(200,240,255,.2)" transform="rotate(12,-9,9)"/>
+            <rect x="4" y="5" width="16" height="16" rx="3" fill="rgba(200,240,255,.18)" transform="rotate(-8,12,13)"/>
+            <!-- orange slice garnish -->
+            <circle cx="22" cy="-10" r="14" fill="rgba(240,140,40,.35)" stroke="rgba(245,180,60,.4)" stroke-width="0.8"/>
+            <circle cx="22" cy="-10" r="7" fill="rgba(240,140,40,.2)"/>
+            <line x1="8" y1="-10" x2="36" y2="-10" stroke="rgba(245,180,60,.3)" stroke-width="0.5"/>
+            <line x1="22" y1="-24" x2="22" y2="4" stroke="rgba(245,180,60,.3)" stroke-width="0.5"/>
+            <line x1="10" y1="-20" x2="34" y2="0" stroke="rgba(245,180,60,.25)" stroke-width="0.5"/>
+            <line x1="10" y1="0" x2="34" y2="-20" stroke="rgba(245,180,60,.25)" stroke-width="0.5"/>
+            <!-- straw -->
+            <rect x="10" y="-30" width="4" height="50" rx="2" fill="rgba(245,196,100,.4)" transform="rotate(10,12,10)"/>
+            <!-- cocktail umbrella -->
+            <line x1="-5" y1="-15" x2="-5" y2="-38" stroke="rgba(245,235,200,.4)" stroke-width="1"/>
+            <path d="M-5,-38 Q-18,-28 -5,-22 Q8,-28 -5,-38Z" fill="rgba(200,80,120,.5)" stroke="rgba(245,235,200,.3)" stroke-width="0.5"/>
+            <!-- drink glow -->
+            <ellipse cx="0" cy="50" rx="35" ry="12" fill="rgba(200,80,30,.12)"/>
+          </g>
+          <!-- table surface -->
+          <rect x="80" y="175" width="140" height="45" rx="4" fill="#100a04"/>
+          <rect x="80" y="172" width="140" height="5" rx="2" fill="#181008"/>
+          <!-- ambient gold glow -->
+          <ellipse cx="150" cy="140" rx="80" ry="50" fill="rgba(245,196,100,.06)"/>
+          <defs><radialGradient id="vig8" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.55)"/></radialGradient></defs>
+          <rect width="300" height="220" fill="url(#vig8)"/>
+        </svg>
+        <span class="g-label">Rooftop Details</span>
         <div class="g-overlay" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
+
     </div>
   </div>
 </section>
@@ -764,32 +1704,50 @@
     <div id="tab-cocktails" class="tab-panel active" role="tabpanel">
       <div class="menu-grid">
         <div class="menu-item">
-          <div class="menu-item-header"><span class="menu-item-name">Cayo Sour</span><span class="menu-item-price">€ 16</span></div>
+          <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:.2rem">
+            <div class="drink-swatch" style="background:linear-gradient(135deg,#b8c830,#e8d840);color:#1a1a08">SC</div>
+            <div class="menu-item-header" style="flex:1;margin:0"><span class="menu-item-name">Cayo Sour</span><span class="menu-item-price">€ 16</span></div>
+          </div>
           <p class="menu-item-desc">Havana Club 3, frischer Limettensaft, Agavennektar, Angostura Bitters, schaumig aufgeschlagen</p>
           <div class="menu-item-tags"><span class="tag-chip">Signature</span><span class="tag-chip">Citrus</span></div>
         </div>
         <div class="menu-item">
-          <div class="menu-item-header"><span class="menu-item-name">Vienna Sunset</span><span class="menu-item-price">€ 17</span></div>
+          <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:.2rem">
+            <div class="drink-swatch" style="background:linear-gradient(135deg,#e05010,#f5982a);color:#fff8f0">VS</div>
+            <div class="menu-item-header" style="flex:1;margin:0"><span class="menu-item-name">Vienna Sunset</span><span class="menu-item-price">€ 17</span></div>
+          </div>
           <p class="menu-item-desc">Aperol, Mango, Kokoswasser, Lemongrass-Sirup, Prosecco — der perfekte Sundowner</p>
           <div class="menu-item-tags"><span class="tag-chip">Bestseller</span><span class="tag-chip">Tropical</span></div>
         </div>
         <div class="menu-item">
-          <div class="menu-item-header"><span class="menu-item-name">Rooftop Negroni</span><span class="menu-item-price">€ 15</span></div>
+          <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:.2rem">
+            <div class="drink-swatch" style="background:linear-gradient(135deg,#b01818,#e02030);color:#ffe8e8">RN</div>
+            <div class="menu-item-header" style="flex:1;margin:0"><span class="menu-item-name">Rooftop Negroni</span><span class="menu-item-price">€ 15</span></div>
+          </div>
           <p class="menu-item-desc">Tanqueray Gin, Campari, Punt e Mes Vermouth, Orange Bitters — klassisch und kompromisslos</p>
           <div class="menu-item-tags"><span class="tag-chip">Classic</span><span class="tag-chip">Bitter</span></div>
         </div>
         <div class="menu-item">
-          <div class="menu-item-header"><span class="menu-item-name">Paloma Rosa</span><span class="menu-item-price">€ 15</span></div>
+          <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:.2rem">
+            <div class="drink-swatch" style="background:linear-gradient(135deg,#d02850,#e04878);color:#ffe0e8">PR</div>
+            <div class="menu-item-header" style="flex:1;margin:0"><span class="menu-item-name">Paloma Rosa</span><span class="menu-item-price">€ 15</span></div>
+          </div>
           <p class="menu-item-desc">Tequila Blanco, Grapefruitsaft, Hibiskus-Sirup, Tajín-Rand, Sodawasser</p>
           <div class="menu-item-tags"><span class="tag-chip">Fruity</span><span class="tag-chip">Spicy</span></div>
         </div>
         <div class="menu-item">
-          <div class="menu-item-header"><span class="menu-item-name">Midnight Havana</span><span class="menu-item-price">€ 18</span></div>
+          <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:.2rem">
+            <div class="drink-swatch" style="background:linear-gradient(135deg,#1a1008,#3a2010);color:#c8a96e;border:1px solid rgba(200,169,110,.3)">MH</div>
+            <div class="menu-item-header" style="flex:1;margin:0"><span class="menu-item-name">Midnight Havana</span><span class="menu-item-price">€ 18</span></div>
+          </div>
           <p class="menu-item-desc">Premium Rum, Cold Brew, Kakaobitter, Muscovado-Sirup, Salted Cream Float</p>
           <div class="menu-item-tags"><span class="tag-chip">Premium</span><span class="tag-chip">Coffee</span></div>
         </div>
         <div class="menu-item">
-          <div class="menu-item-header"><span class="menu-item-name">Coco Spritz</span><span class="menu-item-price">€ 14</span></div>
+          <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:.2rem">
+            <div class="drink-swatch" style="background:linear-gradient(135deg,#208040,#40c070);color:#e0ffe8">CS</div>
+            <div class="menu-item-header" style="flex:1;margin:0"><span class="menu-item-name">Coco Spritz</span><span class="menu-item-price">€ 14</span></div>
+          </div>
           <p class="menu-item-desc">Coconut Rum, Kokoswasser, frische Minze, Lime, Soda — leicht und erfrischend</p>
           <div class="menu-item-tags"><span class="tag-chip">Light</span><span class="tag-chip">Refreshing</span></div>
         </div>
@@ -857,8 +1815,32 @@
     </div>
     <div class="events-slider reveal" role="list" aria-label="Kommende Events">
       <div class="event-card" role="listitem">
-        <div class="event-card-img gi-c1">
-          <div class="g-dummy" style="min-height:unset;height:100%">Sunset Session</div>
+        <div class="event-card-img" style="background:#0d0508">
+          <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 420 236" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="ev1bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d0a1a"/><stop offset="35%" stop-color="#3d1208"/><stop offset="65%" stop-color="#c04010"/><stop offset="85%" stop-color="#e87020"/><stop offset="100%" stop-color="#f5a030"/></linearGradient></defs>
+            <rect width="420" height="236" fill="url(#ev1bg)"/>
+            <circle cx="300" cy="95" r="55" fill="rgba(255,220,80,.12)"/>
+            <circle cx="300" cy="95" r="30" fill="rgba(255,200,60,.2)"/>
+            <circle cx="300" cy="95" r="14" fill="rgba(255,240,140,.5)"/>
+            <g fill="#0a0508"><rect x="0" y="140" width="80" height="96"/><polygon points="0,140 40,118 80,140"/><rect x="75" y="152" width="55" height="84"/><rect x="126" y="143" width="40" height="93"/><polygon points="126,143 146,125 166,143"/><rect x="300" y="148" width="50" height="88"/><polygon points="300,148 325,128 350,148"/><rect x="345" y="155" width="75" height="81"/></g>
+            <g fill="rgba(245,196,100,.2)"><rect x="10" y="148" width="5" height="7"/><rect x="22" y="148" width="5" height="7"/><rect x="10" y="162" width="5" height="7"/><rect x="135" y="152" width="5" height="7"/><rect x="148" y="152" width="5" height="7"/><rect x="310" y="156" width="5" height="7"/><rect x="323" y="156" width="5" height="7"/></g>
+            <!-- DJ silhouette -->
+            <ellipse cx="210" cy="195" rx="20" ry="28" fill="#080506"/>
+            <ellipse cx="210" cy="168" rx="14" ry="14" fill="#080506"/>
+            <!-- headphones -->
+            <path d="M196,168 Q196,154 210,154 Q224,154 224,168" stroke="#0d0a0a" stroke-width="3" fill="none"/>
+            <rect x="193" y="165" width="5" height="10" rx="2" fill="#0e0c0c"/>
+            <rect x="222" y="165" width="5" height="10" rx="2" fill="#0e0c0c"/>
+            <!-- raised arm with hand -->
+            <path d="M196,175 Q184,160 178,148" stroke="#080506" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <path d="M224,175 Q236,160 242,148" stroke="#080506" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <!-- notes -->
+            <text x="170" y="130" font-size="18" fill="rgba(245,196,100,.4)" font-family="serif">♪</text>
+            <text x="245" y="120" font-size="14" fill="rgba(245,196,100,.3)" font-family="serif">♫</text>
+            <text x="155" y="115" font-size="11" fill="rgba(245,196,100,.25)" font-family="serif">♩</text>
+            <defs><radialGradient id="ev1v" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.45)"/></radialGradient></defs>
+            <rect width="420" height="236" fill="url(#ev1v)"/>
+          </svg>
           <div class="event-date-badge">Fr, 13. Jun</div>
         </div>
         <div class="event-card-body">
@@ -872,8 +1854,60 @@
         </div>
       </div>
       <div class="event-card" role="listitem">
-        <div class="event-card-img gi-c2">
-          <div class="g-dummy" style="min-height:unset;height:100%">Rum Tasting</div>
+        <div class="event-card-img" style="background:#060408">
+          <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 420 236" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="ev2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#06040c"/><stop offset="50%" stop-color="#100a14"/><stop offset="100%" stop-color="#180c08"/></linearGradient></defs>
+            <rect width="420" height="236" fill="url(#ev2bg)"/>
+            <!-- warm amber glow from bottles -->
+            <ellipse cx="210" cy="130" rx="180" ry="80" fill="rgba(180,100,20,.08)"/>
+            <!-- row of rum bottles -->
+            <g>
+              <rect x="72" y="60" width="28" height="110" rx="4" fill="#1a1008" stroke="rgba(200,150,50,.2)" stroke-width="1"/>
+              <rect x="74" y="52" width="24" height="14" rx="2" fill="#1a1008" stroke="rgba(200,150,50,.15)" stroke-width="0.8"/>
+              <rect x="76" y="62" width="20" height="55" rx="2" fill="rgba(160,80,10,.5)"/>
+              <rect x="76" y="100" width="20" height="10" fill="#1a1008" opacity="0.5"/>
+              <rect x="74" y="117" width="24" height="8" fill="rgba(245,196,100,.15)" rx="1"/>
+
+              <rect x="114" y="50" width="30" height="120" rx="4" fill="#180e06" stroke="rgba(220,160,60,.2)" stroke-width="1"/>
+              <rect x="116" y="42" width="26" height="14" rx="2" fill="#180e06" stroke="rgba(220,160,60,.15)" stroke-width="0.8"/>
+              <rect x="118" y="52" width="22" height="60" rx="2" fill="rgba(180,90,15,.55)"/>
+              <rect x="116" y="112" width="26" height="9" fill="rgba(245,196,100,.18)" rx="1"/>
+
+              <rect x="158" y="55" width="28" height="115" rx="4" fill="#1c1008" stroke="rgba(200,140,40,.2)" stroke-width="1"/>
+              <rect x="160" y="47" width="24" height="14" rx="2" fill="#1c1008"/>
+              <rect x="162" y="57" width="20" height="52" rx="2" fill="rgba(150,70,10,.5)"/>
+              <rect x="160" y="110" width="24" height="8" fill="rgba(245,196,100,.15)" rx="1"/>
+
+              <rect x="200" y="45" width="32" height="125" rx="4" fill="#1e1206" stroke="rgba(230,170,70,.25)" stroke-width="1.2"/>
+              <rect x="202" y="37" width="28" height="14" rx="2" fill="#1e1206"/>
+              <rect x="204" y="47" width="24" height="65" rx="2" fill="rgba(200,100,20,.55)"/>
+              <rect x="202" y="118" width="28" height="9" fill="rgba(245,210,100,.2)" rx="1"/>
+
+              <rect x="246" y="58" width="28" height="112" rx="4" fill="#1a0e06" stroke="rgba(200,140,40,.2)" stroke-width="1"/>
+              <rect x="248" y="50" width="24" height="14" rx="2" fill="#1a0e06"/>
+              <rect x="250" y="60" width="20" height="50" rx="2" fill="rgba(160,80,15,.5)"/>
+              <rect x="248" y="112" width="24" height="8" fill="rgba(245,196,100,.15)" rx="1"/>
+
+              <rect x="288" y="62" width="26" height="108" rx="4" fill="#180c04" stroke="rgba(180,120,30,.2)" stroke-width="1"/>
+              <rect x="290" y="54" width="22" height="14" rx="2" fill="#180c04"/>
+              <rect x="292" y="64" width="18" height="48" rx="2" fill="rgba(140,60,10,.5)"/>
+              <rect x="290" y="113" width="22" height="8" fill="rgba(245,196,100,.12)" rx="1"/>
+            </g>
+            <!-- tasting glass in foreground -->
+            <g transform="translate(210,158)">
+              <path d="M0,-22 Q-18,8 -12,28 L12,28 Q18,8 0,-22Z" fill="rgba(245,235,200,.1)" stroke="rgba(245,235,200,.3)" stroke-width="1"/>
+              <path d="M-8,5 Q-12,18 -12,28 L12,28 Q12,18 8,5Z" fill="rgba(180,90,15,.45)"/>
+              <rect x="-1.5" y="28" width="3" height="14" fill="rgba(245,235,200,.2)"/>
+              <rect x="-10" y="42" width="20" height="2.5" rx="1" fill="rgba(245,235,200,.22)"/>
+            </g>
+            <!-- amber glow from liquid -->
+            <ellipse cx="210" cy="190" rx="30" ry="10" fill="rgba(200,100,20,.12)"/>
+            <!-- label text on main bottle -->
+            <text x="202" y="88" font-size="5" fill="rgba(245,220,150,.5)" font-family="serif" text-anchor="middle">HAVANA</text>
+            <text x="202" y="95" font-size="4" fill="rgba(245,220,150,.4)" font-family="serif" text-anchor="middle">RESERVA</text>
+            <defs><radialGradient id="ev2v" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.5)"/></radialGradient></defs>
+            <rect width="420" height="236" fill="url(#ev2v)"/>
+          </svg>
           <div class="event-date-badge">Sa, 14. Jun</div>
         </div>
         <div class="event-card-body">
@@ -887,8 +1921,61 @@
         </div>
       </div>
       <div class="event-card" role="listitem">
-        <div class="event-card-img gi-c4">
-          <div class="g-dummy" style="min-height:unset;height:100%">Latin Night</div>
+        <div class="event-card-img" style="background:#080306">
+          <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 420 236" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="ev3bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#08030e"/><stop offset="40%" stop-color="#1a0520"/><stop offset="70%" stop-color="#3a0830"/><stop offset="100%" stop-color="#5a0a28"/></linearGradient></defs>
+            <rect width="420" height="236" fill="url(#ev3bg)"/>
+            <!-- stage glow -->
+            <ellipse cx="210" cy="236" rx="180" ry="70" fill="rgba(200,40,100,.15)"/>
+            <!-- spotlight beams -->
+            <polygon points="100,0 60,236 140,236" fill="rgba(255,80,150,.06)"/>
+            <polygon points="210,0 170,236 250,236" fill="rgba(255,100,60,.05)"/>
+            <polygon points="320,0 280,236 360,236" fill="rgba(180,40,200,.06)"/>
+            <!-- band silhouettes -->
+            <g fill="#060208">
+              <!-- guitarist left -->
+              <ellipse cx="90" cy="170" rx="16" ry="22"/><rect x="78" y="148" width="24" height="26" rx="12"/>
+              <!-- guitar body -->
+              <ellipse cx="72" cy="175" rx="14" ry="18" fill="#06020a"/>
+              <ellipse cx="78" cy="168" rx="8" ry="10" fill="#06020a"/>
+              <rect x="86" y="150" width="3" height="30" rx="1" fill="#06020a"/>
+              <!-- drummer center -->
+              <ellipse cx="210" cy="175" rx="18" ry="24"/><rect x="196" y="153" width="28" height="26" rx="14"/>
+              <!-- drum kit -->
+              <ellipse cx="192" cy="198" rx="16" ry="10" fill="#060208" stroke="rgba(255,80,150,.15)" stroke-width="0.8"/>
+              <ellipse cx="228" cy="198" rx="16" ry="10" fill="#060208" stroke="rgba(255,80,150,.15)" stroke-width="0.8"/>
+              <ellipse cx="210" cy="205" rx="22" ry="12" fill="#060208" stroke="rgba(255,80,150,.2)" stroke-width="1"/>
+              <!-- sticks raised -->
+              <line x1="205" y1="155" x2="195" y2="135" stroke="#060208" stroke-width="4" stroke-linecap="round"/>
+              <line x1="215" y1="155" x2="225" y2="133" stroke="#060208" stroke-width="4" stroke-linecap="round"/>
+              <!-- bassist right -->
+              <ellipse cx="330" cy="170" rx="16" ry="22"/><rect x="318" y="148" width="24" height="26" rx="12"/>
+              <ellipse cx="348" cy="175" rx="12" ry="16" fill="#06020a"/>
+              <rect x="331" y="150" width="3" height="28" rx="1" fill="#06020a"/>
+              <!-- singer -->
+              <ellipse cx="210" cy="125" rx="12" ry="15"/><rect x="202" y="110" width="16" height="18" rx="8"/>
+              <!-- mic stand -->
+              <line x1="210" y1="108" x2="210" y2="85" stroke="#060208" stroke-width="2"/>
+              <ellipse cx="210" cy="82" rx="5" ry="7" fill="#06020a"/>
+            </g>
+            <!-- music notes floating -->
+            <g fill="rgba(255,100,150,.35)" font-family="serif" font-size="20">
+              <text x="40" y="80">♪</text><text x="140" y="60">♫</text><text x="270" y="55">♩</text><text x="365" y="75">♪</text><text x="320" y="40">♬</text>
+            </g>
+            <!-- confetti dots -->
+            <g>
+              <circle cx="50" cy="40" r="3" fill="rgba(255,80,150,.5)"/>
+              <circle cx="100" cy="30" r="2" fill="rgba(255,200,60,.5)"/>
+              <circle cx="170" cy="45" r="3" fill="rgba(80,200,255,.4)"/>
+              <circle cx="250" cy="25" r="2" fill="rgba(255,80,150,.5)"/>
+              <circle cx="310" cy="38" r="3" fill="rgba(255,200,60,.4)"/>
+              <circle cx="380" cy="28" r="2" fill="rgba(80,200,255,.5)"/>
+              <circle cx="60" cy="60" r="2" fill="rgba(255,200,60,.4)"/>
+              <circle cx="380" cy="55" r="3" fill="rgba(255,80,150,.4)"/>
+            </g>
+            <defs><radialGradient id="ev3v" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.45)"/></radialGradient></defs>
+            <rect width="420" height="236" fill="url(#ev3v)"/>
+          </svg>
           <div class="event-date-badge">Mi, 18. Jun</div>
         </div>
         <div class="event-card-body">
@@ -902,8 +1989,72 @@
         </div>
       </div>
       <div class="event-card" role="listitem">
-        <div class="event-card-img gi-c3">
-          <div class="g-dummy" style="min-height:unset;height:100%">Brunch Club</div>
+        <div class="event-card-img" style="background:#06080d">
+          <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 420 236" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="ev4bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#060810"/><stop offset="35%" stop-color="#0c1220"/><stop offset="65%" stop-color="#182030"/><stop offset="100%" stop-color="#101820"/></linearGradient></defs>
+            <rect width="420" height="236" fill="url(#ev4bg)"/>
+            <!-- morning light glow -->
+            <ellipse cx="210" cy="0" rx="220" ry="100" fill="rgba(245,200,100,.08)"/>
+            <ellipse cx="210" cy="50" rx="160" ry="60" fill="rgba(180,210,240,.06)"/>
+            <!-- champagne flutes -->
+            <g transform="translate(210,80)">
+              <path d="M0,-55 L-18,25 L18,25Z" fill="rgba(245,235,200,.1)" stroke="rgba(245,235,200,.3)" stroke-width="0.8"/>
+              <rect x="-1.5" y="25" width="3" height="35" fill="rgba(245,235,200,.2)"/>
+              <rect x="-12" y="60" width="24" height="3" rx="1" fill="rgba(245,235,200,.22)"/>
+              <!-- champagne bubbles -->
+              <circle cx="-5" cy="10" r="1.5" fill="rgba(245,235,200,.5)"/>
+              <circle cx="3" cy="0" r="1" fill="rgba(245,235,200,.4)"/>
+              <circle cx="-2" cy="-10" r="1.5" fill="rgba(245,235,200,.45)"/>
+              <circle cx="6" cy="-20" r="1" fill="rgba(245,235,200,.35)"/>
+              <circle cx="-4" cy="-30" r="1.5" fill="rgba(245,235,200,.4)"/>
+              <!-- liquid fill -->
+              <path d="M-10,5 L-18,25 L18,25 L10,5Z" fill="rgba(245,230,180,.3)"/>
+            </g>
+            <!-- second flute -->
+            <g transform="translate(240,90)">
+              <path d="M0,-48 L-16,22 L16,22Z" fill="rgba(245,235,200,.09)" stroke="rgba(245,235,200,.28)" stroke-width="0.8"/>
+              <rect x="-1.5" y="22" width="3" height="30" fill="rgba(245,235,200,.18)"/>
+              <rect x="-10" y="52" width="20" height="2.5" rx="1" fill="rgba(245,235,200,.2)"/>
+              <circle cx="2" cy="5" r="1.2" fill="rgba(245,235,200,.45)"/>
+              <circle cx="-4" cy="-8" r="1" fill="rgba(245,235,200,.35)"/>
+              <circle cx="1" cy="-20" r="1.2" fill="rgba(245,235,200,.4)"/>
+              <path d="M-9,4 L-16,22 L16,22 L9,4Z" fill="rgba(245,230,180,.28)"/>
+            </g>
+            <!-- brunch table with food -->
+            <rect x="60" y="168" width="300" height="68" rx="4" fill="#0e1018"/>
+            <rect x="60" y="165" width="300" height="6" rx="3" fill="#161a24"/>
+            <!-- plates -->
+            <ellipse cx="140" cy="178" rx="35" ry="10" fill="#141820" stroke="rgba(245,235,200,.15)" stroke-width="0.8"/>
+            <ellipse cx="210" cy="176" rx="38" ry="11" fill="#141820" stroke="rgba(245,235,200,.15)" stroke-width="0.8"/>
+            <ellipse cx="280" cy="178" rx="35" ry="10" fill="#141820" stroke="rgba(245,235,200,.15)" stroke-width="0.8"/>
+            <!-- food colours on plates -->
+            <ellipse cx="140" cy="178" rx="28" ry="8" fill="rgba(220,160,80,.2)"/>
+            <ellipse cx="210" cy="176" rx="30" ry="9" fill="rgba(80,160,80,.15)"/>
+            <ellipse cx="280" cy="178" rx="28" ry="8" fill="rgba(220,100,60,.2)"/>
+            <!-- OJ glass -->
+            <g transform="translate(170,162)">
+              <rect x="-8" y="-18" width="16" height="22" rx="3" fill="rgba(245,235,200,.08)" stroke="rgba(245,235,200,.25)" stroke-width="0.8"/>
+              <rect x="-7" y="-4" width="14" height="8" rx="2" fill="rgba(240,140,30,.4)"/>
+            </g>
+            <!-- flowers / greenery centre -->
+            <g fill="rgba(60,160,60,.35)" stroke="rgba(80,200,80,.2)" stroke-width="0.5">
+              <ellipse cx="210" cy="158" rx="14" ry="22" transform="rotate(-15,210,158)"/>
+              <ellipse cx="222" cy="162" rx="12" ry="18" transform="rotate(15,222,162)"/>
+              <ellipse cx="198" cy="160" rx="10" ry="16" transform="rotate(-30,198,160)"/>
+            </g>
+            <!-- vase -->
+            <path d="M205,165 Q203,175 204,185 L216,185 Q217,175 215,165Z" fill="#141820" stroke="rgba(245,235,200,.2)" stroke-width="0.8"/>
+            <!-- sunbeam rays -->
+            <g stroke="rgba(245,210,150,.04)" stroke-width="8">
+              <line x1="210" y1="0" x2="80" y2="236"/>
+              <line x1="210" y1="0" x2="210" y2="236"/>
+              <line x1="210" y1="0" x2="340" y2="236"/>
+              <line x1="210" y1="0" x2="420" y2="236"/>
+              <line x1="210" y1="0" x2="0" y2="236"/>
+            </g>
+            <defs><radialGradient id="ev4v" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,.45)"/></radialGradient></defs>
+            <rect width="420" height="236" fill="url(#ev4v)"/>
+          </svg>
           <div class="event-date-badge">So, 22. Jun</div>
         </div>
         <div class="event-card-body">
