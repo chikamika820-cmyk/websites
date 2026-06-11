@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>DINO's Apothecary Bar · Salzgries 19, 1010 Wien</title>
+<meta name="description" content="DINO's Apothecary Bar – Wiens ausgezeichnete American Bar am Salzgries. Über 120 Eigenkreationen und 350 Klassiker, verschrieben von Alchemist & Mixologist Heinz Kaiser.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  "name": "DINO's Apothecary Bar",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Salzgries 19",
+    "postalCode": "1010",
+    "addressLocality": "Wien",
+    "addressCountry": "AT"
+  },
+  "telephone": "+43 1 5357230",
+  "email": "info@dinos.at",
+  "url": "https://dinos.at",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "17:00", "closes": "02:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "17:00", "closes": "03:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "20:00", "closes": "00:00" }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#0d1410;
+  --bg-2:#111a15;
+  --panel:#15211a;
+  --line:rgba(201,168,106,.18);
+  --gold:#c9a86a;
+  --gold-bright:#e3c98f;
+  --cream:#f0e9da;
+  --muted:#9aa89d;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.7;
+  letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold);color:#101510}
+
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ---------- Nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:linear-gradient(to bottom,rgba(13,20,16,.92),rgba(13,20,16,.75));
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1100px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{font-family:var(--serif);font-size:1.35rem;letter-spacing:.08em;color:var(--gold-bright)}
+.brand small{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.42em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;gap:28px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase}
+.nav-links a{color:var(--muted);transition:color .25s}
+.nav-links a:hover{color:var(--gold-bright)}
+.nav-cta{
+  border:1px solid var(--gold);color:var(--gold-bright);
+  padding:9px 22px;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+  transition:background .25s,color .25s;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--gold);color:#101510}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---------- Hero ---------- */
+header{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+  padding:120px 24px 80px;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 0%,rgba(201,168,106,.10),transparent 60%),
+    radial-gradient(ellipse 60% 45% at 50% 110%,rgba(201,168,106,.07),transparent 60%),
+    var(--bg);
+}
+header::before{
+  content:"";position:absolute;inset:0;opacity:.45;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px);
+}
+.hero-frame{
+  border:1px solid var(--line);
+  padding:60px 48px;max-width:760px;position:relative;
+}
+.hero-frame::before,.hero-frame::after{
+  content:"✦";position:absolute;color:var(--gold);font-size:.8rem;
+  background:var(--bg);padding:0 12px;
+}
+.hero-frame::before{top:-10px;left:50%;transform:translateX(-50%)}
+.hero-frame::after{bottom:-10px;left:50%;transform:translateX(-50%)}
+.hero-eyebrow{
+  font-size:.72rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:26px;
+}
+h1{
+  font-size:clamp(2.6rem,7vw,4.6rem);
+  letter-spacing:.04em;color:var(--cream);
+}
+h1 em{font-style:italic;color:var(--gold-bright)}
+.hero-sub{
+  margin-top:22px;font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--muted);
+}
+.hero-rx{
+  margin-top:34px;display:flex;gap:34px;justify-content:center;flex-wrap:wrap;
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+}
+.hero-rx span b{display:block;font-family:var(--serif);font-size:1.9rem;font-weight:500;color:var(--gold-bright);letter-spacing:.02em}
+.hero-actions{margin-top:42px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.btn{
+  padding:14px 36px;font-size:.76rem;letter-spacing:.26em;text-transform:uppercase;
+  border:1px solid var(--gold);transition:all .25s;
+}
+.btn-solid{background:var(--gold);color:#101510}
+.btn-solid:hover{background:var(--gold-bright)}
+.btn-ghost{color:var(--gold-bright)}
+.btn-ghost:hover{background:rgba(201,168,106,.12)}
+.scroll-hint{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);
+  animation:fade 2.6s ease-in-out infinite;
+}
+@keyframes fade{0%,100%{opacity:.35}50%{opacity:.9}}
+
+/* ---------- Award marquee ---------- */
+.marquee{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--bg-2);overflow:hidden;padding:16px 0;
+}
+.marquee-track{
+  display:flex;gap:64px;width:max-content;
+  animation:slide 38s linear infinite;
+  font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  white-space:nowrap;
+}
+.marquee-track span::after{content:"✦";margin-left:64px;color:var(--line)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{padding:110px 0}
+.sec-eyebrow{font-size:.7rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:28px}
+h2 em{font-style:italic;color:var(--gold-bright)}
+.lead{font-size:1.06rem;color:var(--muted);max-width:62ch}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.apothecary-card{
+  border:1px solid var(--line);background:var(--panel);
+  padding:44px 38px;position:relative;text-align:center;
+}
+.apothecary-card::before{
+  content:"℞";position:absolute;top:18px;left:24px;
+  font-family:var(--serif);font-size:2rem;color:var(--gold);opacity:.7;
+}
+.apothecary-card h3{font-size:1.6rem;color:var(--gold-bright);margin-bottom:6px}
+.apothecary-card .role{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.apothecary-card p{font-family:var(--serif);font-style:italic;font-size:1.08rem;color:var(--cream)}
+.apothecary-card .seal{
+  margin:26px auto 0;width:74px;height:74px;border-radius:50%;
+  border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);text-align:center;line-height:1.4;
+}
+
+/* Menu */
+.menu{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:54px}
+@media(max-width:860px){.menu-cols{grid-template-columns:1fr}}
+.menu-col h3{
+  font-size:1.05rem;font-family:var(--sans);font-weight:400;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:8px;
+}
+.menu-item{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-bottom:1px dashed rgba(201,168,106,.12)}
+.menu-item .name{font-family:var(--serif);font-size:1.2rem;color:var(--cream)}
+.menu-item .desc{font-size:.84rem;color:var(--muted);margin-top:3px}
+.menu-item .no{font-family:var(--serif);font-style:italic;color:var(--gold);white-space:nowrap}
+.menu-note{margin-top:36px;font-family:var(--serif);font-style:italic;color:var(--muted);text-align:center}
+
+/* Atmosphere strip */
+.atmo{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:54px}
+@media(max-width:700px){.atmo{grid-template-columns:1fr}}
+.atmo div{
+  aspect-ratio:4/3;border:1px solid var(--line);
+  display:flex;align-items:flex-end;padding:22px;
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+}
+.atmo div:nth-child(1){background:radial-gradient(circle at 30% 20%,rgba(201,168,106,.22),transparent 55%),var(--panel)}
+.atmo div:nth-child(2){background:radial-gradient(circle at 70% 70%,rgba(201,168,106,.16),transparent 55%),var(--bg-2)}
+.atmo div:nth-child(3){background:radial-gradient(circle at 50% 30%,rgba(201,168,106,.20),transparent 55%),var(--panel)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:54px}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+.contact-cell{border:1px solid var(--line);background:var(--panel);padding:38px 32px}
+.contact-cell h3{
+  font-family:var(--sans);font-weight:400;font-size:.74rem;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;
+}
+.contact-cell p{color:var(--muted);font-size:.95rem}
+.contact-cell a{color:var(--cream);border-bottom:1px solid var(--line);transition:border-color .25s}
+.contact-cell a:hover{border-color:var(--gold)}
+.hours{width:100%;font-size:.92rem;color:var(--muted)}
+.hours td{padding:5px 0}
+.hours td:last-child{text-align:right;color:var(--cream)}
+.hours .closed td:last-child{color:var(--muted);font-style:italic}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:48px 24px;text-align:center}
+footer .brand{font-size:1.2rem}
+footer p{font-size:.78rem;color:var(--muted);margin-top:14px;letter-spacing:.06em}
+.socials{margin-top:20px;display:flex;gap:26px;justify-content:center;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase}
+.socials a{color:var(--muted);transition:color .25s}
+.socials a:hover{color:var(--gold-bright)}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+  .marquee-track{animation:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">DINO's<small>Apothecary Bar</small></a>
+    <div class="nav-links">
+      <a href="#haus">Das Haus</a>
+      <a href="#karte">Rezepturen</a>
+      <a href="#abend">Der Abend</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a class="nav-cta" href="tel:+4315357230">Tisch reservieren</a>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="hero-frame">
+    <p class="hero-eyebrow">Est. Salzgries 19 · 1010 Wien</p>
+    <h1>Verschrieben.<br><em>Verordnet. Verkostet.</em></h1>
+    <p class="hero-sub">Die Apotheke für den gepflegten Abend — Cocktails als Medizin, der Barkeeper als Alchemist.</p>
+    <div class="hero-rx">
+      <span><b>120+</b>Eigenkreationen</span>
+      <span><b>350</b>Klassiker</span>
+      <span><b>30+</b>Jahre hinterm Tresen</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="tel:+4315357230">Reservieren</a>
+      <a class="btn btn-ghost" href="#karte">Zur Rezeptur</a>
+    </div>
+  </div>
+  <span class="scroll-hint">Eintreten</span>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Falstaff Bar Guide 2024 — American Bar of the Year</span>
+    <span>Heinz Kaiser — Bartender of the Year</span>
+    <span>Über 120 Eigenkreationen</span>
+    <span>Rund 350 Klassiker</span>
+    <span>Falstaff Bar Guide 2024 — American Bar of the Year</span>
+    <span>Heinz Kaiser — Bartender of the Year</span>
+    <span>Über 120 Eigenkreationen</span>
+    <span>Rund 350 Klassiker</span>
+  </div>
+</div>
+
+<section id="haus">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <p class="sec-eyebrow">Das Haus</p>
+      <h2>Eine Bar wie eine <em>alte Offizin</em></h2>
+      <p class="lead">
+        Warmes Holz, gedimmtes Licht, ein imposanter Tresen — und dahinter Mixologen
+        in weißen Apothekermänteln. DINO's am Salzgries ist ein Refugium für
+        Genießer, das die Stimmung des New York der Siebzigerjahre mitten ins
+        Herz von Wien holt.
+      </p>
+      <p class="lead" style="margin-top:18px">
+        Hier wird nicht einfach gemixt, hier wird rezeptiert: Jede der über
+        120 Eigenkreationen entsteht mit der Präzision eines Pharmazeuten und
+        der Handschrift eines Barkeepers, der seit mehr als drei Jahrzehnten
+        sein Handwerk perfektioniert.
+      </p>
+    </div>
+    <div class="apothecary-card reveal">
+      <h3>Heinz Kaiser</h3>
+      <p class="role">Alchemist · Mixologist · Optimist</p>
+      <p>„Die richtige Dosis, zur richtigen Stunde, im richtigen Glas — mehr braucht ein guter Abend nicht."</p>
+      <div class="seal">Bartender<br>of the Year<br>2024</div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="karte">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <p class="sec-eyebrow">Die Rezeptur</p>
+      <h2>Aus der <em>Hausapotheke</em></h2>
+      <p class="lead" style="margin:0 auto">Ein kleiner Auszug. Die vollständige Verschreibung erhalten Sie am Tresen.</p>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-col reveal">
+        <h3>℞ Eigenkreationen</h3>
+        <div class="menu-item">
+          <div><span class="name">Rezeptur No. 1</span><div class="desc">Hausverschnitt nach geheimer Formel — fragen Sie Ihren Barkeeper.</div></div>
+          <span class="no">℞ 001</span>
+        </div>
+        <div class="menu-item">
+          <div><span class="name">Bittere Medizin</span><div class="desc">Kräuterbitter, Zitrus, ein Hauch Rauch. Streng nach Dosierung.</div></div>
+          <span class="no">℞ 014</span>
+        </div>
+        <div class="menu-item">
+          <div><span class="name">Nachtdienst</span><div class="desc">Dunkel, stark, wärmend — für die späten Stunden am Salzgries.</div></div>
+          <span class="no">℞ 027</span>
+        </div>
+        <div class="menu-item">
+          <div><span class="name">Placebo (alkoholfrei)</span><div class="desc">Wirkt trotzdem. Hausgemachte Sirups und frische Botanicals.</div></div>
+          <span class="no">℞ 058</span>
+        </div>
+      </div>
+      <div class="menu-col reveal">
+        <h3>Die Klassiker</h3>
+        <div class="menu-item">
+          <div><span class="name">Penicillin</span><div class="desc">Blended Scotch, Honig, Ingwer, Islay-Float. Der Hausheilige.</div></div>
+          <span class="no">№ 12</span>
+        </div>
+        <div class="menu-item">
+          <div><span class="name">Old Fashioned</span><div class="desc">Bourbon, Zucker, Bitters. So alt wie wirksam.</div></div>
+          <span class="no">№ 31</span>
+        </div>
+        <div class="menu-item">
+          <div><span class="name">Negroni</span><div class="desc">Gin, Campari, roter Wermut. In strenger Drittel-Dosierung.</div></div>
+          <span class="no">№ 47</span>
+        </div>
+        <div class="menu-item">
+          <div><span class="name">Martini Dry</span><div class="desc">Eiskalt, glasklar, kompromisslos. Auf Wunsch gerührt.</div></div>
+          <span class="no">№ 88</span>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note">— rund 350 Klassiker und über 120 Eigenkreationen, jeden Abend frisch verschrieben —</p>
+  </div>
+</section>
+
+<section id="abend">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <p class="sec-eyebrow">Der Abend</p>
+      <h2>Gedimmtes Licht, <em>lange Gespräche</em></h2>
+    </div>
+    <div class="atmo reveal">
+      <div>Der Tresen</div>
+      <div>Die Offizin</div>
+      <div>Die späte Stunde</div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <p class="sec-eyebrow">Besuch</p>
+      <h2>Sie finden uns <em>am Salzgries</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-cell reveal">
+        <h3>Adresse</h3>
+        <p>Salzgries 19<br>1010 Wien</p>
+        <p style="margin-top:18px"><a href="https://maps.google.com/?q=Dino's+Apothecary+Bar+Salzgries+19+1010+Wien" target="_blank" rel="noopener">Route planen →</a></p>
+      </div>
+      <div class="contact-cell reveal">
+        <h3>Öffnungszeiten</h3>
+        <table class="hours">
+          <tr class="closed"><td>Montag</td><td>Ruhetag</td></tr>
+          <tr><td>Di – Do</td><td>17:00 – 02:00</td></tr>
+          <tr><td>Fr – Sa</td><td>17:00 – 03:00</td></tr>
+          <tr><td>Sonntag</td><td>20:00 – 24:00</td></tr>
+        </table>
+      </div>
+      <div class="contact-cell reveal">
+        <h3>Reservierung</h3>
+        <p><a href="tel:+4315357230">+43 1 535 72 30</a></p>
+        <p style="margin-top:10px"><a href="mailto:info@dinos.at">info@dinos.at</a></p>
+        <p style="margin-top:18px;font-size:.82rem">Für Gruppen ab 6 Personen empfehlen wir telefonische Voranmeldung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a class="brand" href="#top">DINO's<small>Apothecary Bar</small></a>
+  <div class="socials">
+    <a href="https://www.instagram.com/dinosapothecarybar/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/dinosapothecarybar/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <p>© 2026 DINO's Apothecary Bar · Salzgries 19, 1010 Wien · Designentwurf / Demo</p>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
